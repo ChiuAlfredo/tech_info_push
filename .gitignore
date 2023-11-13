@@ -4,3 +4,6 @@ dell_win
 Docker
 *.xlsx
 *.pyc
+*.json
+.DS_Store
+*.csv

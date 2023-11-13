@@ -1,13 +1,14 @@
-
+from selenium import webdriver
 from bs4 import BeautifulSoup
 from time import sleep
 import pandas as pd
 import requests
 import logging
 import random
+from fake_useragent import UserAgent
 
-from util import web_driver
-
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -16,9 +17,12 @@ logging.basicConfig(filename='bug.log',
                     format='%(asctime)s %(filename)s %(levelname)s:%(message)s',
                     level=logging.INFO)
 
-try:       
-    my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
+#讀取下載的IP代理位置檔案
+proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
+proxy_data = proxy.values.tolist()
 
+try:       
+    my_header = {'user-agent':UserAgent().random}
     #設定特徵名稱
     titles = ['Type', 'Brand', 'Model Name', 'Official Price', 'Weight', 'Thunderbolt Port', 'USB-C', 'USB-A', 'Display Port', 
               'HDMI', 'LAN RJ45', 'Audio Jack', 'Power Supply', 'Web Link']
@@ -62,6 +66,8 @@ try:
                     #儲存連結
                     link.append("https:{}".format(D_deta_url[0]["href"]))
     j=0
+    ip_number = 0
+    new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link)):
         delay = random.uniform(1.0, 5.0)
@@ -72,16 +78,39 @@ try:
         USB_C, USB_A, Display_Port, HDMI, LAN_RJ45 = "","","","",""
         Audio_Jack, Power_Supply, Web_Link = "","",link[j]
         #開啟搜尋頁面
-        
-        dell_dock = web_driver()
+        option = webdriver.ChromeOptions()
+        #每50次換一個IP
+        if ip_number == 50:
+            new_ip = random.choice(proxy_data)[0]
+            #隨機選擇一個代理
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+        else:
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+        option.add_argument("headless")
+        dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
         dell_dock.get(url_dell)
-           
+        while "Access Denied" in dell_dock.page_source:
+            dell_dock.quit()
+            sleep(2)
+            new_ip = random.choice(proxy_data)[0]
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+            option.add_argument("headless")
+            dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+            dell_dock.get(url_dell)
+            
         dell_dock.execute_script("document.body.style.zoom='50%'")
         sleep(2)
         soup = BeautifulSoup(dell_dock.page_source,'html.parser')
-        dell_dock.quit()
+        sleep(5)
+        ip_number = ip_number + 1
         
         Name = soup.select("div.pg-title > h1 > span")
+        
         Model_Name = Name[0].text.strip()
         Money = soup.select("div.ps-dell-price.ps-simplified")
         for M in Money:
@@ -95,6 +124,9 @@ try:
         
         dell_dock_N_D = soup.select("div.spec__child__heading")        
         dell_dock_n_D = soup.select("div.spec__child")
+        
+        dell_dock.quit()
+        
         k = 0       
         for dock_data in dell_dock_n_D:
             dell_dock_n = dock_data.select("div > div > div.spec__item__title")        
@@ -127,6 +159,7 @@ try:
    
     C.to_excel("DELL_Dock.xlsx")
     
+    import DELL_Dock_re
 except Exception as bug:
     # 捕获并记录错误日志
     logging.error(f"An error occurred: {str(bug)}", exc_info=True)   

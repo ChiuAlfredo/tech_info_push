@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 import logging
 import random
-from util import web_driver
+from util_try import Web
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -25,11 +25,11 @@ try:
     my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
 
     #開啟搜尋頁面
-    Lenovo_NB = web_driver()
+    Lenovo_NB = Web()
     Lenovo_NB.get(url)
     Lenovo_NB.execute_script("document.body.style.zoom='50%'")
     sleep(2)
-    soup_num = BeautifulSoup(Lenovo_NB.page_source,'html.parser')
+    soup_num = BeautifulSoup(Lenovo_NB.get_pagesource(),'html.parser')
     num_t = soup_num.select("p.show > span.page")
     num_n = soup_num.select("p.show > span.total")
     #頁面向下滾動 & 資料載入
@@ -43,32 +43,32 @@ try:
         button = Lenovo_NB.find_elements(By.CSS_SELECTOR,'button.more')
         Lenovo_NB.execute_script("arguments[0].click();", button[0])
         sleep(2)
-        soup_num = BeautifulSoup(Lenovo_NB.page_source,'html.parser')
+        soup_num = BeautifulSoup(Lenovo_NB.get_pagesource(),'html.parser')
         num_t = soup_num.select("p.show > span.page")
         Lenovo_NB.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         sleep(2)
     
     #抓連結
     sleep(5)
-    soup = BeautifulSoup(Lenovo_NB.page_source,'html.parser')
+    soup = BeautifulSoup(Lenovo_NB.get_pagesource(),'html.parser')
     Href = soup.select("li.product_item")
     Lenovo_NB.quit()
         
     #將名稱與商品網址寫入list
     for link in Href:
-        ID = link.select("div.product_name > a")
+        ID = link.select('.product_item_all>a')
         Money = link.select("div.price_box > span.final-price")
         if len(ID) > 0 and len(Money) > 0:
             ID_link.append(ID[0].text)
             new_money = Money[0].text.split("$")[-1]
             Money_link.append(new_money)
-            href_line.append(ID[0]['href'])
+            href_line.append(ID[0].get('href'))
         else:
             pass
-    
+    href_line
     #分別進入各商品頁面
     i = 0
-
+    Lenovo_NB_data_deta = Web()
     for i in range(len(href_line)):
         delay = random.uniform(1.0, 5.0)
         sleep(delay)
@@ -170,7 +170,7 @@ try:
             delay = random.uniform(0.5, 5.0)
             sleep(delay)
 
-            Lenovo_NB_data_deta = web_driver()
+            
             Lenovo_NB_data_deta.get("https://www.lenovo.com" + NB_deta_url[0]['href']+"#features")
             Lenovo_NB_data_deta.execute_script("document.body.style.zoom='50%'")
             Lenovo_NB_data_deta.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -183,7 +183,7 @@ try:
                 pass
             
             sleep(2)
-            L_NB_deta_soup = BeautifulSoup(Lenovo_NB_data_deta.page_source,'html.parser')
+            L_NB_deta_soup = BeautifulSoup(Lenovo_NB_data_deta.get_pagesource(),'html.parser')
             NB_deta_n = L_NB_deta_soup.select("tr.item")
             #抓取FPR
             FPR_data = L_NB_deta_soup.select("div.feature-content-section > div.description > p > span")
@@ -312,22 +312,21 @@ try:
             delay = random.uniform(0.5, 5.0)
             sleep(delay)
 
-            Lenovo_NB_data = web_driver()
-            Lenovo_NB_data.get(data_url)  
-            Lenovo_NB_data.execute_script("document.body.style.zoom='50%'")
-            Lenovo_NB_data.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            Lenovo_NB_data_deta.get(data_url)  
+            Lenovo_NB_data_deta.execute_script("document.body.style.zoom='50%'")
+            Lenovo_NB_data_deta.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             sleep(2)
             #加載資料
             try:
-                button = Lenovo_NB_data.find_elements(By.CSS_SELECTOR,'button.collapse')
-                Lenovo_NB_data.execute_script("arguments[0].click();", button[0])
+                button = Lenovo_NB_data_deta.find_elements(By.CSS_SELECTOR,'button.collapse')
+                Lenovo_NB_data_deta.execute_script("arguments[0].click();", button[0])
                 sleep(2)
             except:
                 pass
-            L_NB_data_soup = BeautifulSoup(Lenovo_NB_data.page_source,'html.parser')
+            L_NB_data_soup = BeautifulSoup(Lenovo_NB_data_deta.get_pagesource(),'html.parser')
             L_NB_data_ack = L_NB_data_soup.select("div.specs-inner > table > tbody > tr.item")        
             FPR_data = L_NB_data_soup.select("div.feature-content-section > div.description > p > span")
-            Lenovo_NB_data.quit()
+            Lenovo_NB_data_deta.quit()
 
             #檢驗FPR
             FPR = "No"
@@ -451,7 +450,6 @@ try:
         if len(A) < 15:
             delay = random.uniform(0.5, 5.0)
             sleep(delay)
-            Lenovo_NB_data_deta = web_driver()
             Lenovo_NB_data_deta.get(data_url+"#tech_specs")
   
             Lenovo_NB_data_deta.execute_script("document.body.style.zoom='50%'")
@@ -465,7 +463,7 @@ try:
                 pass
             
             sleep(2)
-            L_NB_deta_soup = BeautifulSoup(Lenovo_NB_data_deta.page_source,'html.parser')
+            L_NB_deta_soup = BeautifulSoup(Lenovo_NB_data_deta.get_pagesource(),'html.parser')
             Lenovo_NB_data_deta.quit()
 
             NB_deta_n = L_NB_deta_soup.select("tr.item")

@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 import logging
 import random
-from util import web_driver
+from util_try import Web
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -20,7 +20,7 @@ try:
     my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
 
     #開啟搜尋頁面
-    HP_DT = web_driver()
+    HP_DT = Web()
     HP_DT.get(url)
     HP_DT.execute_script("document.body.style.zoom='50%'")
     sleep(2)
@@ -45,7 +45,7 @@ try:
     
     sleep(5)
     #抓連結
-    soup = BeautifulSoup(HP_DT.page_source,'html.parser')
+    soup = BeautifulSoup(HP_DT.get_pagesource(),'html.parser')
     Href = soup.select("div.ProductTile-module_wrapper__hS8-C.productTile")
     
     HP_DT.quit()
@@ -69,17 +69,17 @@ try:
     
     #分別進入各商品頁面
     i = 0
+    HP_DT_data = Web()
     for i in range(len(href_line)):
         print("HP_DT {}".format(i))
         delay = random.uniform(2.0,6.0)
         sleep(delay)
         data_url = href_line[i]
-        HP_DT_data = web_driver()
         HP_DT_data.get(data_url)
         HP_DT_data.execute_script("document.body.style.zoom='50%'")
         HP_DT_data.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         sleep(4)
-        L_DT_soup = BeautifulSoup(HP_DT_data.page_source,'html.parser')
+        L_DT_soup = BeautifulSoup(HP_DT_data.get_pagesource(),'html.parser')
         L_DT_data_n = L_DT_soup.select("div.Spec-module_spec__71K6S > div.Spec-module_innerLeft__Z13zG > p")
         L_DT_data_d_ack = L_DT_soup.select("div.Spec-module_spec__71K6S > div.Spec-module_innerRight__4TTuE")
         L_DT_specs = L_DT_soup.select("div.Container-module_root__luUPH.Container-module_container__jSUGk > div.Footnotes-module_item__LOUR3 > div")
@@ -87,12 +87,11 @@ try:
         if len(L_DT_data_d_ack) < 1:
             delay = random.uniform(2.0,6.0)
             sleep(delay)
-            HP_DT_data = web_driver()
             HP_DT_data.get(data_url)
             HP_DT_data.execute_script("document.body.style.zoom='50%'")
             HP_DT_data.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             sleep(2)
-            L_DT_soup = BeautifulSoup(HP_DT_data.page_source,'html.parser')
+            L_DT_soup = BeautifulSoup(HP_DT_data.get_pagesource(),'html.parser')
             L_DT_data_n = L_DT_soup.select("div.Spec-module_spec__71K6S > div.Spec-module_innerLeft__Z13zG > p")
             L_DT_data_d_ack = L_DT_soup.select("div.Spec-module_spec__71K6S > div.Spec-module_innerRight__4TTuE")
             L_DT_specs = L_DT_soup.select("div.Container-module_root__luUPH.Container-module_container__jSUGk > div.Footnotes-module_item__LOUR3 > div")

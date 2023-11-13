@@ -5,7 +5,10 @@ import pandas as pd
 import requests
 import logging
 import random
-from util import web_driver
+from fake_useragent import UserAgent
+
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -14,12 +17,20 @@ logging.basicConfig(filename='bug.log',
                     format='%(asctime)s %(filename)s %(levelname)s:%(message)s',
                     level=logging.INFO)
 
-try:    
-    my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
+#讀取下載的IP代理位置檔案
+proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
+proxy_data = proxy.values.tolist()
 
+try:    
+    my_header = {'user-agent':UserAgent().random}
     #設定特徵名稱
     titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Camera","Display","Primary Battery","Processor","Graphics Card","Storage","Memory","Operating System","Audio and Speakers","Dimensions and Weight","Wireless","NFC","FPR","FPR_model",'Power',"Web Link"]
     #設定網址
+    url = "https://www.dell.com/en-us/search/laptop?r=36679&p={}&ac=facetselect&t=Product"
+    DELL_DOCK_data = requests.get(url, headers=my_header)
+    sleep(2)
+    
+    ip_number = 0
     i = 1
     ID_data = []
     Money_data = []
@@ -29,14 +40,8 @@ try:
     Storage_data = []
     Display_data = []
     Processor_data = []
-    Graphics_data = []
-    
+    Graphics_data = []   
     D_W_dic = {}
-    
-    url = "https://www.dell.com/en-us/search/laptop?r=36679&p={}&ac=facetselect&t=Product"
-    DELL_DOCK_data = requests.get(url, headers=my_header)
-    sleep(2)
-    
     # 確認連線狀況後讀取資料<連結>
     if DELL_DOCK_data.status_code==200:
         L_NB_soup = BeautifulSoup(DELL_DOCK_data.text,"html.parser")
@@ -78,7 +83,7 @@ try:
                 Memory_data.append(reset_Memory)
                 Storage_data.append(reset_Storage)
                 Display_data.append(reset_Display)                 
-     
+      
     #直到抓到的數量為0
     i=i+1
     while new_number != tatle_number:
@@ -126,7 +131,9 @@ try:
                     Operating_System_data.append(reset_OS)
                     Memory_data.append(reset_Memory)
                     Storage_data.append(reset_Storage)
-                    Display_data.append(reset_Display)
+                    Display_data.append(reset_Display)        
+    new_ip = random.choice(proxy_data)[0]
+    
     j=0
     for j in range(len(link_data)):
         print("Dell_NB {}".format(j))
@@ -140,10 +147,35 @@ try:
         
         if D_W_dic.get(Model_Name) != None:
             Dimensions_Weight = D_W_dic.get(Model_Name)
+            sleep(2)
         
         #開啟搜尋頁面
-        dell_dock = web_driver()
+        option = webdriver.ChromeOptions()
+        #使用代理
+        if ip_number == 50:
+            new_ip = random.choice(proxy_data)[0]
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+        else:
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            
+        option.add_argument("headless")
+        dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
         dell_dock.get(url_dell)
+        sleep(2)
+        while "Access Denied" in dell_dock.page_source:
+            dell_dock.quit()
+            sleep(2)
+            new_ip = random.choice(proxy_data)[0]
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            option.add_argument("headless")
+            dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+            dell_dock.get(url_dell)
+            sleep(2)
+            ip_number = 0
         dell_dock.execute_script("document.body.style.zoom='50%'")
         sleep(2)
         dell_dock.execute_script("window.scrollTo(0, document.body.scrollHeight*0.2);")
@@ -169,14 +201,11 @@ try:
                 Ports_Slots = Ports_Slots.replace("</ul>","")
                 Ports_Slots = Ports_Slots.replace("<li>"," ")
                 Ports_Slots = Ports_Slots.replace("</li>","\n")
-        
-        
-        
         No_select_data = soup.select("li.mb-2")
         for no_data in No_select_data:
             No_select_title = no_data.select("div")
             No_select_Data = no_data.select("p")
-            if "Ports" in No_select_title[0].text or "Slots" in  No_select_title[0].text or "PORTS" in No_select_title[0].text:
+            if "Ports" in No_select_title[0].text or "Slots" in No_select_title[0].text or "PORTS" in No_select_title[0].text:
                 Ports_Slots = Ports_Slots + "\n" + No_select_Data[0].text
             elif ("Dimensions" in No_select_title[0].text or "Weight" in No_select_title[0].text) and Model_Name not in D_W_dic:
                 Dimensions_Weight = No_select_Data[0].text
@@ -204,81 +233,83 @@ try:
         KP_model = Keyboard + PalmRest
         FPR = ""
         NFC = ""
-        #針對無選擇規格<1st>
-        Href = soup.select("li.mb-2")
-        for href in Href:
-            dell_tatle = href.select("div")
-            dell_date = href.select("p")
-            if len(dell_tatle) > 0 and len(dell_date) > 0:
-                if dell_tatle[0].text.lower() == "keyboard":
-                    KP = KP +" "+ dell_date[0].text.lower()
-                    KP_model = KP_model + " " + dell_date[0].text.lower()
-                if dell_tatle[0].text.lower() == "palmrest":
-                    KP = KP +" "+ dell_date[0].text.lower()
-                    KP_model = KP_model + " " + dell_date[0].text.lower()
-                    
-        #針對無選擇規格<2st>
-        Href = soup.select("div.ux-list-item-wrapper")
-        for href in Href:
-            Dell_tatle = href.select("div.ux-module-title-wrap > h2")
-            dell_date = href.select("div.ux-readonly-title") 
-            if len(Dell_tatle) > 0:
-                if Dell_tatle[0].text.lower() =="palmrest" or Dell_tatle[0].text.lower() =="keyboard":                
-                    KP_model = KP_model + " " + dell_date[0].text.lower()
-                    KP = KP +" "+ dell_date[0].text.lower()
-                if len(Camera) < 5 and Dell_tatle[0].text.lower() =="camera":
-                    Camera = dell_date[0].text.lower()
-                if len(Power_Supply) < 10 and "power" in Dell_tatle[0].text.lower():
-                    Power_Supply = dell_date[0].text.lower()
-                if len(Primary_Battery) < 5 and Dell_tatle[0].text.lower() == "primary battery":
-                    Primary_Battery = dell_date[0].text.lower()
-                    
-        #針對有選擇規格 <1st>              
-        Href = soup.select("div.ux-cell-wrapper")
-        for href in Href:
-            Dell_tatle = href.select("div.ux-module-title-wrap > h2")
-            if len(Dell_tatle) > 0:
-                dell_date = href.select("div.ux-cell-options > div > div > div.ux-cell-title")
-                dell_select = href.select("div.ux-cell-options > div > div > div.ux-cell-delta-price")
-                number_data = 0
-                for number_data in range(len(dell_date)):
-                    if Dell_tatle[0].text.lower() =="palmrest" or Dell_tatle[0].text.lower() =="keyboard":
-                        KP_model = KP_model + " " + dell_date[number_data].text.lower()
-                        if "Select" in dell_select[number_data].text:
-                            KP = KP +" "+ dell_date[number_data].text.lower()
-                    if len(Camera) < 10 and Dell_tatle[0].text.lower() == "camera":
-                        number_data = 0
-                        for number_data in range(len(dell_date)):                
-                            if "Select" in dell_select[number_data].text:
-                                Camera = dell_date[number_data].text.lower()    
+        if Keyboard == "" or PalmRest =="":
+            #針對無選擇規格<1st>
+            Href = soup.select("li.mb-2")
+            for href in Href:
+                dell_tatle = href.select("div")
+                dell_date = href.select("p")
+                if len(dell_tatle) > 0 and len(dell_date) > 0:
+                    if dell_tatle[0].text.lower() == "keyboard":
+                        KP = KP +" "+ dell_date[0].text.lower()
+                        KP_model = KP_model + " " + dell_date[0].text.lower()
+                    if dell_tatle[0].text.lower() == "palmrest":
+                        KP = KP +" "+ dell_date[0].text.lower()
+                        KP_model = KP_model + " " + dell_date[0].text.lower()
+        
+        if Keyboard == "" or PalmRest =="" or len(Camera) < 5 or len(Power_Supply) < 10 or len(Primary_Battery) < 5 or KP_model=="":            
+            #針對無選擇規格<2st>
+            Href = soup.select("div.ux-list-item-wrapper")
+            for href in Href:
+                Dell_tatle = href.select("div.ux-module-title-wrap > h2")
+                dell_date = href.select("div.ux-readonly-title") 
+                if len(Dell_tatle) > 0:
+                    if Dell_tatle[0].text.lower() =="palmrest" or Dell_tatle[0].text.lower() =="keyboard":                
+                        KP_model = KP_model + " " + dell_date[0].text.lower()
+                        KP = KP +" "+ dell_date[0].text.lower()
+                    if len(Camera) < 5 and Dell_tatle[0].text.lower() =="camera":
+                        Camera = dell_date[0].text.lower()
                     if len(Power_Supply) < 10 and "power" in Dell_tatle[0].text.lower():
-                        number_data = 0
-                        for number_data in range(len(dell_date)):                
+                        Power_Supply = dell_date[0].text.lower()
+                    if len(Primary_Battery) < 5 and Dell_tatle[0].text.lower() == "primary battery":
+                        Primary_Battery = dell_date[0].text.lower()
+                        
+        if Keyboard == "" or PalmRest =="" or len(Camera) < 10 or len(Power_Supply) < 10 or len(Primary_Battery) < 10 or KP_model=="":            
+            #針對有選擇規格 <1st>              
+            Href = soup.select("div.ux-cell-wrapper")
+            for href in Href:
+                Dell_tatle = href.select("div.ux-module-title-wrap > h2")
+                if len(Dell_tatle) > 0:
+                    dell_date = href.select("div.ux-cell-options > div > div > div.ux-cell-title")
+                    dell_select = href.select("div.ux-cell-options > div > div > div.ux-cell-delta-price")
+                    number_data = 0
+                    for number_data in range(len(dell_date)):
+                        if Dell_tatle[0].text.lower() =="palmrest" or Dell_tatle[0].text.lower() =="keyboard":
+                            KP_model = KP_model + " " + dell_date[number_data].text.lower()
                             if "Select" in dell_select[number_data].text:
-                                Power_Supply = dell_date[number_data].text.lower()
-                    if len(Primary_Battery) < 10 and Dell_tatle[0].text.lower() == "primary battery":
-                        number_data = 0
-                        for number_data in range(len(dell_date)):                
-                            if "Select" in dell_select[number_data].text:
-                                Primary_Battery = dell_date[number_data].text.lower()            
-                                
-                                
-        #針對有選擇規格 <2nd>         
-        Href = soup.select("div.accordion > div")       
-        for href in Href:
-            dell_tatle = href.select("h2")
-            dell_date = href.select("span")
-            if len(dell_tatle) > 0 and len(dell_date) > 0:
-                if dell_tatle[0].text.lower() == "keyboard":
-                    KP = KP +" "+ dell_date[0].text.lower()
-                    KP_model = KP_model + " " + dell_date[0].text.lower()
-                if dell_tatle[0].text.lower() == "palmrest":
-                    KP = KP +" "+ dell_date[0].text.lower()
-                    KP_model = KP_model + " " + dell_date[0].text.lower()
-                if len(Power_Supply) < 5 and "power" in dell_tatle[0].text.lower():
-                    Power_Supply = dell_date[0].text
-                if len(Primary_Battery) < 5 and "battery" in dell_tatle[0].text.lower():
-                    Primary_Battery = dell_date[0].text
+                                KP = KP +" "+ dell_date[number_data].text.lower()
+                        if len(Camera) < 10 and Dell_tatle[0].text.lower() == "camera":
+                            number_data = 0
+                            for number_data in range(len(dell_date)):                
+                                if "Select" in dell_select[number_data].text:
+                                    Camera = dell_date[number_data].text.lower()    
+                        if len(Power_Supply) < 10 and "power" in Dell_tatle[0].text.lower():
+                            number_data = 0
+                            for number_data in range(len(dell_date)):                
+                                if "Select" in dell_select[number_data].text:
+                                    Power_Supply = dell_date[number_data].text.lower()
+                        if len(Primary_Battery) < 10 and Dell_tatle[0].text.lower() == "primary battery":
+                            number_data = 0
+                            for number_data in range(len(dell_date)):                
+                                if "Select" in dell_select[number_data].text:
+                                    Primary_Battery = dell_date[number_data].text.lower()            
+        if Keyboard == "" or PalmRest =="" or len(Power_Supply) < 5 or len(Primary_Battery) < 5 or KP_model=="":                                                               
+            #針對有選擇規格 <2nd>         
+            Href = soup.select("div.accordion > div")       
+            for href in Href:
+                dell_tatle = href.select("h2")
+                dell_date = href.select("span")
+                if len(dell_tatle) > 0 and len(dell_date) > 0:
+                    if dell_tatle[0].text.lower() == "keyboard":
+                        KP = KP +" "+ dell_date[0].text.lower()
+                        KP_model = KP_model + " " + dell_date[0].text.lower()
+                    if dell_tatle[0].text.lower() == "palmrest":
+                        KP = KP +" "+ dell_date[0].text.lower()
+                        KP_model = KP_model + " " + dell_date[0].text.lower()
+                    if len(Power_Supply) < 5 and "power" in dell_tatle[0].text.lower():
+                        Power_Supply = dell_date[0].text
+                    if len(Primary_Battery) < 5 and "battery" in dell_tatle[0].text.lower():
+                        Primary_Battery = dell_date[0].text
         
         if "fingerprint" in str(KP_model) or "fpr" in str(KP_model):
             FPR_model = "Yes"
@@ -321,6 +352,7 @@ try:
             Wireless = "5G"
         else:
             Wireless = "No"    
+        ip_number = ip_number+1    
         #特殊爬取處理 滑動讀取資料迴圈    
         if len(Ports_Slots) < 20 or len(Dimensions_Weight) < 20:
             Href = soup.select("div.pd-feature-wrap")
@@ -328,9 +360,33 @@ try:
             number = 0    
             while number < 11:
                 option = webdriver.ChromeOptions()
+                
+                #使用代理
+                if ip_number == 50:
+                    new_ip = random.choice(proxy_data)[0]
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                else:
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    
                 option.add_argument("headless")
-                dell_dock = webdriver.Chrome(options=option)
-                dell_dock.get(link_data[j] + '#features_section')                   
+                dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                dell_dock.get(link_data[j] + '#features_section')
+                sleep(2)
+                
+                while "Access Denied" in dell_dock.page_source:
+                    dell_dock.quit()
+                    sleep(2)
+                    new_ip = random.choice(proxy_data)[0]
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    option.add_argument("headless")
+                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                    dell_dock.get(link_data[j] + '#features_section')
+                    sleep(2)
+                    ip_number = 0                    
                 dell_dock.execute_script("document.body.style.zoom='50%'")
                 sleep(2)
                 # 獲取當前滾動位置
@@ -340,11 +396,11 @@ try:
                 scroll_percentage = round((scroll_position / scroll_height),2)      
                 dell_dock.execute_script("window.scrollTo(0, document.body.scrollHeight*{});".format(scroll_percentage - number*0.05))
                 sleep(2)
-
                 soup = BeautifulSoup(dell_dock.page_source,"html.parser")
-                Href = soup.select("div.pd-feature-wrap")                
-                dell_dock.quit()
+                Href = soup.select("div.pd-feature-wrap")
                 href_number = 0
+                dell_dock.quit()
+                ip_number = ip_number+1
                 if len(Href) > 1:
                     for href in Href:            
                         dell_tatle = href.select("h2")
@@ -362,7 +418,6 @@ try:
                                 
                             if ("Ports" in dell_tatle[0].text or "Slots" in dell_tatle[0].text or "PORTS" in dell_tatle[0].text) and len(P_S_data) < 20:
                                 dell_date_PS = href.select("div.pd-item-desc")
-                                P_S_two = soup.select("div.pd-feature-wrap.TwoUp")
                                 if len(dell_date_PS) > 0:  
                                     date = 0
                                     for date in range(len(dell_date_PS)):
@@ -374,7 +429,7 @@ try:
                                         date = 0
                                         for date in range(len(P_S_two)):
                                             P_S_data = P_S_data + "\n" + P_S_two[date].text
-                                            P_S_data = P_S_data.strip()
+                                            P_S_data = P_S_data.strip()                                                               
                                 Ports_Slots = P_S_data
                         if len(dell_tatle_2) >0:
                             if "Dimensions" in dell_tatle_2[0].text and len(Dimensions_Weight) < 20:
@@ -384,8 +439,7 @@ try:
                                 for con_num in range (len(dell_content)):
                                     Dell_Con = Dell_Con + dell_content[con_num].text.strip() +"\n"
                                     data_NB = Dell_Con                                
-                                Dimensions_Weight = data_NB
-        
+                                Dimensions_Weight = data_NB        
                 if len(Ports_Slots) > 20 and len(Dimensions_Weight) > 20:
                     break
                 number = number +1
@@ -394,10 +448,31 @@ try:
             Href = soup.select("ul.specs.list-unstyled")            
             while number < 9:
                 option = webdriver.ChromeOptions()
+                #使用代理
+                if ip_number == 50:
+                    new_ip = random.choice(proxy_data)[0]
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                else:
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
                 option.add_argument("headless")
-                dell_dock = webdriver.Chrome(options=option)
+                dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
                 dell_dock.get(url_dell)
-
+                sleep(2)
+                while "Access Denied" in dell_dock.page_source:
+                    dell_dock.quit()
+                    sleep(2)
+                    new_ip = random.choice(proxy_data)[0]
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    option.add_argument("headless")
+                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                    dell_dock.get(link_data[j] + '#features_section')
+                    sleep(2)
+                    ip_number = 0               
+                ip_number = ip_number+1
                 sleep(2)
                 # 獲取當前滾動位置
                 scroll_height = dell_dock.execute_script("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );")                
@@ -421,8 +496,7 @@ try:
                                     Dimensions_Weight = data_NB
                 if len(Dimensions_Weight) > 20:
                     break
-                number = number +1       
-        
+                number = number +1              
         if Model_Name not in D_W_dic and len(Dimensions_Weight) > 20:
             D_W_dic[Model_Name] = Dimensions_Weight.strip()    
         
@@ -441,26 +515,24 @@ try:
             Ports_Slots = Ports_Slots.replace("</p>","\n")
             Ports_Slots = Ports_Slots.replace("</span>","")
             Ports_Slots = Ports_Slots.replace("<span>","")
-            Ports_Slots = Ports_Slots.replace("&amp;","")
-            
+            Ports_Slots = Ports_Slots.replace("&amp;","")            
         B = [Type, Brand, Model_Name, Official_Price, Ports_Slots, Camera, Display, Primary_Battery, Processor, Graphics_Card, Storage, Memory, Operating_System, Audio_Speakers, Dimensions_Weight.strip(), Wireless, NFC, FPR, FPR_model,Power_Supply, Web_Link]
         A = pd.Series(titles)
         if j == 0:
             C = pd.DataFrame(B,index = A)
         else:
             B = pd.DataFrame(B,index = A)
-            C = C.merge(B,how = "outer",left_index=True, right_index=True) 
-    
+            C = C.merge(B,how = "outer",left_index=True, right_index=True)     
     C = C.T
     C.reset_index(drop = True, inplace = True)
     re_rext = 0    
     for re_rext in range(j+1):
         if len(C["Dimensions and Weight"][re_rext]) < 20 and D_W_dic.get(C["Model Name"][re_rext]) != None:
-            C["Dimensions and Weight"][re_rext] = D_W_dic.get(C["Model Name"][re_rext])        
-            
+            C["Dimensions and Weight"][re_rext] = D_W_dic.get(C["Model Name"][re_rext])                    
     C = C.T        
     C.to_excel("DELL_NB.xlsx")
-
+    
+    import DELL_NB_re
 except Exception as bug:
     # 捕获并记录错误日志
     logging.error(f"An error occurred: {str(bug)}", exc_info=True)   

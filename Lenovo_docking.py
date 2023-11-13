@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 import logging
 import random
-from util import web_driver
+from util_try import Web
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -19,8 +19,9 @@ try:
     url = "https://www.lenovo.com/us/en/search?fq=&text=Docking&rows=60&sort=relevance&fsid=1&display_tab=Products"
     my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
     
+    
     #開啟搜尋頁面
-    Lenovo_docking = web_driver()
+    Lenovo_docking = Web()
     Lenovo_docking.get(url)
     Lenovo_docking.execute_script("document.body.style.zoom='50%'")
     sleep(2)
@@ -39,14 +40,14 @@ try:
         button = Lenovo_docking.find_elements(By.CSS_SELECTOR,'button.more')
         Lenovo_docking.execute_script("arguments[0].click();", button[0])
         sleep(2)
-        soup_num = BeautifulSoup(Lenovo_docking.page_source,'html.parser')
+        soup_num = BeautifulSoup(Lenovo_docking.get_pagesource(),'html.parser')
         num_t = soup_num.select("p.show > span.page")
         Lenovo_docking.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         sleep(2)
     
     #抓連結
     sleep(5)
-    soup = BeautifulSoup(Lenovo_docking.page_source,'html.parser')
+    soup = BeautifulSoup(Lenovo_docking.get_pagesource(),'html.parser')
     Href = soup.select("li.product_item")
     Lenovo_docking.quit()
         
@@ -68,15 +69,16 @@ try:
     
     #分別進入各商品頁面
     i = 0  
+    Lenovo_docking_data = Web()
+    
     for i in range(len(href_line)):       
         delay = random.uniform(1.0, 5.0)
         sleep(delay)
         print("Lenovo_Dock {}".format(i))
-        Lenovo_docking_data = web_driver()
         data_url = href_line[i]      
         Lenovo_docking_data.get(data_url)
         Lenovo_docking_data.execute_script("document.body.style.zoom='50%'")
-        L_docking_soup = BeautifulSoup(Lenovo_docking_data.page_source,'html.parser')
+        L_docking_soup = BeautifulSoup(Lenovo_docking_data.get_pagesource(),'html.parser')
         sleep(2)
         #抓取特徵名稱 ex: CPU
         L_docking_data_n = L_docking_soup.select("tbody > tr > th")

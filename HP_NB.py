@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 import logging
 import random
-from util import web_driver
+from util_try import Web
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -23,7 +23,7 @@ try:
     url = "https://www.hp.com/us-en/shop/sitesearch?keyword=Laptops"
     my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}   
     #開啟搜尋頁面
-    HP_NB = web_driver()
+    HP_NB = Web()
     HP_NB.get(url)   
     HP_NB.execute_script("document.body.style.zoom='50%'")
     sleep(2)
@@ -47,7 +47,7 @@ try:
     
     sleep(5)
     #抓連結
-    soup = BeautifulSoup(HP_NB.page_source,'html.parser')
+    soup = BeautifulSoup(HP_NB.get_pagesource(),'html.parser')
     Href = soup.select("div.ProductTile-module_wrapper__hS8-C.productTile")
     HP_NB.quit()
     
@@ -66,17 +66,17 @@ try:
     
     #分別進入各商品頁面
     i = 0
+    HP_NB_data = Web()
     for i in range(len(href_line)):
         print("HP_NB {}".format(i))
         delay = random.uniform(1.0, 5.0)
         sleep(delay)
         data_url = href_line[i]
-        HP_NB_data = web_driver()
         HP_NB_data.get(data_url + "#techSpecs")  
         HP_NB_data.execute_script("document.body.style.zoom='50%'")
         HP_NB_data.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         sleep(2)
-        L_NB_soup = BeautifulSoup(HP_NB_data.page_source,'html.parser')
+        L_NB_soup = BeautifulSoup(HP_NB_data.get_pagesource(),'html.parser')
         HP_NB_data.quit()
         #抓取SPECS與OVERVIEW內文
         specs_data = []
@@ -126,12 +126,11 @@ try:
         while len(L_NB_data_n) < 1:
             delay = random.uniform(0.5, 5.0)
             sleep(delay)
-            HP_NB_data = web_driver()
             HP_NB_data.get(data_url + "#techSpecs")
 
             HP_NB_data.execute_script("document.body.style.zoom='50%'")
             sleep(2)
-            L_NB_soup = BeautifulSoup(HP_NB_data.page_source,'html.parser')               
+            L_NB_soup = BeautifulSoup(HP_NB_data.get_pagesource(),'html.parser')               
             L_NB_data_n = L_NB_soup.select("div.Spec-module_spec__71K6S > div.Spec-module_innerLeft__Z13zG > p")
             L_NB_data_d_ack = L_NB_soup.select("div.Spec-module_spec__71K6S > div.Spec-module_innerRight__4TTuE")
             HP_NB_data.quit()

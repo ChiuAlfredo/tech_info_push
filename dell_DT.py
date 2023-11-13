@@ -5,7 +5,9 @@ import pandas as pd
 import requests
 import logging
 import random
-from util import web_driver
+
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -14,9 +16,12 @@ logging.basicConfig(filename='bug.log',
                     format='%(asctime)s %(filename)s %(levelname)s:%(message)s',
                     level=logging.INFO)
 
-try: 
-    my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
- 
+#讀取下載的IP代理位置檔案
+proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
+proxy_data = proxy.values.tolist()
+
+try:
+    my_header = {'user-agent':UserAgent().random} 
     #設定特徵名稱
     titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Display","Processor",'Dimensions and Weight',"Graphics Card","Storage","Memory","Operating System","Audio and Speakers",'Power',"Web Link"]
     #設定網址
@@ -128,6 +133,8 @@ try:
                     Storage_data.append(reset_Storage)
                     Display_data.append(reset_Display)
     j=0
+    ip_number = 0
+    new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link_data)):
         print("Dell_DT {}".format(j))
@@ -143,9 +150,35 @@ try:
             Dimensions_Weight = D_W_dic.get(Model_Name)
         
         #開啟搜尋頁面
-        dell_dock = web_driver()
+        option = webdriver.ChromeOptions()
+        #每50次換一個IP
+        if ip_number == 50:
+            new_ip = random.choice(proxy_data)[0]
+            #隨機選擇一個代理
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+        else:
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+        option.add_argument("headless")
+        dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
         dell_dock.get(url_dell)
+        sleep(2)
         
+        while "Access Denied" in dell_dock.page_source:
+            dell_dock.quit()
+            sleep(2)
+            new_ip = random.choice(proxy_data)[0]
+            #隨機選擇一個代理
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+            option.add_argument("headless")
+            dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+            dell_dock.get(url_dell)
+            sleep(2)
+            
         dell_dock.execute_script("document.body.style.zoom='50%'")
         sleep(2)
         dell_dock.execute_script("window.scrollTo(0, document.body.scrollHeight*0.5);")
@@ -158,6 +191,7 @@ try:
         sleep(2)
         soup = BeautifulSoup(dell_dock.page_source,"html.parser")
         dell_dock.quit()
+        ip_number =ip_number+1
         #開始爬資料
         one_data = soup.select("ul.cf-hero-bts-list > li")
         for one in one_data:
@@ -191,30 +225,31 @@ try:
                 Power_Supply = No_select_Data[0].text
             elif "Display" in No_select_title[0].text:
                 Display_cleck= No_select_Data[0].text
-                
-        #針對無選擇規格<2st>
-        Href = soup.select("div.ux-list-item-wrapper")
-        for href in Href:
-            Dell_tatle = href.select("div.ux-module-title-wrap > h2")
-            dell_date = href.select("div.ux-readonly-title") 
-            if len(Dell_tatle) > 0:
-                if len(Power_Supply) < 5 and Dell_tatle[0].text.lower() == "power":
-                    Power_Supply = dell_date[0].text.lower()
-                        
-        #針對有選擇規格 <1st>              
-        Href = soup.select("div.ux-cell-wrapper")
-        for href in Href:
-            Dell_tatle = href.select("div.ux-module-title-wrap > h2")
-            if len(Dell_tatle) > 0:
-                dell_date = href.select("div.ux-cell-options > div > div > div.ux-cell-title")
-                dell_select = href.select("div.ux-cell-options > div > div > div.ux-cell-delta-price")
-                number_data = 0
-                for number_data in range(len(dell_date)):      
-                    if len(Power_Supply) < 10 and Dell_tatle[0].text.lower() == "power":
-                        number_data = 0
-                        for number_data in range(len(dell_date)):                
-                            if "Select" in dell_select[number_data].text:
-                                Power_Supply = dell_date[number_data].text.lower()                                        
+        
+        if len(Power_Supply) < 5:
+            #針對無選擇規格<2st>
+            Href = soup.select("div.ux-list-item-wrapper")
+            for href in Href:
+                Dell_tatle = href.select("div.ux-module-title-wrap > h2")
+                dell_date = href.select("div.ux-readonly-title") 
+                if len(Dell_tatle) > 0:
+                    if len(Power_Supply) < 5 and Dell_tatle[0].text.lower() == "power":
+                        Power_Supply = dell_date[0].text.lower()
+        if len(Power_Supply) < 5:                
+            #針對有選擇規格 <1st>              
+            Href = soup.select("div.ux-cell-wrapper")
+            for href in Href:
+                Dell_tatle = href.select("div.ux-module-title-wrap > h2")
+                if len(Dell_tatle) > 0:
+                    dell_date = href.select("div.ux-cell-options > div > div > div.ux-cell-title")
+                    dell_select = href.select("div.ux-cell-options > div > div > div.ux-cell-delta-price")
+                    number_data = 0
+                    for number_data in range(len(dell_date)):      
+                        if len(Power_Supply) < 10 and Dell_tatle[0].text.lower() == "power":
+                            number_data = 0
+                            for number_data in range(len(dell_date)):                
+                                if "Select" in dell_select[number_data].text:
+                                    Power_Supply = dell_date[number_data].text.lower()                                        
                         
         #特殊爬取處理 滑動讀取資料迴圈
         if len(Ports_Slots) < 20 or len(Dimensions_Weight) < 20:
@@ -224,10 +259,33 @@ try:
             number = 0    
             while number < 7:
                 option = webdriver.ChromeOptions()                
+                if ip_number == 50:
+                    new_ip = random.choice(proxy_data)[0]
+                    #隨機選擇一個代理
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                else:
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
                 option.add_argument("headless")
-                dell_dock = webdriver.Chrome(options=option)
+                dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
                 dell_dock.get(link_data[j] + '#ratings_section')
-
+                sleep(2)
+                
+                while "Access Denied" in dell_dock.page_source:
+                    dell_dock.quit()
+                    sleep(2)
+                    new_ip = random.choice(proxy_data)[0]
+                    #隨機選擇一個代理
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                    option.add_argument("headless")
+                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                    dell_dock.get(link_data[j] + '#ratings_section')
+                    sleep(2)
+                    
                 sleep(2)
                 # 獲取當前滾動位置
                 scroll_height = dell_dock.execute_script("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );")                
@@ -239,6 +297,7 @@ try:
                 soup = BeautifulSoup(dell_dock.page_source,"html.parser")
                 Href = soup.select("div.pd-feature-wrap")
                 dell_dock.quit()
+                ip_number =ip_number+1
                 href_number = 0
                 if len(Href) > 1:
                     for href in Href:            
@@ -247,8 +306,7 @@ try:
                         dell_tatle_2 = href.select("div > div > h2")
                         if len(dell_tatle) > 0:
                             if "Dimensions" in dell_tatle[0].text and len(Dimensions_Weight) < 20:
-                                Dell_Con = ""
-                                
+                                Dell_Con = ""                                
                                 con_num = 0    
                                 dell_content = href.select("div.pd-item-desc")
                                 for con_num in range (len(dell_content)):
@@ -291,10 +349,34 @@ try:
             Href = soup.select("ul.specs.list-unstyled")            
             while number < 9:
                 option = webdriver.ChromeOptions()
+                
+                if ip_number == 50:
+                    new_ip = random.choice(proxy_data)[0]
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                else:
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    
                 option.add_argument("headless")
-                dell_dock = webdriver.Chrome(options=option)
+                dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
                 dell_dock.get(url_dell) 
-
+                sleep(2)
+                
+                while "Access Denied" in dell_dock.page_source:
+                    dell_dock.quit()
+                    sleep(2)
+                    new_ip = random.choice(proxy_data)[0]
+                    #隨機選擇一個代理
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                    option.add_argument("headless")
+                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                    dell_dock.get(url_dell)
+                    sleep(2)
+                    
                 dell_dock.execute_script("document.body.style.zoom='50%'")
                 dell_dock.execute_script("window.scrollTo(0, document.body.scrollHeight*{});".format(0.4 + number*0.05))
                 sleep(2)
@@ -333,7 +415,8 @@ try:
             
     C = C.T
     C.to_excel("DELL_DT.xlsx")  
-
+    
+    import DELL_DT_re
 except Exception as bug:
     # 捕获并记录错误日志
     logging.error(f"An error occurred: {str(bug)}", exc_info=True)   

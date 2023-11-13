@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 import logging
 import random
-from util import web_driver
+from util_try import Web
 
 # 配置日志
 logging.basicConfig(filename='bug.log',
@@ -20,11 +20,11 @@ try:
     url = "https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Desktops&rows=60&sort=relevance&display_tab=Products"
     my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
     #開啟搜尋頁面
-    Lenovo_DT = web_driver()
+    Lenovo_DT = Web()
     Lenovo_DT.get(url)
     Lenovo_DT.execute_script("document.body.style.zoom='50%'")
     sleep(2)
-    soup_num = BeautifulSoup(Lenovo_DT.page_source,'html.parser')
+    soup_num = BeautifulSoup(Lenovo_DT.get_pagesource(),'html.parser')
     num_t = soup_num.select("p.show > span.page")
     num_n = soup_num.select("p.show > span.total")
     
@@ -39,14 +39,14 @@ try:
         sleep(2)
         Lenovo_DT.execute_script("arguments[0].click();", button[0])           
         sleep(2)
-        soup_num = BeautifulSoup(Lenovo_DT.page_source,'html.parser')
+        soup_num = BeautifulSoup(Lenovo_DT.get_pagesource(),'html.parser')
         num_t = soup_num.select("p.show > span.page")
         Lenovo_DT.execute_script("window.scrollTo(0, document.body.scrollHeight);")
        
     
     #抓連結
     sleep(5)
-    soup = BeautifulSoup(Lenovo_DT.page_source,'html.parser')
+    soup = BeautifulSoup(Lenovo_DT.get_pagesource(),'html.parser')
     Href = soup.select("li.product_item")
     
     Lenovo_DT.quit()
@@ -67,7 +67,7 @@ try:
             pass
     #分別進入各商品頁面
     i = 0
-
+    Lenovo_DT_data_deta = Web()
     for i in range(len(href_line)):
         delay = random.uniform(1.0, 5.0)
         sleep(delay)
@@ -140,7 +140,6 @@ try:
             delay = random.uniform(0.5, 5.0)
             sleep(delay)
             
-            Lenovo_DT_data_deta = web_driver()          
             Lenovo_DT_data_deta.get("https://www.lenovo.com" + DT_deta_url[0]['href'] + "#features")
  
             Lenovo_DT_data_deta.execute_script("document.body.style.zoom='50%'")
@@ -154,7 +153,7 @@ try:
                 sleep(2)
             except:
                 pass
-            L_DT_deta_soup = BeautifulSoup(Lenovo_DT_data_deta.page_source,'html.parser')
+            L_DT_deta_soup = BeautifulSoup(Lenovo_DT_data_deta.get_pagesource(),'html.parser')
             DT_deta_n = L_DT_deta_soup.select("tr.item")
             Lenovo_DT_data_deta.quit()
 
@@ -241,8 +240,7 @@ try:
         else:
             delay = random.uniform(0.5, 5.0)
             sleep(delay)
-
-            Lenovo_DT_data_deta = web_driver()          
+        
             Lenovo_DT_data_deta.get(data_url + "#tech_specs")
 
             Lenovo_DT_data_deta.execute_script("document.body.style.zoom='50%'")
@@ -255,7 +253,7 @@ try:
                 sleep(2)
             except:
                 pass
-            L_DT_deta_soup = BeautifulSoup(Lenovo_DT_data_deta.page_source,'html.parser')
+            L_DT_deta_soup = BeautifulSoup(Lenovo_DT_data_deta.get_pagesource(),'html.parser')
             DT_deta_n = L_DT_deta_soup.select("tr.item")
             Lenovo_DT_data_deta.quit()
 
