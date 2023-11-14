@@ -416,7 +416,7 @@ try:
     C = C.T
     C.to_excel("DELL_DT.xlsx")  
     
-    import DELL_DT_re
+    import dell_DT_re
 except Exception as bug:
     # 捕获并记录错误日志
     logging.error(f"An error occurred: {str(bug)}", exc_info=True)   
