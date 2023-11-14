@@ -1,6 +1,6 @@
-# import dell_dock
-# import dell_NB
-# import dell_DT
+import dell_dock
+import dell_NB
+import dell_DT
 
 import lenovo
 import hp
