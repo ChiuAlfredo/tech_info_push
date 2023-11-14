@@ -159,7 +159,7 @@ try:
    
     C.to_excel("DELL_Dock.xlsx")
     
-    import DELL_Dock_re
+    import dell_dock_re
 except Exception as bug:
     # 捕获并记录错误日志
     logging.error(f"An error occurred: {str(bug)}", exc_info=True)   

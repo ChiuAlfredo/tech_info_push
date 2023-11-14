@@ -532,7 +532,7 @@ try:
     C = C.T        
     C.to_excel("DELL_NB.xlsx")
     
-    import DELL_NB_re
+    import dell_NB_re
 except Exception as bug:
     # 捕获并记录错误日志
     logging.error(f"An error occurred: {str(bug)}", exc_info=True)   

@@ -5,6 +5,7 @@ import pandas as pd
 import requests
 import logging
 import random
+from fake_useragent import UserAgent
 
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
