@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Power Supply","Weight","Web Link"]
-json_data = ['Docking_product.json']
+json_data = ['./data/lenovo/Docking_product.json']
 
 def process_value(value):
     if isinstance(value, list):

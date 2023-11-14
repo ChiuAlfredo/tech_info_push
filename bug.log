@@ -1,63 +1,24 @@
-Fri 03 Nov 2023 13:25:18 logger.py INFO:====== WebDriver manager ======
-Fri 03 Nov 2023 13:25:18 logger.py INFO:Get LATEST chromedriver version for google-chrome
-Fri 03 Nov 2023 13:25:18 logger.py INFO:Get LATEST chromedriver version for google-chrome
-Fri 03 Nov 2023 13:25:19 logger.py INFO:Driver [/Users/yidechiu/.wdm/drivers/chromedriver/mac64/118.0.5993.70/chromedriver-mac-arm64/chromedriver] found in cache
-Fri 03 Nov 2023 13:25:23 Lenovo_NB.py ERROR:An error occurred: Message: javascript error: Cannot read properties of null (reading 'style')
-  (Session info: headless chrome=118.0.5993.117)
-Stacktrace:
-0   chromedriver                        0x0000000100818510 chromedriver + 4310288
-1   chromedriver                        0x00000001008104bc chromedriver + 4277436
-2   chromedriver                        0x0000000100443b6c chromedriver + 293740
-3   chromedriver                        0x0000000100448e2c chromedriver + 314924
-4   chromedriver                        0x000000010044b1bc chromedriver + 324028
-5   chromedriver                        0x00000001004c4858 chromedriver + 821336
-6   chromedriver                        0x00000001004c3e60 chromedriver + 818784
-7   chromedriver                        0x000000010047cfd0 chromedriver + 528336
-8   chromedriver                        0x000000010047de7c chromedriver + 532092
-9   chromedriver                        0x00000001007de834 chromedriver + 4073524
-10  chromedriver                        0x00000001007e27fc chromedriver + 4089852
-11  chromedriver                        0x00000001007e2c58 chromedriver + 4090968
-12  chromedriver                        0x00000001007e88f8 chromedriver + 4114680
-13  chromedriver                        0x00000001007e3234 chromedriver + 4092468
-14  chromedriver                        0x00000001007bd604 chromedriver + 3937796
-15  chromedriver                        0x00000001007ffee8 chromedriver + 4210408
-16  chromedriver                        0x0000000100800064 chromedriver + 4210788
-17  chromedriver                        0x0000000100810134 chromedriver + 4276532
-18  libsystem_pthread.dylib             0x0000000180d4b034 _pthread_start + 136
-19  libsystem_pthread.dylib             0x0000000180d45e3c thread_start + 8
+Tue 14 Nov 2023 16:46:30 reorganize_data.py ERROR:An error occurred: [Errno 2] No such file or directory: 'DELL_NB.xlsx'
 Traceback (most recent call last):
-  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/Lenovo_NB.py", line 30, in <module>
-    Lenovo_NB.execute_script("document.body.style.zoom='50%'")
-  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/util_try.py", line 54, in execute_script
-    self.driver.execute_script(script,*args)
-  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 404, in execute_script
-    return self.execute(command, {"script": script, "args": converted_args})["value"]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 344, in execute
-    self.error_handler.check_response(response)
-  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.JavascriptException: Message: javascript error: Cannot read properties of null (reading 'style')
-  (Session info: headless chrome=118.0.5993.117)
-Stacktrace:
-0   chromedriver                        0x0000000100818510 chromedriver + 4310288
-1   chromedriver                        0x00000001008104bc chromedriver + 4277436
-2   chromedriver                        0x0000000100443b6c chromedriver + 293740
-3   chromedriver                        0x0000000100448e2c chromedriver + 314924
-4   chromedriver                        0x000000010044b1bc chromedriver + 324028
-5   chromedriver                        0x00000001004c4858 chromedriver + 821336
-6   chromedriver                        0x00000001004c3e60 chromedriver + 818784
-7   chromedriver                        0x000000010047cfd0 chromedriver + 528336
-8   chromedriver                        0x000000010047de7c chromedriver + 532092
-9   chromedriver                        0x00000001007de834 chromedriver + 4073524
-10  chromedriver                        0x00000001007e27fc chromedriver + 4089852
-11  chromedriver                        0x00000001007e2c58 chromedriver + 4090968
-12  chromedriver                        0x00000001007e88f8 chromedriver + 4114680
-13  chromedriver                        0x00000001007e3234 chromedriver + 4092468
-14  chromedriver                        0x00000001007bd604 chromedriver + 3937796
-15  chromedriver                        0x00000001007ffee8 chromedriver + 4210408
-16  chromedriver                        0x0000000100800064 chromedriver + 4210788
-17  chromedriver                        0x0000000100810134 chromedriver + 4276532
-18  libsystem_pthread.dylib             0x0000000180d4b034 _pthread_start + 136
-19  libsystem_pthread.dylib             0x0000000180d45e3c thread_start + 8
-
+  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/reorganize_data.py", line 23, in <module>
+    df = pd.read_excel("DELL_NB.xlsx",index_col=0)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/pandas/util/_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/pandas/util/_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 482, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1652, in __init__
+    ext = inspect_excel_format(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1525, in inspect_excel_format
+    with get_handle(
+         ^^^^^^^^^^^
+  File "/Users/yidechiu/Desktop/chiu/code/tech_info_push/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 865, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'DELL_NB.xlsx'

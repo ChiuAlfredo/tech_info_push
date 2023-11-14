@@ -1,7 +1,5 @@
 import requests
 import json
-import pandas as pd 
-import polars as pl 
 import os 
 import glob
 from urllib.parse import urlparse

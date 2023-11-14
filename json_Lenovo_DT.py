@@ -4,7 +4,7 @@ import pandas as pd
 
 titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Display","Processor",'Dimensions','Height(mm)','Depth(mm)','Width(mm)','Weight(kg)',"Graphics Card","Storage","Memory","Operating System","Audio and Speakers",'Power',"Web Link"]
 
-json_data = ['data/lenovo/Desktops_product.json']
+json_data = ['./data/lenovo/Desktops_product.json']
 
 def process_value(value):
     if isinstance(value, list):

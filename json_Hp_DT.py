@@ -3,6 +3,7 @@ import pandas as pd
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from time import sleep
+import requests
 
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -46,7 +47,7 @@ def process_value(value):
 
 titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Display","Processor",'Dimensions','Height(mm)','Depth(mm)','Width(mm)','Weight(kg)',"Graphics Card","Storage","Memory","Operating System","Audio and Speakers",'Power',"Web Link"]
 
-json_data = ['data/hp/Desktops__product.json','data/hp/workstation_Desktops_product.json']
+json_data = ['./data/hp/Desktops__product.json','./data/hp/workstation_Desktops_product.json']
 for i in range(len(json_data)):
     # 打开JSON文件
     with open(json_data[i], 'r', encoding='utf-8') as file:
@@ -158,13 +159,15 @@ for i in range(len(json_data)):
             Ports_Slots = "Web No Data"
         
         if Graphics_Card == "" and Ports_Slots.strip() != "Web No Data":
-            my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'}
-            HP_DT = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-            HP_DT.get(Web_Link)
-            sleep(3)
-            L_DT_soup = BeautifulSoup(HP_DT.page_source,'html.parser')
+            
+            headers = {
+                'Origin': 'https://www.hp.com',
+                'Referer': 'https://www.hp.com/',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36',
+                    }
+            response = requests.get(Web_Link, headers=headers)
+            L_DT_soup = BeautifulSoup(response.text,'html.parser')
             L_DT_data = L_DT_soup.select("ul.ConfigurationsList-module_list__na0NO >li")
-            HP_DT.close()
             k = 0
             for k in range(len(L_DT_data)):
                 L_DT_read_data = L_DT_data[k].text

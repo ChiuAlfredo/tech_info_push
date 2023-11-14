@@ -37,7 +37,7 @@ def process_value(value):
 
 titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Camera","Display","Primary Battery","Processor","Graphics Card","Storage","Memory","Operating System","Audio and Speakers",'Height(mm)','Depth(mm)','Width(mm)','Weight(kg)',"Wireless","NFC","FPR","FPR_model",'Power',"Web Link"]
 
-json_data = ['data/hp/Laptops__product.json','data/hp/workstation_Laptops_product.json']
+json_data = ['./data/hp/Laptops__product.json','./data/hp/workstation_Laptops_product.json']
 
 for i in range(len(json_data)):
     # 打开JSON文件
