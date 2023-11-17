@@ -446,7 +446,7 @@ try:
     df2 = df2.T.fillna('NA')
         
     # #儲存資料
-    writer = pd.ExcelWriter('data(new)/Data_products_total.xlsx', engine='xlsxwriter')
+    writer = pd.ExcelWriter('Data_products_total.xlsx', engine='xlsxwriter')
     df.to_excel(writer, sheet_name='laptop', index=True,header = False)
     df1.to_excel(writer, sheet_name='desktop', index=True,header = False)
     df2.to_excel(writer, sheet_name='docking', index=True,header = False)
