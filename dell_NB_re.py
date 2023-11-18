@@ -176,7 +176,7 @@ try:
         if df.iloc[re_type_NB]["Brand"] == "Dell":
             if "chrome" in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Chrome")
-                df.iloc[re_type_NB]["Operating System"] = "Chrome OS"
+                df.loc[re_type_NB, "Operating System"] = "Chrome OS"
             elif "alienware" in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Gaming")
             elif "g series" in df.iloc[re_type_NB]["Model Name"].lower():
@@ -196,7 +196,7 @@ try:
     #排序
     df = df[["Type","Brand","Model Name","Official Price","Ports & Slots","Camera","Display","Primary Battery","Processor","Graphics Card","Hard Drive","Memory","Operating System","Audio and Speakers","Height","Width","Depth","Weight","Wireless","NFC","FPR_model","FPR",'Power Supply',"Web Link"]]
     df.rename(columns={'Wireless': 'WWAN'}, inplace=True)
-    df.rename(columns={'Storage': 'Hard Drive'}, inplace=True)
+
     df = df.rename(columns={'Height': 'Height(mm)','Width': 'Width(mm)','Depth': 'Depth(mm)','Weight': 'Weight(kg)'})
     df = df.T   
     # #儲存資料
