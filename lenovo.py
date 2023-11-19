@@ -2,8 +2,6 @@ import requests
 import json
 import os 
 import glob
-from urllib.parse import urlparse
-from joblib import Parallel, delayed
 from bs4 import BeautifulSoup
 import re
 
