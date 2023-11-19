@@ -11,6 +11,7 @@ import re
 import time
 from functools import wraps
 
+# 計算時間
 def timing_decorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -22,6 +23,7 @@ def timing_decorator(func):
         return result
     return wrapper
 
+# 獲取頁面
 def get_page_json(page_number,keyword,**kwargs):
 
     url = f"https://www.lenovo.com/us/en/search?fq=?&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
@@ -58,9 +60,7 @@ def get_page_json(page_number,keyword,**kwargs):
     
     return web_url_list,product_name_list,product_code_list,product_number
 
-page_number =3
-keyword='Desktops'
-
+# 獲取頁面 desktop
 def get_page_json_desk(page_number,keyword,**kwargs):
 
     url = f"https://www.lenovo.com/us/en/search?fq=%7b!ex=prodCat%7dlengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
@@ -95,17 +95,19 @@ def get_page_json_desk(page_number,keyword,**kwargs):
     print(len(web_url_list))
     
     return web_url_list,product_name_list,product_code_list,product_number
+# 儲存json檔案
 def save_json(data, filepath):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 # web_url = hp_lap.web_url_list[0]
 
+# 建立資料夾
 def create_directory(path):
     if not os.path.exists(path):
         os.makedirs(path)
         
 
-
+# 獲取更多資訊
 # web_url = hp_lap.web_url_list[0]
 def get_product_info_more(product_code,file_name,n):
     
@@ -131,7 +133,7 @@ def get_product_info_more(product_code,file_name,n):
     return json_data
 
 
-
+# 獲取商品資訊
 def get_product_info(product_code,file_name,n):
     
 
@@ -155,6 +157,7 @@ def get_product_info(product_code,file_name,n):
     save_json(json_data,f'data/lenovo/{file_name}_content/{n}.json')
     return json_data
 
+# 獲取商品價格
 def get_product_price(product_code,file_name,n):
 
     url = f"https://openapi.lenovo.com/us/en/detail/price/batch/get?preSelect=1&mcode={product_code}&configId=&enteredCode="
@@ -181,24 +184,26 @@ def get_product_price(product_code,file_name,n):
 
 
 
-
+# 檢查檔案是否存在
 def check_is_crawl(file_path,file_name):
     if os.path.isfile(file_path):
         return True
     else:
         return False
-    
+# 檢查路徑是否存在
 def check_is_crawl_path(file_path,file_name):
     if os.path.exists(file_path):
         return True
     else:
         return False
-    
+
+# 排序
 def sort_key(file):
     # Extract the number from the filename
     number = int(re.search(r'\d+', file).group())
     return number
 
+# 讀取json檔案
 def read_json(file_path):
     # Get a list of all JSON files in the directory
     json_files = sorted(glob.glob(f'{file_path}/*.json'), key=sort_key)
@@ -247,27 +252,21 @@ class lenovo_crawl():
             self.all_product_data = None
             self.all_product_price = None
             self.all_product_data_more = None
-    
-    def get_product_price(self):
-        if self.is_crawl_content:
-            self.product_claim = read_json(f'data/lenovo/{self.file_name}_price/')
-            return self.product_claim
-        else:
-            pass
+    # 讀取product_data
     def get_all_product_data(self):
         if self.is_crawl_content:
             self.all_product_data = read_json(f'data/lenovo/{self.file_name}_content/')
             return self.all_product_data
         else:
             pass
-    
+    # 讀取product_data_more
     def get_all_product_data_more(self):
         if self.is_crawl_content:
             self.all_product_data = read_json(f'data/lenovo/{self.file_name}_content_more/')
             return self.all_product_data
         else:
             pass
-
+    # 讀取web_url
     def get_web_url_list(self):
         if self.is_crawl_web_url:
             with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
@@ -277,6 +276,7 @@ class lenovo_crawl():
             return data['web_url']
         else:
             pass
+    # 讀取product_code
     def get_product_code(self):
         if self.is_crawl_web_url:
             with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
@@ -286,7 +286,7 @@ class lenovo_crawl():
             return data['product_code']
         else:
             pass
-        
+    # 讀取page_info
     def get_page_info(self):
         if self.is_crawl_web_url:
             with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
@@ -296,6 +296,7 @@ class lenovo_crawl():
             return data
         else:
             pass
+    # 讀取total_rows
     def get_total_rows(self):
         if self.is_crawl_web_url:
             with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
@@ -305,7 +306,7 @@ class lenovo_crawl():
             return len(data['web_url'])
         else:
             pass
-        
+    # 讀取product_name
     def get_product_name(self):
         if self.is_crawl_web_url:
             with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
@@ -316,7 +317,7 @@ class lenovo_crawl():
         else:
             pass
 
-            
+    # 讀取product_price
     def get_prodct_price(self):
         if self.is_crawl_web_url:
             with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
@@ -329,14 +330,14 @@ class lenovo_crawl():
 
 
 
-        
+    # 讀取資料
     def load_data(self):
         self.web_url_list = self.get_web_url_list()
         self.product_price = self.get_prodct_price()
         self.product_name = self.get_product_name()
         
         
-    
+    # 獲取web_url
     def get_web_url(self,**kwargs):
         if self.is_crawl_web_url:
             pass
@@ -374,16 +375,7 @@ class lenovo_crawl():
             self.is_crawl_web_url = True
             
             
-        
-    def get_data_joblib(self):
-        if self.is_crawl_content:
-            pass
-        else:
-            self.load_data()
-            web_link = self.web_url_list
-            self.all_product_data = Parallel(n_jobs=-1)(delayed(get_product_info)(i,self.file_name,n) for n,i in enumerate(web_link))
-                
-        # all_product_data_spec = [i['data']['page']['pageComponents']['pdpTechSpecs']['technical_specifications'] for i in all_product_data]
+    # 獲取資料
     def get_data_normal(self):
         if self.is_crawl_content:
             pass
@@ -398,6 +390,7 @@ class lenovo_crawl():
             self.is_crawl_content = True
             # all_product_data_spec = [i['data']['page']['pageComponents']['pdpTechSpecs']['technical_specifications'] for i in all_product_data]
 
+    # 清理資料
     def clean(self):
         if self.is_crawl_content:
             self.all_product_data = read_json(f'data/lenovo/{self.file_name}_content/')
