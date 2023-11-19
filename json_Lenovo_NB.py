@@ -171,8 +171,8 @@ for i in range(len(json_data)):
             Ports = D[4]["ports"]        
         if "slots" in D[4]:
             Slots = D[4]["slots"]
-        if "ports/slots" in D[4]:
-            PS = D[4]["ports/slots"]
+        if "Ports/Slots" in D[4]:
+            PS = D[4]["Ports/Slots"]
                     
         if len(Ports) > 10 and len(Slots) > 10:        
             Ports_Slots = Ports +"\n"+Slots
