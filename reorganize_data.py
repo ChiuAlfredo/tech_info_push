@@ -76,6 +76,8 @@ df_1 = pd.read_excel("HP_NB.xlsx",index_col="Unnamed: 0")
 df_2 = pd.read_excel("Lenovo_NB.xlsx",index_col="Unnamed: 0")
 df_1 = df_1.T
 df_2 = df_2.T
+df_1.rename(columns={'Storage': 'Hard Drive'}, inplace=True)
+df_2.rename(columns={'Storage': 'Hard Drive'}, inplace=True)
 df_1.reset_index(drop = True, inplace = True)
 df_2.reset_index(drop = True, inplace = True)
 
@@ -208,6 +210,8 @@ df1_1 = pd.read_excel("HP_DT.xlsx",index_col="Unnamed: 0")
 df1_2 = pd.read_excel("Lenovo_DT.xlsx",index_col="Unnamed: 0")
 df1_1 = df1_1.T
 df1_2 = df1_2.T
+df1_1.rename(columns={'Storage': 'Hard Drive'}, inplace=True)
+df1_2.rename(columns={'Storage': 'Hard Drive'}, inplace=True)
 df1_1.reset_index(drop = True, inplace = True)
 df1_2.reset_index(drop = True, inplace = True)
 
