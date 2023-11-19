@@ -10,6 +10,7 @@ import re
 import time
 from functools import wraps
 
+# 計算時間
 def timing_decorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -21,6 +22,7 @@ def timing_decorator(func):
         return result
     return wrapper
 
+# 獲取搜尋也面資訊
 def get_page_json(page_number,keyword,**kwargs):
     # get page info 
     url = "https://essearchapi-na.hawksearch.com/api/v2/search"
@@ -50,14 +52,19 @@ def get_page_json(page_number,keyword,**kwargs):
     json_data = json.loads(response.text)
     
     return json_data
+
+# 建立資料夾
 def create_directory(path):
     if not os.path.exists(path):
         os.makedirs(path)
         
+# 儲存json       
 def save_json(data, filepath):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 # web_url = hp_lap.web_url_list[0]
+
+# 獲取商品資訊
 def get_product_info(web_url,file_name,n):
 
     web_keyword = urlparse(web_url).path.split('/')[-1]
@@ -78,6 +85,7 @@ def get_product_info(web_url,file_name,n):
     
     json_data = json.loads(response.text)
     
+    # 連線錯誤重新連線
     try:
         while 'Critical content mssing'  in json_data['errors'][0]['message']:
             response = requests.request("POST", url, headers=headers, data=payload)
@@ -91,6 +99,7 @@ def get_product_info(web_url,file_name,n):
     save_json(json_data,f'data/hp/{file_name}_content/{n}.json')
     return json_data
 
+# 獲取商品disclaim
 def get_product_disclaim(web_url,file_name,n):
 
     web_keyword = urlparse(web_url).path.split('/')[-1]
@@ -127,7 +136,7 @@ def get_product_disclaim(web_url,file_name,n):
 
 
 
-# page_number = 1
+# 獲取商品內頁
 def get_content(keyword,total_page_number,file_name,**kwargs):
     all_url=[]
     price =[]
@@ -174,13 +183,14 @@ def get_content(keyword,total_page_number,file_name,**kwargs):
 # json_data = get_page_json(page_number=page_number,keyword=keyword)
     
 
-
+# 檢查檔案是否存在
 def check_is_crawl(file_path,file_name):
     if os.path.isfile(file_path):
         return True
     else:
         return False
-    
+
+# 檢查路徑是否存在‘
 def check_is_crawl_path(file_path,file_name):
     if os.path.exists(file_path):
         return True
@@ -194,6 +204,7 @@ def sort_key(file):
     number = int(re.search(r'\d+', file).group())
     return number
 
+# Read all JSON files from the directory
 def read_json(file_path):
     # Get a list of all JSON files in the directory
     json_files = sorted(glob.glob(f'{file_path}/*.json'), key=sort_key)
@@ -247,19 +258,22 @@ class hp_crawl():
         else:
             self.product_claim = None
     
+    # 讀取product_disclaim
     def get_product_claim(self):
         if self.is_crawl_content:
             self.product_claim = read_json(f'data/hp/{self.file_name}_disclaim/')
             return self.product_claim
         else:
             pass
+    # 讀取product_content
     def get_all_product_data(self):
         if self.is_crawl_content:
             self.all_product_data = read_json(f'data/hp/{self.file_name}_content/')
             return self.all_product_data
         else:
             pass
-
+    
+    # 讀取web_url
     def get_web_url_list(self):
         if self.is_crawl_web_url:
             with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r') as f:
@@ -270,7 +284,7 @@ class hp_crawl():
         else:
             pass
 
-            
+    # 讀取product_price
     def get_prodct_price(self):
         if self.is_crawl_web_url:
             with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r') as f:
@@ -280,7 +294,8 @@ class hp_crawl():
             return data['price']
         else:
             pass
-
+    
+    # 讀取product_name
     def get_product_name(self):
         if self.is_crawl_web_url:
             with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r') as f:
@@ -290,23 +305,24 @@ class hp_crawl():
             return data['product_name']
         else:
             pass
-
+    
+    # 獲取頁面數量資訊
     def get_page_info(self,**kwargs):
             return get_page_json(page_number=1,keyword=self.keyword,**kwargs)['Pagination']
-        
+    # 獲取總共商品數量
     def get_total_rows(self):   
             return self.page_info['NofResults']
-        
+    # 獲取總共頁面數量
     def get_total_pages(self):
             return self.page_info['NofPages']
-        
+    # 讀取資料
     def load_data(self):
         self.web_url_list = self.get_web_url_list()
         self.all_product_data = None
         self.product_price = self.get_prodct_price()
         self.product_name = self.get_product_name()
         
-    
+    # 爬取web_url
     def get_web_url(self,**kwargs):
         if self.is_crawl_web_url:
             pass
@@ -320,7 +336,7 @@ class hp_crawl():
             self.get_web_url_list()
             
             
-        
+    # 爬取product_content，joblib未使用
     def get_data_joblib(self):
         if self.is_crawl_content:
             pass
@@ -330,6 +346,7 @@ class hp_crawl():
             self.all_product_data = Parallel(n_jobs=-1)(delayed(get_product_info)(i,self.file_name,n) for n,i in enumerate(web_link))
                 
         # all_product_data_spec = [i['data']['page']['pageComponents']['pdpTechSpecs']['technical_specifications'] for i in all_product_data]
+    # 爬取product_content，單筆獲取
     def get_data_normal(self):
         if self.is_crawl_content:
             pass
@@ -340,7 +357,7 @@ class hp_crawl():
             self.all_product_data  =all_product_data
             self.is_crawl_content = True
             # all_product_data_spec = [i['data']['page']['pageComponents']['pdpTechSpecs']['technical_specifications'] for i in all_product_data]
-
+    # 爬取product_disclaim，單筆獲取
     def get_disclaim_normal(self):
         if self.is_crawl_disclaim:
             pass
@@ -351,6 +368,7 @@ class hp_crawl():
 
             # all_product_data_spec = [i['data']['page']['pageComponents']['pdpTechSpecs']['technical_specifications'] for i in all_product_data]
 
+    # 清理product_data
     def clean(self):
         if self.is_crawl_content:
             self.all_product_data = read_json(f'data/hp/{self.file_name}_content/')
@@ -373,7 +391,8 @@ class hp_crawl():
             data_list.append(new_dict)
         
         self.data_list = data_list
-        
+    
+    # 清理product_disclaim
     def clean_disclaim(self):
         if self.is_crawl_disclaim:
             self.product_claim = read_json(f'data/hp/{self.file_name}_disclaim/')
@@ -395,7 +414,8 @@ class hp_crawl():
             data_list_claim.append(new_dict)
         
         self.data_list_claim = data_list_claim
-            
+    
+    # 清理product_data laptop
     def clean_laptop(self):
         if self.is_crawl_content:
             self.all_product_data = read_json(f'data/hp/{self.file_name}_content/')
@@ -422,11 +442,14 @@ class hp_crawl():
             data_list.append(new_dict)
         
         self.data_list = data_list
+    
+    # 合併資料
     def combine_data(self):
         product_list =zip(self.web_url_list,self.product_price,self.product_name,self.data_list)
         self.product_list = list(product_list)
         save_json(self.product_list,f'data/hp/{self.file_name}_product.json')
-        
+    
+    # 合併資料 laptop
     def combine_data_laptop(self):
         product_list =zip(self.web_url_list,self.product_price,self.product_name,self.data_list,self.data_list_claim)
         self.product_list = list(product_list)
