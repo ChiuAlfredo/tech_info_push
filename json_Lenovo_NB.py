@@ -175,6 +175,8 @@ for i in range(len(json_data)):
             PS = D[4]["ports/slots"]
         elif "Ports/Slots" in D[4]:
             PS = D[4]["Ports/Slots"]
+        elif "Ports / Slots" in D[4]:
+            PS = D[4]["Ports / Slots"]
             
         print(D[4])
                     
