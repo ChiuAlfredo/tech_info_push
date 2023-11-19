@@ -24,7 +24,7 @@ def timing_decorator(func):
 
 def get_page_json(page_number,keyword,**kwargs):
 
-    url = f"https://www.lenovo.com/us/en/search?fq=&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
+    url = f"https://www.lenovo.com/us/en/search?fq=?&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
 
     # url ='https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Laptops&rows=60&sort=relevance&display_tab=Products&more=1&page=11'
     payload = {}
