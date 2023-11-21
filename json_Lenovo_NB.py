@@ -34,7 +34,7 @@ for i in range(len(json_data)):
     # 打开JSON文件
     with open(json_data[i], 'r', encoding='utf-8') as file:
         # 从文件中加载JSON数据
-            data = json.load(file)
+        data = json.load(file)
     j = 0
     for D in data:
         Type, Brand, Model_Name, Official_Price, Dimensions,Weight, Ports,Power_Supply, Keyboard, PalmRest = "","Lenovo",D[0],D[2]["price"],"","","","","",""
