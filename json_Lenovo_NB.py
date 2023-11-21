@@ -81,9 +81,9 @@ for i in range(len(json_data)):
         if "operating system" in D[3]:
             Operating_System = D[3]["operating system"]
         if "graphics" in D[3]:
-            Graphics_Card = D[3]["graphics"]
+            Graphics_Card = D[3]["graphics"].split("Integrated")[-1]
         if "graphic card" in D[3]:
-            Graphics_Card = D[3]["graphic card"]                   
+            Graphics_Card = D[3]["graphic card"].split("Integrated")[-1]                   
         if "audio" in D[3]:
             Audio_Speakers = D[3]["audio"] 
         if "battery" in D[3]:
