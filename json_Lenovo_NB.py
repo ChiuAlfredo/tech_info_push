@@ -162,7 +162,7 @@ for i in range(len(json_data)):
         if "battery life" in D[4]:
             Primary_Battery = D[4]["battery life"].replace('*',"\n")
         if "camera" in D[4]:
-            Camera = D[4]["camera"]
+            Camera = D[4]["camera"].split("Integrated")[-1]
         if "weight" in D[4]:
             Weight = D[4]["weight"]
         if "dimensions (h x w x d)" in D[4]:
