@@ -220,7 +220,7 @@ try:
                 PalmRest = No_select_Data[0].text
             elif "Camera" in No_select_title[0].text:
                 Camera = No_select_Data[0].text
-            elif "Audio Speakers" in No_select_title[0].text:
+            elif "Audio and Speakers" in No_select_title[0].text:
                 Audio_Speakers = No_select_Data[0].text
             elif "Power" in No_select_title[0].text:
                 Power_Supply = No_select_Data[0].text
