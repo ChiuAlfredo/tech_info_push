@@ -101,7 +101,7 @@ for i in range(len(json_data)):
         if "audio features" in D[3]:
             Audio_Speakers = D[3]["audio features"]        
         if "graphics" in D[3]:
-            Graphics_Card = D[3]["graphics"]       
+            Graphics_Card = D[3]["graphics"].split("Integrated")[-1]       
         if "hard drive" in D[3]:
             Storage = D[3]["hard drive"]        
         if "internal drive" in D[3]:
@@ -141,14 +141,14 @@ for i in range(len(json_data)):
             PGM = D[3]["processor, graphics & memory"]
             PGM_data = PGM.split("+")
             Processor = PGM_data[0].strip()
-            Graphics_Card = PGM_data[1].strip()
+            Graphics_Card = PGM_data[1].split("Integrated")[-1].strip()
             Memory = PGM_data[2].strip()
                 
         if "processor, graphics, memory & hard disk" in D[3]:
             PGM = D[3]["processor, graphics, memory & hard disk"]
             PGM_data = PGM.split("+")
             Processor = PGM_data[0].strip()
-            Graphics_Card = PGM_data[1].strip()
+            Graphics_Card = PGM_data[1].split("Integrated")[-1].strip()
             Memory = PGM_data[2].strip()
             Storage = PGM_data[3].strip()
             
@@ -167,7 +167,7 @@ for i in range(len(json_data)):
                 if "RAM" in PGM_data[data_num] or "memory" in PGM_data[data_num]:
                     Memory = PGM_data[data_num].split("and")[-1].strip()
                 if "Graphic" in PGM_data[data_num]:
-                    Graphics_Card = PGM_data[data_num].split("and")[-1].strip()
+                    Graphics_Card = PGM_data[data_num].split("and")[-1].split("Integrated")[-1].strip()
                 if "storage" in PGM_data[data_num] or "eMMC" in PGM_data[data_num]:
                     Storage = PGM_data[data_num].split("and")[-1].strip()
                 if "camera" in PGM_data[data_num]:
@@ -183,7 +183,7 @@ for i in range(len(json_data)):
         if "processor and graphics" in D[3]:
             P_G = D[3]["processor and graphics"]
             Processor = P_G.split("+")[0].strip()
-            Graphics_Card = P_G.split("+")[1].strip()
+            Graphics_Card = P_G.split("+")[1].split("Integrated")[-1].strip()
         Ports_Slots = Ports +"\n"+Slots
         Ports_Slots = Ports_Slots.strip()
         
