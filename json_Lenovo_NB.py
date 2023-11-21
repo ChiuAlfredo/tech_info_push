@@ -81,9 +81,9 @@ for i in range(len(json_data)):
         if "operating system" in D[3]:
             Operating_System = D[3]["operating system"]
         if "graphics" in D[3]:
-            Graphics_Card = D[3]["graphics"]
+            Graphics_Card = D[3]["graphics"].split("Integrated")[-1]
         if "graphic card" in D[3]:
-            Graphics_Card = D[3]["graphic card"]                   
+            Graphics_Card = D[3]["graphic card"].split("Integrated")[-1]                   
         if "audio" in D[3]:
             Audio_Speakers = D[3]["audio"] 
         if "battery" in D[3]:
@@ -162,7 +162,7 @@ for i in range(len(json_data)):
         if "battery life" in D[4]:
             Primary_Battery = D[4]["battery life"].replace('*',"\n")
         if "camera" in D[4]:
-            Camera = D[4]["camera"]
+            Camera = D[4]["camera"].split("Integrated")[-1]
         if "weight" in D[4]:
             Weight = D[4]["weight"]
         if "dimensions (h x w x d)" in D[4]:

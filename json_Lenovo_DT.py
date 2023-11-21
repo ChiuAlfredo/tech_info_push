@@ -64,7 +64,7 @@ for i in range(len(json_data)):
         if "processor" in D[3]:
             Processor = D[3]["processor"]         
         if "graphic card" in D[3]:
-            Graphics_Card = D[3]["graphic card"]  
+            Graphics_Card = D[3]["graphic card"].split("Integrated")[-1]  
         if "memory" in D[3]:
             Memory = D[3]["memory"]  
         if "operating system" in D[3]:

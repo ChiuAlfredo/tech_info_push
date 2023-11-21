@@ -93,7 +93,7 @@ for i in range(len(json_data)):
         if "audio features" in D[3]:
             Audio_Speakers = D[3]["audio features"]        
         if "graphics" in D[3]:
-            Graphics_Card = D[3]["graphics"].split("&nbsp;")[-1]        
+            Graphics_Card = D[3]["graphics"].split("&nbsp;")[-1].split("Integrated")[-1]        
         if "hard drive" in D[3]:
             Storage = D[3]["hard drive"]        
         if "storage" in D[3]:
@@ -176,7 +176,7 @@ for i in range(len(json_data)):
                 for l in range(len(L_DT_read_data)):
                     if Graphics_Card == "":
                         if ("Intel" in L_DT_read_data[l] or "AMD" in L_DT_read_data[l]) and "Graphic" in L_DT_read_data[l]:
-                            Graphics_Card = L_DT_read_data[l]
+                            Graphics_Card = L_DT_read_data[l].split("Integrated")[-1]
                     if Processor =="":
                         if ("Intel" in L_DT_read_data[l] or "AMD" in L_DT_read_data[l]) and "Graphic" not in L_DT_read_data[l]:
                             Processor = L_DT_read_data[l]
