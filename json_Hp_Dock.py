@@ -41,14 +41,14 @@ def process_value(value):
     return value
 
 titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Power Supply","Weight","Web Link"]
-json_data = './data/hp/docking__product.json'
+json_data = ['./data/hp/docking__product.json']
 
-# 打开JSON文件
-with open(json_data, 'r', encoding='utf-8') as file:
+for i in range(len(json_data)):
+    # 打开JSON文件
+    with open(json_data[i], 'r', encoding='utf-8') as file:
     # 从文件中加载JSON数据
         data = json.load(file)
-j = 0
-for i in range(len(json_data)):
+    j = 0
     for D in data:
         Type,Brand,Model_Name,Official_Price,Ports_Slots,Power_Supply,Weight,Web_Link="","Hp",D[2],D[1],"","","",D[0]       
         P1,P2,P4="","",""
