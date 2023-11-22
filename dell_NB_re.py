@@ -180,7 +180,7 @@ try:
             elif "alienware" in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Gaming")
             elif "g series" in df.iloc[re_type_NB]["Model Name"].lower():
-                Type_NB.append("Consumer/Gaming")
+                Type_NB.append("Gaming")
             elif "inspiron" in df.iloc[re_type_NB]["Model Name"].lower() or "xps" in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Consumer")
             elif "latitude" in df.iloc[re_type_NB]["Model Name"].lower() or "vostro" in df.iloc[re_type_NB]["Model Name"].lower():
@@ -188,7 +188,7 @@ try:
             elif "precision" in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Workstation")
             elif "gaming"in df.iloc[re_type_NB]["Model Name"].lower():
-                Type_NB.append("Consumer/Gaming")
+                Type_NB.append("Gaming")
             else:
                 Type_NB.append("None Type_NB")
     
