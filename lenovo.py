@@ -58,12 +58,11 @@ def get_page_json(page_number,keyword,**kwargs):
     
     return web_url_list,product_name_list,product_code_list,product_number
 
-# 獲取頁面 desktop
-def get_page_json_desk(page_number,keyword,**kwargs):
+# 獲取thinksta
+def get_page_json_thinksta(page_number,keyword,**kwargs):
 
-    url = f"https://www.lenovo.com/us/en/search?fq=%7b!ex=prodCat%7dlengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
+    url = f'https://www.lenovo.com/us/en/search?fq={"!ex=prodCat"}lengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
 
-    url = f'https://www.lenovo.com/us/en/search?fq=%7b!ex=prodCat%7dlengs_Product_facet_ProdCategories:PCs%20Tablets&text=Desktops&rows=60&sort=relevance&display_tab=Products&more=1&page=3'
     # url ='https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Laptops&rows=60&sort=relevance&display_tab=Products&more=1&page=11'
     payload = {}
     
@@ -81,18 +80,22 @@ def get_page_json_desk(page_number,keyword,**kwargs):
     soup = BeautifulSoup(response.text, 'html.parser')
     # print(soup)
     
-    web_url_soup = soup.select('.product_name>a')
-    product_name_soup = soup.select('.product_name')
-    product_code_soup = soup.select('.product_name>a')
+    # len(soup.select('.part_number'))
+    
+    web_url_soup = soup.select('.product_item>.product_name>a')
+    product_name_soup = soup.select('.product_item>.product_name')
+    product_code_soup = soup.select('.product_item>.product_name>a')
     
     web_url_list = [i.get('href') for i in web_url_soup]
     product_name_list = [i.text for i in product_name_soup]
     product_code_list = [i.get('data-productcode') for i in product_code_soup]
     
     product_number = len(web_url_list)
-    print(len(web_url_list))
+    print(len(product_name_list))
     
     return web_url_list,product_name_list,product_code_list,product_number
+
+
 # 儲存json檔案
 def save_json(data, filepath):
     with open(filepath, 'w', encoding='utf-8') as f:
@@ -372,6 +375,41 @@ class lenovo_crawl():
             # self.is_crawl = True
             self.is_crawl_web_url = True
             
+    def get_web_url_thinsta(self,**kwargs):
+        if self.is_crawl_web_url:
+            pass
+        else:
+            create_directory(f'data/lenovo/{self.file_name}/')
+            
+            web_url_list =[]
+            product_name_list = []
+            product_code_list = []
+            page_number = 1
+            temp_number = 1
+            part_web_url_list,part_product_name_list,part_product_code_list,product_number = get_page_json_thinksta(page_number=page_number,keyword=self.keyword)
+
+            while product_number !=0 or temp_number!=0:
+                if product_number ==0:
+                    temp_number=0
+                part_web_url_list,part_product_name_list,part_product_code_list,product_number = get_page_json_thinksta(page_number=page_number,keyword=self.keyword)
+                web_url_list.extend(part_web_url_list)
+                product_name_list.extend(part_product_name_list)
+                product_code_list.extend(part_product_code_list)
+                
+                page_number +=1
+                
+            self.web_url_list = web_url_list
+            self.product_name = product_name_list
+            self.product_code = product_code_list
+            self.total_rows = len(web_url_list)
+            print(self.total_rows )
+            
+            # Combine the lists into a dictionary
+            combined_dict = { 'product_name':product_name_list,'web_url': web_url_list, 'product_code': product_code_list} 
+            self.page_info = combined_dict
+            save_json(combined_dict, f'data/lenovo/{self.file_name}/{self.file_name}_.json')
+            # self.is_crawl = True
+            self.is_crawl_web_url = True
             
     # 獲取資料
     def get_data_normal(self):
@@ -447,7 +485,7 @@ lenovo_dock.clean()
 
 
 lenovo_thinksta = lenovo_crawl(keyword='thinkstation')
-lenovo_thinksta.get_web_url()
+lenovo_thinksta.get_web_url_thinsta()
 lenovo_thinksta.get_data_normal()
 lenovo_thinksta.clean()
 
