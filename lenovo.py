@@ -61,8 +61,8 @@ def get_page_json(page_number,keyword,**kwargs):
 # 獲取thinksta
 def get_page_json_thinksta(page_number,keyword,**kwargs):
 
-    url = f'https://www.lenovo.com/us/en/search?fq={"!ex=prodCat"}lengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
-
+    url = f'https://www.lenovo.com/us/en/search?fq=%7B!ex=prodCat%7Dlengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1'
+    print(url)
     # url ='https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Laptops&rows=60&sort=relevance&display_tab=Products&more=1&page=11'
     payload = {}
     
@@ -467,21 +467,21 @@ class lenovo_crawl():
 # @timing_decorator
 # def try_time():
         
-lenovo_desktop = lenovo_crawl(keyword='Desktops')
-lenovo_desktop.get_web_url()
-lenovo_desktop.get_data_normal()
-lenovo_desktop.clean()
+# lenovo_desktop = lenovo_crawl(keyword='Desktops')
+# lenovo_desktop.get_web_url()
+# lenovo_desktop.get_data_normal()
+# lenovo_desktop.clean()
 
 
-lenovo_lap = lenovo_crawl(keyword='Laptops')
-lenovo_lap.get_web_url()
-lenovo_lap.get_data_normal()
-lenovo_lap.clean()
+# lenovo_lap = lenovo_crawl(keyword='Laptops')
+# lenovo_lap.get_web_url()
+# lenovo_lap.get_data_normal()
+# lenovo_lap.clean()
 
-lenovo_dock = lenovo_crawl(keyword='Docking')
-lenovo_dock.get_web_url()
-lenovo_dock.get_data_normal()
-lenovo_dock.clean()
+# lenovo_dock = lenovo_crawl(keyword='Docking')
+# lenovo_dock.get_web_url()
+# lenovo_dock.get_data_normal()
+# lenovo_dock.clean()
 
 
 lenovo_thinksta = lenovo_crawl(keyword='thinkstation')
