@@ -467,21 +467,21 @@ class lenovo_crawl():
 # @timing_decorator
 # def try_time():
         
-# lenovo_desktop = lenovo_crawl(keyword='Desktops')
-# lenovo_desktop.get_web_url()
-# lenovo_desktop.get_data_normal()
-# lenovo_desktop.clean()
+lenovo_desktop = lenovo_crawl(keyword='Desktops')
+lenovo_desktop.get_web_url()
+lenovo_desktop.get_data_normal()
+lenovo_desktop.clean()
 
 
-# lenovo_lap = lenovo_crawl(keyword='Laptops')
-# lenovo_lap.get_web_url()
-# lenovo_lap.get_data_normal()
-# lenovo_lap.clean()
+lenovo_lap = lenovo_crawl(keyword='Laptops')
+lenovo_lap.get_web_url()
+lenovo_lap.get_data_normal()
+lenovo_lap.clean()
 
-# lenovo_dock = lenovo_crawl(keyword='Docking')
-# lenovo_dock.get_web_url()
-# lenovo_dock.get_data_normal()
-# lenovo_dock.clean()
+lenovo_dock = lenovo_crawl(keyword='Docking')
+lenovo_dock.get_web_url()
+lenovo_dock.get_data_normal()
+lenovo_dock.clean()
 
 
 lenovo_thinksta = lenovo_crawl(keyword='thinkstation')
