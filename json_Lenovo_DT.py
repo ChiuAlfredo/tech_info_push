@@ -4,7 +4,7 @@ import pandas as pd
 
 titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Display","Processor",'Dimensions','Height(mm)','Depth(mm)','Width(mm)','Weight(kg)',"Graphics Card","Storage","Memory","Operating System","Audio and Speakers",'Power',"Web Link"]
 
-json_data = ['./data/lenovo/Desktops_product.json']
+json_data = ['./data/lenovo/Desktops_product.json','./data/lenovo/thinkstation_product.json']
 
 def process_value(value):
     if isinstance(value, list):
@@ -44,7 +44,7 @@ for i in range(len(json_data)):
         Type, Brand, Model_Name, Official_Price, Dimensions,Weight, Ports,Power_Supply, Keyboard, PalmRest = "","Lenovo",D[0],D[2]["price"],"","","","","",""
         Slots, Ports_Slots, Camera, Display, Wireless, NFC, Primary_Battery, Processor, Graphics_Card = "","","","","","","","",""
         Storage, Memory, Operating_System, Audio_Speakers, User_guide, Web_Link = "","","","","",D[1]
-        FPR_model,FPR,Display_cleck,Height,Depth,Width = "","","","","",""
+        FPR_model,FPR,Display_cleck,Height,Depth,Width,PS = "","","","","","",""
         H,W,De = "","",""
         if "workstation" in Model_Name.lower():
             Type = "Workstation"
@@ -153,12 +153,30 @@ for i in range(len(json_data)):
 
         if "ports/slots" in D[4]:
             PS = D[4]["ports/slots"]
+        if "ports / slots" in D[4]:
+            PS = D[4]["ports / slots"]
+        if "ports" in D[4]:
+            PS = D[4]["ports"]
+        if "slots" in D[4]:
+            PS = D[4]["slots"]
+            
+        F_P,R_P,S_P = "","",""
+        if "fornt ports" in D[4]:
+            PS = D[4]["fornt ports"]
+        if "rear ports" in D[4]:
+            PS = D[4]["rear ports"]
+        if "side ports" in D[4]:
+            PS = D[4]["side ports"] 
+        if F_P != "" or R_P != "" or S_P != "":
+            Ports_Slots = F_P +"\n"+ R_P
+            Ports_Slots = Ports_Slots.strip() +"\n"+ S_P
                     
         if len(Ports) > 10 and len(Slots) > 10:        
             Ports_Slots = Ports +"\n"+Slots
             Ports_Slots = Ports_Slots.strip()
         elif len(PS) > 10: 
-            Ports_Slots = PS.strip()            
+            Ports_Slots = PS.strip()
+        Ports_Slots = Ports_Slots.replace('style="white-space: normal;"', '')
         if len(Dimensions) > 5:
             reD1 = Dimensions.split(":")[-1].split("/")
             reD = 0
@@ -191,13 +209,13 @@ for i in range(len(json_data)):
         if len(Weight) > 5:
             weight_data = Weight
             if "kg" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].strip()
+                weight_data = weight_data.replace('Starting', ' ').split("kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].strip()
                 weight_data = float(weight_data)
             elif "Kg" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("Kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].strip()
+                weight_data = weight_data.replace('Starting', ' ').split("Kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].strip()
                 weight_data = float(weight_data)
             elif "g" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("g")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].strip()
+                weight_data = weight_data.replace('Starting', ' ').split("g")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].strip()
                 weight_data = round(float(weight_data)/1000,2)                            
             Weight =    weight_data    
         
