@@ -164,12 +164,32 @@ for i in range(len(json_data)):
         if "weight" in D[4]:
             Weight = D[4]["weight"]
             Weight = Weight.replace("&lt;","")
+            
         if "dimensions (h x w x d)" in D[4]:
-            Dimensions = D[4]["dimensions (h x w x d)"].split(":")[-1]
+            Dimensions = D[4]["dimensions (h x w x d)"]
             Dimensions = Dimensions.replace("(metallic variant)","")
             Dimensions = Dimensions.replace("(plastic variant)","")
             Dimensions = Dimensions.replace("&quot;","")
             Dimensions = Dimensions.replace("as thin as","")
+        if "dimensions (w x d x h)" in D[4]:
+            Dimensions = D[4]["dimensions (w x d x h)"]
+            Dimensions = Dimensions.replace("(metallic variant)","")
+            Dimensions = Dimensions.replace("(plastic variant)","")
+            Dimensions = Dimensions.replace("&quot;","")
+            Dimensions = Dimensions.replace("as thin as","")
+        if "dimensions(w x d x h)" in D[4]:
+            Dimensions = D[4]["dimensions(w x d x h)"]
+            Dimensions = Dimensions.replace("(metallic variant)","")
+            Dimensions = Dimensions.replace("(plastic variant)","")
+            Dimensions = Dimensions.replace("&quot;","")
+            Dimensions = Dimensions.replace("as thin as","")
+        if "dimensions" in D[4]:
+            Dimensions = D[4]["dimensions"]
+            Dimensions = Dimensions.replace("(metallic variant)","")
+            Dimensions = Dimensions.replace("(plastic variant)","")
+            Dimensions = Dimensions.replace("&quot;","")
+            Dimensions = Dimensions.replace("as thin as","")
+            
         if "ports" in D[4]:
             Ports = D[4]["ports"]        
         if "slots" in D[4]:
@@ -234,9 +254,14 @@ for i in range(len(json_data)):
                 if float(De) > Deb:
                     Deb = float(De)
         if Hb > 0:
-            Height = round(Hb,2)
-            Depth = round(Deb,2)
-            Width = round(Wb,2)
+            if "dimensions (w x d x h)" in D[4] or "dimensions(w x d x h)" in D[4]:
+                Height = round(Deb,2)
+                Width = round(Hb,2)
+                Depth = round(Wb,2)
+            else:
+                Height = round(Hb,2)
+                Width = round(Wb,2)
+                Depth = round(Deb,2) 
             
         if len(Weight) > 2:
             W_cut = Weight.split("at")[-1].split("from")[-1].split("than")[-1].split("Starting")[-1].split("weight")[-1].split("g")
