@@ -209,13 +209,13 @@ for i in range(len(json_data)):
         if len(Weight) > 5:
             weight_data = Weight
             if "kg" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].strip()
+                weight_data = weight_data.replace('Starting', ' ').split("kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
                 weight_data = float(weight_data)
             elif "Kg" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("Kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].strip()
+                weight_data = weight_data.replace('Starting', ' ').split("Kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
                 weight_data = float(weight_data)
             elif "g" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("g")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].strip()
+                weight_data = weight_data.replace('Starting', ' ').split("g")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
                 weight_data = round(float(weight_data)/1000,2)                            
             Weight =    weight_data    
         
