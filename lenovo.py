@@ -446,6 +446,10 @@ lenovo_dock.get_data_normal()
 lenovo_dock.clean()
 
 
+lenovo_thinksta = lenovo_crawl(keyword='thinkstation')
+lenovo_thinksta.get_web_url()
+lenovo_thinksta.get_data_normal()
+lenovo_thinksta.clean()
 
 # try_time()
 
