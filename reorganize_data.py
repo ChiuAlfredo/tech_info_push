@@ -233,103 +233,104 @@ for re_load in range(len(df1_2)):
                 NB_deta_url = L_NB_soup.select("div.system_specs_top > a")
             delay = random.uniform(0.5, 5.0)
             sleep(delay)
-            option = webdriver.ChromeOptions()
-            option.add_argument("headless")
-            Lenovo_NB_data_deta = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-            Lenovo_NB_data_deta.get("https://www.lenovo.com" + NB_deta_url[0]['href']+"#features")
-            Lenovo_NB_data_deta.execute_script("document.body.style.zoom='50%'")
-            
-            L_NB_deta_soup = BeautifulSoup(Lenovo_NB_data_deta.page_source,'html.parser')
-            NB_deta_n = L_NB_deta_soup.select("tr.item")
-            j = 0
-            H=[]
-            W=[]
-            for j in range(len(NB_deta_n)):
-                NB_deta_Name = NB_deta_n[j].select("th")
-                NB_deta_d = NB_deta_n[j].select("p")
-                k = 0
-                D = []
-                for k in range(len(NB_deta_d)):
-                    D.append(NB_deta_d[k].text)
-                D = "\n".join(D)
-                if "Dimensions" in NB_deta_Name[0].text:
-                    Dim = D.split("/")
-                    D_cut = 0
-                    for D_cut in range(len(Dim)):
-                        if len(Dim[D_cut].split("mm")) > 2:
-                            Dim_1 = Dim[D_cut].split("mm")
-                            if len(Dim_1[2]) < 2:
-                                Dim_1 = Dim[D_cut].split("x")
-                                H = Dim_1[0].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].strip()
-                                W = Dim_1[1].split("mm")[0].strip()
-                                De = Dim_1[2].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].strip()
-                            else:
-                                H = Dim_1[0].split("x")[-1].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].strip()
-                                W = Dim_1[1].split("x")[-1].split("mm")[0].strip()
-                                De = Dim_1[2].split("x")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].strip()
-                            if "W x D x H" in NB_deta_Name[0].text:
-                                df1_2['Height(mm)'][re_load] = De
-                                df1_2['Width(mm)'][re_load] = H
-                                df1_2['Depth(mm)'][re_load] = W
-                            else:
-                                df1_2['Height(mm)'][re_load] = H
-                                df1_2['Width(mm)'][re_load] = W
-                                df1_2['Depth(mm)'][re_load] = De
-                        elif "mm" in Dim[D_cut] and "inches" in Dim[D_cut]:
-                            Dim = D.split("(")
-                            hwd = 0
-                            for hwd in range(len(Dim)):
-                                if "mm" in Dim[hwd]:
-                                    H = Dim[hwd].split(":")[-1].split("x")[0].strip()
-                                    W = Dim[hwd].split(":")[-1].split("x")[1].strip()
-                                    De = Dim[hwd].split(":")[-1].split("x")[2].split("as")[-1].strip()
-                                if "W x D x H" in NB_deta_Name[0].text:
-                                    df1_2['Height(mm)'][re_load] = De
-                                    df1_2['Width(mm)'][re_load] = H
-                                    df1_2['Depth(mm)'][re_load] = W
-                                else:
-                                    df1_2['Height(mm)'][re_load] = H
-                                    df1_2['Width(mm)'][re_load] = W
-                                    df1_2['Depth(mm)'][re_load] = De
-                        elif "mm" in Dim[D_cut] and (len(Dim[D_cut].split("mm")[0]) > len(Dim[D_cut].split("mm")[1])):
-                            H = Dim[D_cut].split("(mm")[0].split("x")[0].strip()
-                            W = Dim[D_cut].split("(mm")[0].split("x")[1].strip()
-                            De = Dim[D_cut].split("(mm")[0].split("x")[2].strip()
-                            if "W x D x H" in NB_deta_Name[0].text:
-                                df1_2['Height(mm)'][re_load] = De
-                                df1_2['Width(mm)'][re_load] = H
-                                df1_2['Depth(mm)'][re_load] = W
-                            else:
-                                df1_2['Height(mm)'][re_load] = H
-                                df1_2['Width(mm)'][re_load] = W
-                                df1_2['Depth(mm)'][re_load] = De  
-                elif "Weight" in NB_deta_Name[0].text:
-                    W_cut = D.split("at")[-1].split("from")[-1].split("than")[-1].split("Starting")[-1].split("g")
-                    if len(W_cut) > 1:
-                        if str(W_cut[0])[-1] == "K" or str(W_cut[0])[-1] == "k":
-                            # 
-                            if "<" in W_cut[0]: 
-                                Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("<")[-1]
-                                Wei = float(Wei)
-                                symbol = "<"
-                            elif "Up" in W_cut[0]:
-                                Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("to")[-1]
-                                Wei = float(Wei)
-                                symbol = ">"
-                            else:
-                                Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("<")[-1].split("From")[-1]
-                                Wei = float(Wei)
-                        else:
-                            if "<" in W_cut[0]: 
-                                Wei = W_cut[0].split("/")[-1].split("(")[-1].split("<")[-1]
-                                Wei = round(float(Wei)/1000,2)
-                                symbol = "<"
-                            else:
-                                Wei = W_cut[0].split("/")[-1].split("(")[-1].split("<")[-1]
-                                Wei = round(float(Wei)/1000,2)
-                    else:
-                        Wei = ""
-                    df1_2['Weight(kg)'][re_load] = Wei
+            if len(NB_deta_url) > 0:
+              option = webdriver.ChromeOptions()
+              option.add_argument("headless")
+              Lenovo_NB_data_deta = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+              Lenovo_NB_data_deta.get("https://www.lenovo.com" + NB_deta_url[0]['href']+"#features")
+              Lenovo_NB_data_deta.execute_script("document.body.style.zoom='50%'")
+              
+              L_NB_deta_soup = BeautifulSoup(Lenovo_NB_data_deta.page_source,'html.parser')
+              NB_deta_n = L_NB_deta_soup.select("tr.item")
+              j = 0
+              H=[]
+              W=[]
+              for j in range(len(NB_deta_n)):
+                  NB_deta_Name = NB_deta_n[j].select("th")
+                  NB_deta_d = NB_deta_n[j].select("p")
+                  k = 0
+                  D = []
+                  for k in range(len(NB_deta_d)):
+                      D.append(NB_deta_d[k].text)
+                  D = "\n".join(D)
+                  if "Dimensions" in NB_deta_Name[0].text:
+                      Dim = D.split("/")
+                      D_cut = 0
+                      for D_cut in range(len(Dim)):
+                          if len(Dim[D_cut].split("mm")) > 2:
+                              Dim_1 = Dim[D_cut].split("mm")
+                              if len(Dim_1[2]) < 2:
+                                  Dim_1 = Dim[D_cut].split("x")
+                                  H = Dim_1[0].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].strip()
+                                  W = Dim_1[1].split("mm")[0].strip()
+                                  De = Dim_1[2].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].strip()
+                              else:
+                                  H = Dim_1[0].split("x")[-1].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].strip()
+                                  W = Dim_1[1].split("x")[-1].split("mm")[0].strip()
+                                  De = Dim_1[2].split("x")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].strip()
+                              if "W x D x H" in NB_deta_Name[0].text:
+                                  df1_2['Height(mm)'][re_load] = De
+                                  df1_2['Width(mm)'][re_load] = H
+                                  df1_2['Depth(mm)'][re_load] = W
+                              else:
+                                  df1_2['Height(mm)'][re_load] = H
+                                  df1_2['Width(mm)'][re_load] = W
+                                  df1_2['Depth(mm)'][re_load] = De
+                          elif "mm" in Dim[D_cut] and "inches" in Dim[D_cut]:
+                              Dim = D.split("(")
+                              hwd = 0
+                              for hwd in range(len(Dim)):
+                                  if "mm" in Dim[hwd]:
+                                      H = Dim[hwd].split(":")[-1].split("x")[0].strip()
+                                      W = Dim[hwd].split(":")[-1].split("x")[1].strip()
+                                      De = Dim[hwd].split(":")[-1].split("x")[2].split("as")[-1].strip()
+                                  if "W x D x H" in NB_deta_Name[0].text:
+                                      df1_2['Height(mm)'][re_load] = De
+                                      df1_2['Width(mm)'][re_load] = H
+                                      df1_2['Depth(mm)'][re_load] = W
+                                  else:
+                                      df1_2['Height(mm)'][re_load] = H
+                                      df1_2['Width(mm)'][re_load] = W
+                                      df1_2['Depth(mm)'][re_load] = De
+                          elif "mm" in Dim[D_cut] and (len(Dim[D_cut].split("mm")[0]) > len(Dim[D_cut].split("mm")[1])):
+                              H = Dim[D_cut].split("(mm")[0].split("x")[0].strip()
+                              W = Dim[D_cut].split("(mm")[0].split("x")[1].strip()
+                              De = Dim[D_cut].split("(mm")[0].split("x")[2].strip()
+                              if "W x D x H" in NB_deta_Name[0].text:
+                                  df1_2['Height(mm)'][re_load] = De
+                                  df1_2['Width(mm)'][re_load] = H
+                                  df1_2['Depth(mm)'][re_load] = W
+                              else:
+                                  df1_2['Height(mm)'][re_load] = H
+                                  df1_2['Width(mm)'][re_load] = W
+                                  df1_2['Depth(mm)'][re_load] = De  
+                  elif "Weight" in NB_deta_Name[0].text:
+                      W_cut = D.split("at")[-1].split("from")[-1].split("than")[-1].split("Starting")[-1].split("g")
+                      if len(W_cut) > 1:
+                          if str(W_cut[0])[-1] == "K" or str(W_cut[0])[-1] == "k":
+                              # 
+                              if "<" in W_cut[0]: 
+                                  Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("<")[-1]
+                                  Wei = float(Wei)
+                                  symbol = "<"
+                              elif "Up" in W_cut[0]:
+                                  Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("to")[-1]
+                                  Wei = float(Wei)
+                                  symbol = ">"
+                              else:
+                                  Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("<")[-1].split("From")[-1]
+                                  Wei = float(Wei)
+                          else:
+                              if "<" in W_cut[0]: 
+                                  Wei = W_cut[0].split("/")[-1].split("(")[-1].split("<")[-1]
+                                  Wei = round(float(Wei)/1000,2)
+                                  symbol = "<"
+                              else:
+                                  Wei = W_cut[0].split("/")[-1].split("(")[-1].split("<")[-1]
+                                  Wei = round(float(Wei)/1000,2)
+                      else:
+                          Wei = ""
+                      df1_2['Weight(kg)'][re_load] = Wei
 
 # 檢查HP_DT
 re_load = 0
