@@ -182,7 +182,7 @@ for i in range(len(json_data)):
             Ports_Slots = PS.strip()
         Ports_Slots = Ports_Slots.replace('style="white-space: normal;"', '')
         if len(Dimensions) > 5:
-           Dimensions = Dimensions.replace("&quot;", "")           
+            Dimensions = Dimensions.replace("&quot;", "")           
             reD1 = Dimensions.lower().split("/")
             reD = 0
             for reD in range(len(reD1)):
