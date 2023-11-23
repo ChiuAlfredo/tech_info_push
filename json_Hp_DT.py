@@ -66,13 +66,10 @@ for i in range(len(json_data)):
             Type="Commercial"
         elif "omen" in Model_Name.lower() or "victus" in Model_Name.lower():
             Type="Gaming"
-        elif "z" in Model_Name.lower():
+        elif "workstation" in Model_Name.lower():
             Type="Workstation"       
         else:
             Type="None Type"
-        
-        if i == 1:
-            Type="Workstation"
         
         D[3] = {key.strip(): value for key, value in D[3].items()}    
         lowercase_dict = {key.lower(): process_value(value) for key, value in D[3].items()}
