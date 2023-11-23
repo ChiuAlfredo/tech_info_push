@@ -75,6 +75,8 @@ for i in range(len(json_data)):
         D[4] = {key.strip(): value for key, value in D[4].items()}
         lowercase_dict = {key.lower(): process_value(value) for key, value in D[4].items()}
         D[4] = lowercase_dict
+        if "memory" in D[4] and "memory" not in D[3]:
+            Memory = D[4]["memory"] 
         if "power" in D[4]:
             Power_Supply = D[4]["power"]
         if "ac adapter" in D[4]:
@@ -128,6 +130,8 @@ for i in range(len(json_data)):
             Display = Display.replace("&quot;","").strip()
         if "weight" in D[4]:
             Weight = D[4]["weight"]
+        if "net weight" in D[4]:
+            Weight = D[4]["net weight"]
         if "dimension (w x d x h)" in D[4]:
             Dimensions = D[4]["dimension (w x d x h)"].split(":")[-1]
         if "dimension (d x w x h)" in D[4]:
@@ -178,15 +182,24 @@ for i in range(len(json_data)):
             Ports_Slots = PS.strip()
         Ports_Slots = Ports_Slots.replace('style="white-space: normal;"', '')
         if len(Dimensions) > 5:
-            reD1 = Dimensions.split(":")[-1].split("/")
+           Dimensions = Dimensions.replace("&quot;", "")           
+            reD1 = Dimensions.lower().split("/")
             reD = 0
             for reD in range(len(reD1)):
-                if "mm" in reD1[reD] and '"' not in reD1[reD] and "”" not in reD1[reD]:
-                    N1 = reD1[reD].split("Stand:")
+                if "mm" in reD1[reD]:
+                    N1 = reD1[reD].split(":")
+                    print(N1)
                     N1 = N1[-1].split("x")
-                    N11 = N1[0].split("mm")[0].split("at")[-1].split("rom")[-1].split(":")[-1].strip()
-                    N12 = N1[1].split("mm")[0].split("rom")[-1].split(":")[-1].strip()
-                    N13 = N1[2].split("mm")[0].split("rom")[-1].split(":")[-1].strip()     
+                    N11 = N1[0].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
+                    N12 = N1[1].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
+                    N13 = N1[2].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
+                if float(N11) > N11b:
+                    N11b = float(N11)
+                if float(N12) > N11b:
+                    N12b = float(N12)
+                if float(N13) > N11b:
+                    N13b = float(N13) 
+                    
             if "dimensions (w x h x d)" in D[4] or "dimension (w x h x d)" in D[4]:
                 Dimensions_data = "{}x{}x{}".format(N12,N11,N13)
             elif "dimensions (d x h x w)" in D[4] or "dimension (d x h x w)" in D[4]:
