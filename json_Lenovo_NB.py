@@ -169,6 +169,7 @@ for i in range(len(json_data)):
             Dimensions = Dimensions.replace("(metallic variant)","")
             Dimensions = Dimensions.replace("(plastic variant)","")
             Dimensions = Dimensions.replace("&quot;","")
+            Dimensions = Dimensions.replace("as thin as","")
         if "ports" in D[4]:
             Ports = D[4]["ports"]        
         if "slots" in D[4]:
@@ -222,7 +223,7 @@ for i in range(len(json_data)):
                         De = Dim[D_cut].split("(mm")[0].split("x")[2].split("mm")[0].split(";")[-1].split(">")[-1].strip()
                     else:
                         if "mm" in Dim[D_cut]:
-                            Dim_1 = Dim[D_cut].split("mm")[0]
+                            Dim_1 = Dim[D_cut].split(":")[-1].split("mm")[0]
                             H = Dim_1.split("x")[0].split("-")[-1].strip()
                             W = Dim_1.split("x")[1].split("-")[-1].strip()
                             De = Dim_1.split("x")[2].split("-")[-1].strip()
