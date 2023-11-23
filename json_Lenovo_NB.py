@@ -53,9 +53,6 @@ for i in range(len(json_data)):
             Type="Commercial"         
         else:
             Type="None Type_NB"
-                  
-        if i == 1:
-            Type="workstation"
    
         D[3] = {key.strip(): value for key, value in D[3].items()}
         lowercase_dict = {key.lower(): process_value(value) for key, value in D[3].items()}
