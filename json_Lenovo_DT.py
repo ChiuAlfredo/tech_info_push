@@ -52,7 +52,7 @@ for i in range(len(json_data)):
             Type = "Consumer"
         elif "legion" in Model_Name.lower() or "loq" in Model_Name.lower():
             Type = "Gaming"
-        elif "thinkbook" in Model_Name.lower() or "thinkpad" in Model_Name.lower():
+        elif "thinkbook" in Model_Name.lower() or "thinkpad" in Model_Name.lower() or "thinkcentre" in Model_Name.lower() or "ideacentre" in Model_Name.lower():
             Type = "Commercial"   
         else:
             Type = "None Type"
