@@ -163,8 +163,12 @@ for i in range(len(json_data)):
             Camera = D[4]["camera"].split("Integrated")[-1]
         if "weight" in D[4]:
             Weight = D[4]["weight"]
+            Weight = Weight.replace("&lt;","")
         if "dimensions (h x w x d)" in D[4]:
             Dimensions = D[4]["dimensions (h x w x d)"].split(":")[-1]
+            Dimensions = Dimensions.replace("(metallic variant)","")
+            Dimensions = Dimensions.replace("(plastic variant)","")
+            Dimensions = Dimensions.replace("&quot;","")
         if "ports" in D[4]:
             Ports = D[4]["ports"]        
         if "slots" in D[4]:
@@ -185,37 +189,53 @@ for i in range(len(json_data)):
         
         if len(Model_Name.split("+"))>1:
             Ports_Slots = "Web No Data"
-                        
+        H,W,De,Hb,Wb,Deb = 0,0,0,0,0,0                
         if len(Dimensions) > 5:
-            Dim = Dimensions.split("/")
-            D_cut = 0
-            for D_cut in range(len(Dim)):
-                if len(Dim[D_cut].split("mm")) > 2:
-                    Dim_1 = Dim[D_cut].split("mm")
-                    if len(Dim_1[2]) < 2:
-                        Dim_1 = Dim[D_cut].split("x")
-                        H = Dim_1[0].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
-                        W = Dim_1[1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-                        De = Dim_1[2].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-                    else:
-                        H = Dim_1[0].split("x")[-1].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
-                        W = Dim_1[1].split("x")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-                        De = Dim_1[2].split("x")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-                elif "mm" in Dim[D_cut] and "inches" in Dim[D_cut]:
-                    Dim = D.split("(")
-                    hwd = 0
-                    for hwd in range(len(Dim)):
-                        if "mm" in Dim[hwd]:
-                            H = Dim[hwd].split(":")[-1].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
-                            W = Dim[hwd].split(":")[-1].split("x")[1].split(";")[-1].split(">")[-1].strip()
-                            De = Dim[hwd].split(":")[-1].split("x")[2].split("as")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-                elif "mm" in Dim[D_cut] and (len(Dim[D_cut].split("mm")[0]) > len(Dim[D_cut].split("mm")[1])):
-                        H = Dim[D_cut].split("(mm")[0].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
-                        W = Dim[D_cut].split("(mm")[0].split("x")[1].split(";")[-1].split(">")[-1].strip()
+            D_big = Dimensions.split("\n")
+            big = 0
+            for bug in range(len(D_big)):
+                Dim = D_big[i].split("/")
+                D_cut = 0
+                for D_cut in range(len(Dim)):
+                    if len(Dim[D_cut].split("mm")) > 2:
+                        Dim_1 = Dim[D_cut].split("mm")
+                        if len(Dim_1[2]) < 2:
+                            Dim_1 = Dim[D_cut].split("x")
+                            H = Dim_1[0].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
+                            W = Dim_1[1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                            De = Dim_1[2].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                        else:
+                            H = Dim_1[0].split("x")[-1].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
+                            W = Dim_1[1].split("x")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                            De = Dim_1[2].split("x")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                    elif "mm" in Dim[D_cut] and "inches" in Dim[D_cut]:
+                        Dim = D.split("(")
+                        hwd = 0
+                        for hwd in range(len(Dim)):
+                            if "mm" in Dim[hwd]:
+                                H = Dim[hwd].split(":")[-1].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("mm")[0].split("at")[-1].strip()
+                                W = Dim[hwd].split(":")[-1].split("x")[1].split(";")[-1].split(">")[-1].split("mm")[0].strip()
+                                De = Dim[hwd].split(":")[-1].split("x")[2].split("as")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                    elif "mm" in Dim[D_cut] and (len(Dim[D_cut].split("mm")[0]) > len(Dim[D_cut].split("mm")[1])):                        
+                        H = Dim[D_cut].split("(mm")[0].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("mm")[0].split("at")[-1].split("as")[-1].split("-")[-1].split("–")[-1].strip()
+                        W = Dim[D_cut].split("(mm")[0].split("x")[1].split(";")[-1].split(">")[-1].split("mm")[0].strip()
                         De = Dim[D_cut].split("(mm")[0].split("x")[2].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-        Height = round(float(H),2)
-        Depth = round(float(De),2)
-        Width = round(float(W),2)
+                    else:
+                        if "mm" in Dim[D_cut]:
+                            Dim_1 = Dim[D_cut].split("mm")[0]
+                            H = Dim_1.split("x")[0].split("-")[-1].strip()
+                            W = Dim_1.split("x")[1].split("-")[-1].strip()
+                            De = Dim_1.split("x")[2].split("-")[-1].strip()
+                if float(H) > Hb:
+                    Hb = float(H)
+                if float(W) > Wb:
+                    Wb = float(W)
+                if float(De) > Deb:
+                    Deb = float(De)
+        if Hb > 0:
+            Height = round(Hb,2)
+            Depth = round(Deb,2)
+            Width = round(Wb,2)
             
         if len(Weight) > 2:
             W_cut = Weight.split("at")[-1].split("from")[-1].split("than")[-1].split("Starting")[-1].split("weight")[-1].split("g")
