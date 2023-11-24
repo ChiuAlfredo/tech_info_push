@@ -177,18 +177,14 @@ try:
             if "chrome" in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Chrome")
                 df.loc[re_type_NB, "Operating System"] = "Chrome OS"
-            elif "alienware" in df.iloc[re_type_NB]["Model Name"].lower():
-                Type_NB.append("Gaming")
-            elif "g series" in df.iloc[re_type_NB]["Model Name"].lower():
-                Type_NB.append("Gaming")
-            elif "inspiron" in df.iloc[re_type_NB]["Model Name"].lower() or "xps" in df.iloc[re_type_NB]["Model Name"].lower():
-                Type_NB.append("Consumer")
-            elif "latitude" in df.iloc[re_type_NB]["Model Name"].lower() or "vostro" in df.iloc[re_type_NB]["Model Name"].lower():
-                Type_NB.append("Commercial")       
-            elif "precision" in df.iloc[re_type_NB]["Model Name"].lower():
+            elif "precision" in df.iloc[re_type_NB]["Model Name"].lower() or "workstation" in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Workstation")
-            elif "gaming"in df.iloc[re_type_NB]["Model Name"].lower():
+            elif "alienware" in df.iloc[re_type_NB]["Model Name"].lower() or "gaming"in df.iloc[re_type_NB]["Model Name"].lower():
                 Type_NB.append("Gaming")
+            elif "latitude" in df.iloc[re_type_NB]["Model Name"].lower() or "vostro" in df.iloc[re_type_NB]["Model Name"].lower():
+                Type_NB.append("Commercial")                  
+            elif "inspiron" in df.iloc[re_type_NB]["Model Name"].lower() or "xps" in df.iloc[re_type_NB]["Model Name"].lower():
+                Type_NB.append("Consumer")     
             else:
                 Type_NB.append("None Type_NB")
     
