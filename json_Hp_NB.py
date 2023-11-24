@@ -50,16 +50,17 @@ for i in range(len(json_data)):
         Slots, Ports_Slots, Camera, Display, Wireless, NFC, Primary_Battery, Processor, Graphics_Card = "","","","","","No","","",""
         Storage, Memory, Operating_System, Audio_Speakers, User_guide, Web_Link = "","","","","",D[0]
         FPR_model,FPR,Display_cleck,Height,Depth,Width,WAN,PGM = "No","No","","","","","",""
+        
         if "chrome" in Model_Name.lower():
             Type="Chrome"
+        elif "zbook" in Model_Name.lower() or "workstation" in Model_Name.lower():
+            Type="Workstation"
+        elif "omen" in Model_Name.lower() or "victus" in Model_Name.lower():
+            Type="Gaming" 
         elif "dragonFly pro" in Model_Name.lower() or "envy" in Model_Name.lower() or "pavilion" in Model_Name.lower():
             Type="Consumer"
         elif "dragonFly" in Model_Name.lower() or "pro" in Model_Name.lower() or "elite" in Model_Name.lower() or "fortis" in Model_Name.lower():
-            Type="Commercial"
-        elif "omen" in Model_Name.lower() or "victus" in Model_Name.lower():
-            Type="Gaming"
-        elif "zbook" in Model_Name.lower() or "workstation" in Model_Name.lower():
-            Type="Workstation"       
+            Type="Commercial"      
         else:
             Type="None Type_NB"
             
