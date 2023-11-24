@@ -181,6 +181,7 @@ for i in range(len(json_data)):
         elif len(PS) > 10: 
             Ports_Slots = PS.strip()
         Ports_Slots = Ports_Slots.replace('style="white-space: normal;"', '')
+        N11b,N12b,N13b,N11,N12,N13 = 0,0,0,0,0,0
         if len(Dimensions) > 5:
             Dimensions = Dimensions.replace("&quot;", "")           
             reD1 = Dimensions.lower().split("/")
@@ -188,7 +189,6 @@ for i in range(len(json_data)):
             for reD in range(len(reD1)):
                 if "mm" in reD1[reD]:
                     N1 = reD1[reD].split(":")
-                    print(N1)
                     N1 = N1[-1].split("x")
                     N11 = N1[0].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
                     N12 = N1[1].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
