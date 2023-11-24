@@ -230,7 +230,6 @@ for i in range(len(json_data)):
                             W = Dim_1[1].split("x")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
                             De = Dim_1[2].split("x")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
                     elif "mm" in Dim[D_cut] and "inches" in Dim[D_cut]:
-                        Dim = D.split("(")
                         hwd = 0
                         for hwd in range(len(Dim)):
                             if "mm" in Dim[hwd]:
