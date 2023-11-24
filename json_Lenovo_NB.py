@@ -194,7 +194,7 @@ for i in range(len(json_data)):
             D_big = Dimensions.split("\n")
             big = 0
             for bug in range(len(D_big)):
-                Dim = D_big[i].split("/")
+                Dim = D_big[big].split("/")
                 D_cut = 0
                 for D_cut in range(len(Dim)):
                     if len(Dim[D_cut].split("mm")) > 2:
