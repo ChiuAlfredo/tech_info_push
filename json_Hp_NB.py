@@ -59,7 +59,7 @@ for i in range(len(json_data)):
             Type="Gaming" 
         elif "dragonFly pro" in Model_Name.lower() or "envy" in Model_Name.lower() or "pavilion" in Model_Name.lower():
             Type="Consumer"
-        elif "dragonFly" in Model_Name.lower() or "pro" in Model_Name.lower() or "elite" in Model_Name.lower() or "fortis" in Model_Name.lower():
+        elif "dragonfly" in Model_Name.lower() or "pro" in Model_Name.lower() or "elite" in Model_Name.lower() or "fortis" in Model_Name.lower():
             Type="Commercial"      
         else:
             Type="None Type_NB"
