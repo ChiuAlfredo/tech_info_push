@@ -116,14 +116,14 @@ try:
     for re_type_DT in range(len(df1["Model Name"])):
         #Dell分類
         if df1.iloc[re_type_DT]["Brand"] == "Dell":
-            if "alienware" in df1.iloc[re_type_DT]["Model Name"].lower():
+            if "precision" in df1.iloc[re_type_DT]["Model Name"].lower() or "workstation" in df1.iloc[re_type_DT]["Model Name"].lower():
+                Type.append("Workstation") 
+            elif "alienware" in df1.iloc[re_type_DT]["Model Name"].lower():
                 Type.append("Gaming")
+            elif "optiplex" in df1.iloc[re_type_DT]["Model Name"].lower() or "vostro" in df1.iloc[re_type_DT]["Model Name"].lower():
+                Type.append("Commercial") 
             elif "inspiron" in df1.iloc[re_type_DT]["Model Name"].lower() or "xps" in df1.iloc[re_type_DT]["Model Name"].lower():
-                Type.append("Consumer")
-            elif "optiPlex" in df1.iloc[re_type_DT]["Model Name"].lower() or "vostro" in df1.iloc[re_type_DT]["Model Name"].lower():
-                Type.append("Commercial")          
-            elif "precision" in df1.iloc[re_type_DT]["Model Name"].lower():
-                Type.append("Workstation")            
+                Type.append("Consumer")                    
             else:
                 Type.append("None Type")    
      
