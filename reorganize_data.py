@@ -92,8 +92,7 @@ df1 = df1.T
 df1.reset_index(drop = True, inplace = True)
 #Dell_DT 資料檢驗/補充
 DNB = 0
-# for DNB in range(len(df1["Brand"])):
-for DNB in range(158):        
+for DNB in range(len(df1["Brand"])):        
     if df1["Weight(kg)"][DNB] ==" ":
         print(DNB)
         delay = random.uniform(0.5, 5.0)
