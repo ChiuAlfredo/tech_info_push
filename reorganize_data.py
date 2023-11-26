@@ -90,6 +90,47 @@ df = df.merge(df_2,how = "outer", left_index=True, right_index=True)
 df1 = pd.read_excel("DELL_DT.xlsx",index_col=0)
 df1 = df1.T
 df1.reset_index(drop = True, inplace = True)
+#Dell_DT 資料檢驗/補充
+DNB = 0
+# for DNB in range(len(df1["Brand"])):
+for DNB in range(158):        
+    if df1["Weight(kg)"][DNB] ==" ":
+        print(DNB)
+        delay = random.uniform(0.5, 5.0)
+        sleep(delay)
+        url_dell = df1["Web Link"][DNB] + "#techspecs_section"
+        option = webdriver.ChromeOptions()
+        # option.add_argument("headless")
+        dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+        dell_dock.get(url_dell)
+        sleep(2)
+        dell_dock.execute_script("document.body.style.zoom='50%'")
+        sleep(2)
+        dell_dock.execute_script("window.scrollTo(0, document.body.scrollHeight*0.5);")
+        sleep(2)
+        soup = BeautifulSoup(dell_dock.page_source,"html.parser")
+        Href = soup.select("div.pd-feature-wrap")
+        dell_dock.quit()
+        href_number = 0
+        max_kg,kg = 0,0
+        if len(Href) > 1:
+            for href in Href:            
+                dell_tatle = href.select("h2")
+                if len(dell_tatle) > 0:
+                    if "weight" in dell_tatle[0].text.lower():
+                        dell_tatle_data = href.select("div > div.pd-item-desc")
+                        data_number = 0
+                        for data_number in range(len(dell_tatle_data)):
+                            if "weight" in dell_tatle_data[data_number].text.lower() or "kg" in dell_tatle_data[data_number].text.lower():
+                                data_kg = dell_tatle_data[data_number].text.lower()
+                                data_kg = data_kg.split(":")
+                                data_kg_number = 0
+                                for data_kg_number in range(len(data_kg)):
+                                    if "kg" in data_kg[data_kg_number]:
+                                        kg = data_kg[data_kg_number].split("kg")[0].split("(")[-1]
+                                        if max_kg < float(kg):
+                                            max_kg = float(kg)
+        df1["Weight(kg)"][DNB] = max_kg
 df1 = df1.T
 #載入其他公司資料進行合併
 df1_1 = pd.read_excel("HP_DT.xlsx",index_col="Unnamed: 0")    
