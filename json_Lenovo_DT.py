@@ -46,14 +46,15 @@ for i in range(len(json_data)):
         Storage, Memory, Operating_System, Audio_Speakers, User_guide, Web_Link = "","","","","",D[1]
         FPR_model,FPR,Display_cleck,Height,Depth,Width,PS = "","","","","","",""
         H,W,De = "","",""
+        
         if "workstation" in Model_Name.lower() or "thinkstation" in Model_Name.lower():
             Type = "Workstation"
-        elif "ideaCentre" in Model_Name.lower() or "yoga" in Model_Name.lower():
-            Type = "Consumer"
+        elif "thinkbook" in Model_Name.lower() or "thinkpad" in Model_Name.lower() or "thinkcentre" in Model_Name.lower() or "ideacentre" in Model_Name.lower():
+            Type = "Commercial"  
         elif "legion" in Model_Name.lower() or "loq" in Model_Name.lower():
             Type = "Gaming"
-        elif "thinkbook" in Model_Name.lower() or "thinkpad" in Model_Name.lower() or "thinkcentre" in Model_Name.lower() or "ideacentre" in Model_Name.lower():
-            Type = "Commercial"   
+        elif "yoga" in Model_Name.lower():
+            Type = "Consumer" 
         else:
             Type = "None Type"
         
