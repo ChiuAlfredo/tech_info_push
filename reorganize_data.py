@@ -100,7 +100,7 @@ for DNB in range(158):
         sleep(delay)
         url_dell = df1["Web Link"][DNB] + "#techspecs_section"
         option = webdriver.ChromeOptions()
-        # option.add_argument("headless")
+        option.add_argument("headless")
         dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
         dell_dock.get(url_dell)
         sleep(2)
