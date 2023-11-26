@@ -125,9 +125,9 @@ for i in range(len(json_data)):
         if "ac adapter" in D[3]:
             Power_Supply = D[3]["ac adapter"]
         if "camera" in D[3]:
-            Camera = D[3]["camera"].split("Integrated")[-1]
+            Camera = D[3]["camera"]
         if "webcam" in D[3]:
-            Camera = D[3]["webcam"].split("Integrated")[-1]
+            Camera = D[3]["webcam"]
         if "primary battery" in D[3]:
             Primary_Battery = D[3]["primary battery"]
         if "battery" in D[3]:
@@ -171,7 +171,7 @@ for i in range(len(json_data)):
                 if "storage" in PGM_data[data_num] or "eMMC" in PGM_data[data_num]:
                     Storage = PGM_data[data_num].split("and")[-1].strip()
                 if "camera" in PGM_data[data_num]:
-                    Camera = PGM_data[data_num].split("and")[-1].split("Integrated")[-1].strip()
+                    Camera = PGM_data[data_num].split("and")[-1].strip()
   
         if "finger print reader" in D[3]:
             if "no" not in D[3]["finger print reader"] or "No" not in D[3]["finger print reader"]:
