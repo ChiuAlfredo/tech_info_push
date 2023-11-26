@@ -65,11 +65,11 @@ for i in range(len(json_data)):
         elif "workstation" in Model_Name.lower():
             Type="Workstation"
         elif "omen" in Model_Name.lower() or "victus" in Model_Name.lower():
-            Type="Gaming"      
+            Type="Gaming"
+        elif "thin client" in Model_Name.lower() or "pro" in Model_Name.lower() or "elite" in Model_Name.lower() or "t550" in Model_Name.lower():
+            Type="Commercial" 
         elif "pavilion" in Model_Name.lower() or "envy" in Model_Name.lower():
-            Type="Consumer"
-        elif "thin client" in Model_Name.lower() or "pro" in Model_Name.lower() or "elite" in Model_Name.lower():
-            Type="Commercial"             
+            Type="Consumer"              
         else:
             Type="None Type"
         
