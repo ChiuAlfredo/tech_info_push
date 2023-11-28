@@ -12,7 +12,7 @@ try:
     my_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
     
     #desktop資料重整
-    df1 = pd.read_excel("DELL_DT.xlsx",index_col=0)
+    df1 = pd.read_excel("DELL_DT_1.xlsx",index_col=0)
     df1 = df1.T
     df1 = df1.sort_values(["Model Name"],ascending=True)
     df1.reset_index(drop = True, inplace = True)
