@@ -9,7 +9,7 @@ logging.basicConfig(filename='bug.log',
                     level=logging.INFO)
 
 try:
-    df2 = pd.read_excel("DELL_Dock.xlsx",index_col="Unnamed: 0")
+    df2 = pd.read_excel("DELL_Dock_1.xlsx",index_col="Unnamed: 0")
     df2 = df2.T
     df2.reset_index(drop = True, inplace = True)
     
