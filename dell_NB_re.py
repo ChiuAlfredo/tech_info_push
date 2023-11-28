@@ -16,7 +16,7 @@ logging.basicConfig(filename='bug.log',
                     level=logging.INFO)
 
 try:
-    df = pd.read_excel("DELL_NB.xlsx",index_col=0)
+    df = pd.read_excel("DELL_NB_1.xlsx",index_col=0)
     
     df = df.T
     df = df.sort_values(["Model Name"],ascending=True)
