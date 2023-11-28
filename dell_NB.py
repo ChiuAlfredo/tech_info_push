@@ -530,7 +530,7 @@ try:
         if len(C["Dimensions and Weight"][re_rext]) < 20 and D_W_dic.get(C["Model Name"][re_rext]) != None:
             C["Dimensions and Weight"][re_rext] = D_W_dic.get(C["Model Name"][re_rext])                    
     C = C.T        
-    C.to_excel("DELL_NB.xlsx")
+    C.to_excel("DELL_NB_1.xlsx")
     
     import dell_NB_re
 except Exception as bug:

@@ -157,7 +157,7 @@ try:
             B = pd.DataFrame(B,index = A)
             C = C.merge(B,how = "outer",left_index=True, right_index=True)       
    
-    C.to_excel("DELL_Dock.xlsx")
+    C.to_excel("DELL_Dock_1.xlsx")
     
     import dell_dock_re
 except Exception as bug:
