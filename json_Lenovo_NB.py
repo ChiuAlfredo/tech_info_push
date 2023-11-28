@@ -45,11 +45,11 @@ for i in range(len(json_data)):
         if "chrome" in Model_Name.lower():
             Type="Chrome"            
         elif "workstation" in Model_Name.lower():
-            Type = "Workstation"            
+            Type = "Workstation"
+        elif "legion" in Model_Name.lower() or "loq" in Model_Name.lower() or "gaming" in Model_Name.lower():
+           Type="Gaming"            
         elif "thinkbook" in Model_Name.lower() or "thinkpad" in Model_Name.lower():
-            Type="Commercial"       
-        elif "legion" in Model_Name.lower() or "loq" in Model_Name.lower():
-           Type="Gaming"                    
+            Type="Commercial"                    
         elif "ideapad" in Model_Name.lower() or "slim" in Model_Name.lower() or "yoga" in Model_Name.lower():
             Type="Consumer"                       
         else:
