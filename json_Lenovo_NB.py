@@ -172,6 +172,12 @@ for i in range(len(json_data)):
             Dimensions = Dimensions.replace("(plastic variant)","")
             Dimensions = Dimensions.replace("&quot;","")
             Dimensions = Dimensions.replace("as thin as","")
+        if "dimensions(h x w x d)" in D[4]:
+            Dimensions = D[4]["dimensions(h x w x d)"]
+            Dimensions = Dimensions.replace("(metallic variant)","")
+            Dimensions = Dimensions.replace("(plastic variant)","")
+            Dimensions = Dimensions.replace("&quot;","")
+            Dimensions = Dimensions.replace("as thin as","")
         if "dimensions (w x d x h)" in D[4]:
             Dimensions = D[4]["dimensions (w x d x h)"]
             Dimensions = Dimensions.replace("(metallic variant)","")
@@ -215,7 +221,7 @@ for i in range(len(json_data)):
         if len(Dimensions) > 5:
             D_big = Dimensions.split("\n")
             big = 0
-            for bug in range(len(D_big)):
+            for big in range(len(D_big)):
                 Dim = D_big[big].split("/")
                 D_cut = 0
                 for D_cut in range(len(Dim)):

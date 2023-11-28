@@ -133,28 +133,30 @@ for i in range(len(json_data)):
             Weight = D[4]["weight"]
         if "net weight" in D[4]:
             Weight = D[4]["net weight"]
+        if "starting weight" in D[4]:
+            Weight = D[4]["starting weight"]
         if "dimension (w x d x h)" in D[4]:
-            Dimensions = D[4]["dimension (w x d x h)"].split(":")[-1]
+            Dimensions = D[4]["dimension (w x d x h)"]
         if "dimension (d x w x h)" in D[4]:
-            Dimensions = D[4]["dimension (d x w x h)"].split(":")[-1]
+            Dimensions = D[4]["dimension (d x w x h)"]
         if "dimension (w x h x d)" in D[4]:
-            Dimensions = D[4]["dimension (w x h x d)"].split(":")[-1]
+            Dimensions = D[4]["dimension (w x h x d)"]
         if "dimension (d x h x w)" in D[4]:
-            Dimensions = D[4]["dimension (d x h x w)"].split(":")[-1]
+            Dimensions = D[4]["dimension (d x h x w)"]
         if "dimension (h x w x d)" in D[4]:
-            Dimensions = D[4]["dimension (h x w x d)"].split(":")[-1]   
+            Dimensions = D[4]["dimension (h x w x d)"] 
         if "dimensions (w x d x h)" in D[4]:
-            Dimensions = D[4]["dimensions (w x d x h)"].split(":")[-1]
+            Dimensions = D[4]["dimensions (w x d x h)"]
         if "dimensions (d x w x h)" in D[4]:
-            Dimensions = D[4]["dimensions (d x w x h)"].split(":")[-1]
+            Dimensions = D[4]["dimensions (d x w x h)"]
         if "dimensions (w x h x d)" in D[4]:
-            Dimensions = D[4]["dimensions (w x h x d)"].split(":")[-1]
+            Dimensions = D[4]["dimensions (w x h x d)"]
         if "dimensions (d x h x w)" in D[4]:
-            Dimensions = D[4]["dimensions (d x h x w)"].split(":")[-1]
+            Dimensions = D[4]["dimensions (d x h x w)"]
         if "dimensions (h x w x d)" in D[4]:
-            Dimensions = D[4]["dimensions (h x w x d)"].split(":")[-1]               
+            Dimensions = D[4]["dimensions (h x w x d)"]              
         if "dimensions" in D[4]:
-            Dimensions = D[4]["dimensions"].split(":")[-1]
+            Dimensions = D[4]["dimensions"]
 
         if "ports/slots" in D[4]:
             PS = D[4]["ports/slots"]
@@ -184,22 +186,25 @@ for i in range(len(json_data)):
         Ports_Slots = Ports_Slots.replace('style="white-space: normal;"', '')
         N11b,N12b,N13b,N11,N12,N13 = 0,0,0,0,0,0
         if len(Dimensions) > 5:
-            Dimensions = Dimensions.replace("&quot;", "")           
-            reD1 = Dimensions.lower().split("/")
-            reD = 0
-            for reD in range(len(reD1)):
-                if "mm" in reD1[reD]:
-                    N1 = reD1[reD].split(":")
-                    N1 = N1[-1].split("x")
-                    N11 = N1[0].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
-                    N12 = N1[1].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
-                    N13 = N1[2].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
-                if float(N11) > N11b:
-                    N11b = float(N11)
-                if float(N12) > N11b:
-                    N12b = float(N12)
-                if float(N13) > N11b:
-                    N13b = float(N13) 
+            Dimensions = Dimensions.replace("&quot;", "")
+            Dimensions_1 = Dimensions.split("\n")
+            D_number = 0
+            for D_number in range(len(Dimensions_1)):
+                reD1 = Dimensions_1[D_number].lower().split("/")
+                reD = 0
+                for reD in range(len(reD1)):
+                    if "mm" in reD1[reD]:
+                        N1 = reD1[reD].split(":")
+                        N1 = N1[-1].split("x")
+                        N11 = N1[0].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
+                        N12 = N1[1].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
+                        N13 = N1[2].split("mm")[0].split("at")[-1].split("from")[-1].split("(")[0].strip()
+                    if float(N11) > N11b:
+                        N11b = float(N11)
+                    if float(N12) > N11b:
+                        N12b = float(N12)
+                    if float(N13) > N11b:
+                        N13b = float(N13)
                     
             if "dimensions (w x h x d)" in D[4] or "dimension (w x h x d)" in D[4]:
                 Dimensions_data = "{}x{}x{}".format(N12,N11,N13)
@@ -220,18 +225,24 @@ for i in range(len(json_data)):
             Depth = round(float(De),2)
             Width = round(float(W),2)
         
+        Weight_big,weight_data = 0,0
         if len(Weight) > 5:
-            weight_data = Weight
-            if "kg" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
-                weight_data = float(weight_data)
-            elif "Kg" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("Kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
-                weight_data = float(weight_data)
-            elif "g" in weight_data:
-                weight_data = weight_data.replace('Starting', ' ').split("g")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
-                weight_data = round(float(weight_data)/1000,2)                            
-            Weight =    weight_data    
+            weight_data_1 = Weight
+            weight_data_2 = weight_data_1.split("\n")
+            weight_data_number = 0
+            for weight_data_number in range(len(weight_data_2)):
+                if "kg" in weight_data_2[weight_data_number]:
+                    weight_data = weight_data_2[weight_data_number].replace('Starting', ' ').split("kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
+                    weight_data = float(weight_data)
+                elif "Kg" in weight_data_2[weight_data_number]:
+                    weight_data = weight_data_2[weight_data_number].replace('Starting', ' ').split("Kg")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
+                    weight_data = float(weight_data)
+                elif "g" in weight_data_2[weight_data_number]:
+                    weight_data = weight_data_2[weight_data_number].replace('Starting', ' ').split("g")[0].split("(")[-1].split("at")[-1].split("rom")[-1].split("/")[-1].split(":")[-1].split("Arounweight_data")[-1].split("to")[-1].split("Around")[-1].strip()
+                    weight_data = round(float(weight_data)/1000,2) 
+                if weight_data > Weight_big:
+                    Weight_big = weight_data              
+            Weight = Weight_big   
         
         j+=1    
         B = [Type, Brand, Model_Name, Official_Price, Ports_Slots.strip(), Display, Processor, Dimensions, Height, Depth, Width, Weight, Graphics_Card, Storage, Memory, Operating_System, Audio_Speakers,Power_Supply, Web_Link]
