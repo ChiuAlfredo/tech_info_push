@@ -125,7 +125,7 @@ try:
             elif "inspiron" in df1.iloc[re_type_DT]["Model Name"].lower() or "xps" in df1.iloc[re_type_DT]["Model Name"].lower():
                 Type.append("Consumer")                    
             else:
-                Type.append("None Type")    
+                Type.append("None Type_DT")    
      
     df1["Type"] = Type    
     #排序
