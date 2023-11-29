@@ -56,7 +56,7 @@ for i in range(len(json_data)):
         elif "yoga" in Model_Name.lower():
             Type = "Consumer" 
         else:
-            Type = "None Type"
+            Type = "None Type_DT"
         
         D[3] = {key.strip(): value for key, value in D[3].items()}    
         lowercase_dict = {key.lower(): process_value(value) for key, value in D[3].items()}
