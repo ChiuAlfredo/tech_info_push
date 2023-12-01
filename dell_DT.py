@@ -405,6 +405,7 @@ try:
             C = pd.DataFrame(B,index = A)
         else:
             B = pd.DataFrame(B,index = A)
+            B.rename(columns={B.columns[0]:j+1}, inplace=True)
             C = C.merge(B,how = "outer",left_index=True, right_index=True)
     
     C = C.T
