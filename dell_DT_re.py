@@ -80,15 +80,34 @@ try:
                             Weight_data = float(A2[0].split("(")[-1].split(":")[-1].strip())/1000
                     else:
                         data_real_set = 0
+                        Weight_data = ""
                         for data_real_set in range(len(A0)):
+                            max_w = 0
                             if "g)" in A0[data_real_set] or "kg)" in A0[data_real_set]:
                                 A_date = A0[data_real_set]
                                 if "kg" in A_date:
                                     A2 = A_date.split("kg")
-                                    Weight_data = A2[0].split("(")[-1].split(":")[-1].strip()
+                                    A3 = A2[0].split("(")[-1].split(":")[-1].strip()
+                                    if max_w < float(A3):
+                                        max_w = float(A3)
+                                    Weight_data = max_w
                                 elif "g" in A_date:
                                     A2 = A_date.split("g")
-                                    Weight_data = float(A2[0].split("(")[-1].split(":")[-1].strip())/1000
+                                    A3 = float(A2[0].split("(")[-1].split(":")[-1].strip())/1000                                
+                                    if max_w < float(A3):
+                                        max_w = float(A3)
+                                    Weight_data = max_w
+                        if Weight_data == "":
+                            max_w = 0
+                            A_date = A0[-1].replace("\n", "")
+                            A_date = A_date.split(":")
+                            num = 0
+                            for num in range(len(A_date)):
+                                if "kg" in A_date[num]:
+                                    A2 = A_date[num].split("kg")[0]
+                                    if max_w < float(A2):
+                                        max_w = float(A2)
+                            Weight_data = max_w
                                 
             else:
                 pass
