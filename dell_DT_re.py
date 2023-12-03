@@ -49,6 +49,8 @@ try:
         if str(Dell_DT_data.get(df1["Model Name"][i])) != "None":
             A00 = Dell_DT_data[df1["Model Name"][i]].lower()
             A0 = A00.split("weight")
+            if len(A0) < 2:
+                A0 = A00.split("maximum")
             no_weight = 0
             for no_weight in range(len(A0)):
                 height_data = " "
@@ -57,7 +59,7 @@ try:
                 Weight_data = " "
                 if "weight" not in A0[no_weight].lower() and "kg" not in A0[no_weight].lower() and ("mm" in A0[no_weight].lower() or "cm" in A0[no_weight].lower()):
                     A1_text = A0[no_weight].split("width")
-                    A1_besa = A0[no_weight]                   
+                    A1_besa = A0[no_weight]                 
                 if len(A1_text) <= 2:
                     if "mm" in A1_besa:
                         A1 = A1_besa.split("mm")
@@ -79,6 +81,18 @@ try:
                                 width_data = float(A1[cm_data].split("width")[-1].split("3. ")[0].split("2. ")[-1].split("(")[-1].split(":")[-1].strip())*10
                             elif "depth" in A1[cm_data] or "length" in A1[cm_data]:
                                 depth_data = float(A1[cm_data].split("depth")[-1].split("length")[-1].split("3. ")[-1].split("(")[-1].split(":")[-1].strip())*10
+                elif len(A1_text) == 3:
+                    A1_text = A0[0].split("3. ")
+                    depth_data = float(A1_text[-1].split("mm")[0].split("(")[-1])
+                    print(A1_text)
+                    A1_text = A1_text[0].split("2. ")
+                    height_data = float(A1_text[0].split("mm")[0].split("(")[-1])
+                    A1_text = A1_text[-1].split("mm")
+                    num,width_data = 0,0
+                    for num in range(len(A1_text)-1):
+                        A1_data = float(A1_text[num].split("mm")[0].split("(")[-1])
+                        if width_data < A1_data:
+                            width_data = A1_data
                 if len(A0) >1:               
                     if len(df1["Model Name"][i].split("Special")) > 1:
                         if "kg" in A0[-2]:
