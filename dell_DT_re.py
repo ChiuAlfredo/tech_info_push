@@ -21,11 +21,20 @@ try:
     
     #將商品名稱與長寬深/重量抓出建立字典<方便後續補齊 減少需抓捕資料>
     Dell_DT_data = {}
+    Dell_DT_PS_data = {}
     DNB = 0
     for DNB in range(len(df1["Brand"])):
         if df1["Model Name"][DNB] not in Dell_DT_data and len(str(df1["Dimensions and Weight"][DNB])) > 25 :
             Dell_DT_data[df1["Model Name"][DNB]] = str(df1["Dimensions and Weight"][DNB])
-            
+        if df1["Model Name"][DNB] not in Dell_DT_PS_data and len(str(df1["Ports & Slots"][DNB])) > 25 :
+            Dell_DT_PS_data[df1["Model Name"][DNB]] = str(df1["Ports & Slots"][DNB])    
+        elif df1["Model Name"][DNB] in Dell_DT_PS_data and len(str(df1["Ports & Slots"][DNB])) > len(Dell_DT_PS_data[df1["Model Name"][DNB]]):
+            Dell_DT_PS_data[df1["Model Name"][DNB]] = str(df1["Ports & Slots"][DNB])
+
+    DNB = 0
+    for DNB in range(len(df1["Brand"])):
+        df1["Ports & Slots"][DNB] = Dell_DT_PS_data[df1["Model Name"][DNB]] 
+  
     Height = []
     Width = []
     Depth = []
