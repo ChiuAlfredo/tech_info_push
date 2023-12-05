@@ -33,7 +33,8 @@ try:
 
     DNB = 0
     for DNB in range(len(df1["Brand"])):
-        df1["Ports & Slots"][DNB] = Dell_DT_PS_data[df1["Model Name"][DNB]] 
+        if df1["Model Name"][DNB] in Dell_DT_PS_data:
+            df1["Ports & Slots"][DNB] = Dell_DT_PS_data[df1["Model Name"][DNB]] 
   
     Height = []
     Width = []
