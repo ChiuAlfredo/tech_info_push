@@ -109,13 +109,13 @@ try:
                             max_w = 0
                             if "g)" in A0[data_real_set] or "kg)" in A0[data_real_set]:
                                 A_date = A0[data_real_set]
-                                if "kg" in A_date:
+                                if " kg" in A_date:
                                     A2 = A_date.split("kg")
                                     A3 = A2[0].split("(")[-1].split(":")[-1].strip()
                                     if max_w < float(A3):
                                         max_w = float(A3)
                                     Weight_data = max_w
-                                elif "g" in A_date:
+                                elif " g" in A_date:
                                     A2 = A_date.split("g")
                                     A3 = float(A2[0].split("(")[-1].split(":")[-1].strip())/1000                                
                                     if max_w < float(A3):
@@ -128,7 +128,7 @@ try:
                             num = 0
                             for num in range(len(A_date)):
                                 if "kg" in A_date[num]:
-                                    A2 = A_date[num].split("kg")[0]
+                                    A2 = A_date[num].split("kg")[0].split("(")[-1]
                                     if max_w < float(A2):
                                         max_w = float(A2)
                             Weight_data = max_w
