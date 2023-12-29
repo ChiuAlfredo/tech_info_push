@@ -138,6 +138,8 @@ try:
     #new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link_data)):
+        if j % 50== 0:
+          sleep(600)
         print("Dell_DT {}".format(j))
         delay = random.uniform(0.5, 5.0)
         sleep(delay)
