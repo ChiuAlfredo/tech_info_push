@@ -136,7 +136,7 @@ try:
                     Storage_data.append(reset_Storage)
                     Display_data.append(reset_Display)
     j=0
-    #ip_number = 0
+    ip_number = 0
     #new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link_data)):
