@@ -87,7 +87,7 @@ try:
     #直到抓到的數量為0
     i=i+1
     while new_number != tatle_number:
-        delay = random.uniform(1.0, 5.0)
+        delay = random.uniform(2.0, 8.0)
         sleep(delay)
         url = "https://www.dell.com/en-us/search/laptop?r=36679&p={}&ac=facetselect&t=Product".format(i)
         i=i+1
@@ -138,7 +138,8 @@ try:
     for j in range(len(link_data)):
       
         if j%50 == 0:
-          sleep(600)   
+            delay = random.uniform(30.0, 60.0)
+            sleep(delay)   
         print("Dell_NB {}".format(j))
         delay = random.uniform(0.5, 5.0)
         sleep(delay)
@@ -526,7 +527,9 @@ try:
         else:
             B = pd.DataFrame(B,index = A)
             B.rename(columns={B.columns[0]:j+1}, inplace=True)
-            C = C.merge(B,how = "outer",left_index=True, right_index=True)     
+            C = C.merge(B,how = "outer",left_index=True, right_index=True) 
+    delay = random.uniform(2.0, 8.0)
+    sleep(delay)
     C = C.T
     C.reset_index(drop = True, inplace = True)
     re_rext = 0    
