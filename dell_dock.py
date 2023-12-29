@@ -66,7 +66,7 @@ try:
                     #儲存連結
                     link.append("https:{}".format(D_deta_url[0]["href"]))
     j=0
-    #ip_number = 0
+    ip_number = 0
     #new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link)):
