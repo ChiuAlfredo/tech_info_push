@@ -17,9 +17,9 @@ logging.basicConfig(filename='bug.log',
                     format='%(asctime)s %(filename)s %(levelname)s:%(message)s',
                     level=logging.INFO)
 
-#讀取下載的IP代理位置檔案
-proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
-proxy_data = proxy.values.tolist()
+##讀取下載的IP代理位置檔案
+#proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
+#proxy_data = proxy.values.tolist()
 
 try:    
     my_header = {'user-agent':UserAgent().random}
@@ -132,10 +132,13 @@ try:
                     Memory_data.append(reset_Memory)
                     Storage_data.append(reset_Storage)
                     Display_data.append(reset_Display)        
-    new_ip = random.choice(proxy_data)[0]
+    #new_ip = random.choice(proxy_data)[0]
     
     j=0
     for j in range(len(link_data)):
+      
+        if j%50 == 0:
+          sleep(600)   
         print("Dell_NB {}".format(j))
         delay = random.uniform(0.5, 5.0)
         sleep(delay)
@@ -152,30 +155,30 @@ try:
         #開啟搜尋頁面
         option = webdriver.ChromeOptions()
         #使用代理
-        if ip_number == 50:
-            new_ip = random.choice(proxy_data)[0]
-            random_proxy = new_ip
-            option.add_argument("--proxy-server=http://"+random_proxy)
-            ip_number = 0
-        else:
-            random_proxy = new_ip
-            option.add_argument("--proxy-server=http://"+random_proxy)
+        #if ip_number == 50:
+        #    new_ip = random.choice(proxy_data)[0]
+        #    random_proxy = new_ip
+        #    option.add_argument("--proxy-server=http://"+random_proxy)
+        #    ip_number = 0
+        #else:
+        #    random_proxy = new_ip
+        #    option.add_argument("--proxy-server=http://"+random_proxy)
             
         option.add_argument("headless")
         dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
         dell_dock.get(url_dell)
         sleep(2)
-        while "Access Denied" in dell_dock.page_source:
-            dell_dock.quit()
-            sleep(2)
-            new_ip = random.choice(proxy_data)[0]
-            random_proxy = new_ip
-            option.add_argument("--proxy-server=http://"+random_proxy)
-            option.add_argument("headless")
-            dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-            dell_dock.get(url_dell)
-            sleep(2)
-            ip_number = 0
+        #while "Access Denied" in dell_dock.page_source:
+        #    dell_dock.quit()
+        #    sleep(2)
+        #    new_ip = random.choice(proxy_data)[0]
+        #    random_proxy = new_ip
+        #    option.add_argument("--proxy-server=http://"+random_proxy)
+        #    option.add_argument("headless")
+        #    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+        #    dell_dock.get(url_dell)
+        #    sleep(2)
+        #    ip_number = 0
         dell_dock.execute_script("document.body.style.zoom='50%'")
         sleep(2)
         dell_dock.execute_script("window.scrollTo(0, document.body.scrollHeight*0.2);")
@@ -361,32 +364,32 @@ try:
             while number < 11:
                 option = webdriver.ChromeOptions()
                 
-                #使用代理
-                if ip_number == 50:
-                    new_ip = random.choice(proxy_data)[0]
-                    random_proxy = new_ip
-                    option.add_argument("--proxy-server=http://"+random_proxy)
-                    ip_number = 0
-                else:
-                    random_proxy = new_ip
-                    option.add_argument("--proxy-server=http://"+random_proxy)
+                ##使用代理
+                #if ip_number == 50:
+                #    new_ip = random.choice(proxy_data)[0]
+                #    random_proxy = new_ip
+                #    option.add_argument("--proxy-server=http://"+random_proxy)
+                #    ip_number = 0
+                #else:
+                #    random_proxy = new_ip
+                #    option.add_argument("--proxy-server=http://"+random_proxy)
                     
                 option.add_argument("headless")
                 dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
                 dell_dock.get(link_data[j] + '#features_section')
                 sleep(2)
                 
-                while "Access Denied" in dell_dock.page_source:
-                    dell_dock.quit()
-                    sleep(2)
-                    new_ip = random.choice(proxy_data)[0]
-                    random_proxy = new_ip
-                    option.add_argument("--proxy-server=http://"+random_proxy)
-                    option.add_argument("headless")
-                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-                    dell_dock.get(link_data[j] + '#features_section')
-                    sleep(2)
-                    ip_number = 0                    
+                #while "Access Denied" in dell_dock.page_source:
+                #    dell_dock.quit()
+                #    sleep(2)
+                #    new_ip = random.choice(proxy_data)[0]
+                #    random_proxy = new_ip
+                #    option.add_argument("--proxy-server=http://"+random_proxy)
+                #    option.add_argument("headless")
+                #    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                #    dell_dock.get(link_data[j] + '#features_section')
+                #    sleep(2)
+                #    ip_number = 0                    
                 dell_dock.execute_script("document.body.style.zoom='50%'")
                 sleep(2)
                 # 獲取當前滾動位置
@@ -449,30 +452,30 @@ try:
             while number < 9:
                 option = webdriver.ChromeOptions()
                 #使用代理
-                if ip_number == 50:
-                    new_ip = random.choice(proxy_data)[0]
-                    random_proxy = new_ip
-                    option.add_argument("--proxy-server=http://"+random_proxy)
-                    ip_number = 0
-                else:
-                    random_proxy = new_ip
-                    option.add_argument("--proxy-server=http://"+random_proxy)
+                #if ip_number == 50:
+                #    new_ip = random.choice(proxy_data)[0]
+                #    random_proxy = new_ip
+                #    option.add_argument("--proxy-server=http://"+random_proxy)
+                #    ip_number = 0
+                #else:
+                #    random_proxy = new_ip
+                #    option.add_argument("--proxy-server=http://"+random_proxy)
                 option.add_argument("headless")
                 dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
                 dell_dock.get(url_dell)
                 sleep(2)
-                while "Access Denied" in dell_dock.page_source:
-                    dell_dock.quit()
-                    sleep(2)
-                    new_ip = random.choice(proxy_data)[0]
-                    random_proxy = new_ip
-                    option.add_argument("--proxy-server=http://"+random_proxy)
-                    option.add_argument("headless")
-                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-                    dell_dock.get(link_data[j] + '#features_section')
-                    sleep(2)
-                    ip_number = 0               
-                ip_number = ip_number+1
+                #while "Access Denied" in dell_dock.page_source:
+                #    dell_dock.quit()
+                #    sleep(2)
+                #    new_ip = random.choice(proxy_data)[0]
+                #    random_proxy = new_ip
+                #    option.add_argument("--proxy-server=http://"+random_proxy)
+                #    option.add_argument("headless")
+                #    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                #    dell_dock.get(link_data[j] + '#features_section')
+                #    sleep(2)
+                #    ip_number = 0               
+                #ip_number = ip_number+1
                 sleep(2)
                 # 獲取當前滾動位置
                 scroll_height = dell_dock.execute_script("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );")                
