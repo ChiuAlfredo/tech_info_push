@@ -49,7 +49,7 @@ try:
     #直到抓到的數量為0
     i=i+1
     while len(De_dock_data) != 0:
-        delay = random.uniform(1.0, 5.0)
+        delay = random.uniform(2.0, 8.0) 
         sleep(delay)
         url = "https://www.dell.com/en-us/search/docking?p={}&c=8407%2C8408&f=true&ac=categoryfacetselect".format(i)
         DELL_DOCK_data = requests.get(url, headers=my_header)
@@ -66,13 +66,14 @@ try:
                     #儲存連結
                     link.append("https:{}".format(D_deta_url[0]["href"]))
     j=0
-    #ip_number = 0
+    ip_number = 0
     #new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link)):
         if j % 50 == 0:
-          sleep(600)
-        delay = random.uniform(1.0, 5.0)
+            delay = random.uniform(30.0, 60.0)
+            sleep(delay)
+        delay = random.uniform(2.0, 8.0) 
         sleep(delay)
         print("Dell_Dock {}".format(j))
         url_dell = link[j] + "#techspecs_section"
