@@ -27,7 +27,9 @@ try:
     titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Display","Processor",'Dimensions and Weight',"Graphics Card","Storage","Memory","Operating System","Audio and Speakers",'Power',"Web Link"]
     #設定網址
     url = "https://www.dell.com/en-us/search/desktop?r=36679&p={}&ac=facetselect&t=Product"
+    
     DELL_DOCK_data = requests.get(url, headers=my_header)
+    print(url)
     sleep(2)
     
     i = 1
