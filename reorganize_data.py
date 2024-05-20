@@ -11,6 +11,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
+def convert_to_int(x):
+    try:
+        return round(float(x),2)
+    except ValueError:
+        return x
+
 # 配置日志
 logging.basicConfig(filename='bug.log',
                     filemode='w',
@@ -240,6 +246,9 @@ df2_1 = pd.read_excel("HP_Dock.xlsx",index_col="Unnamed: 0")
 df2_2 = pd.read_excel("Lenovo_docking.xlsx",index_col="Unnamed: 0")
 df2 = df2.merge(df2_1,how = "outer", left_index=True, right_index=True)
 df2 = df2.merge(df2_2,how = "outer", left_index=True, right_index=True)
+
+
+
     
 #分別對合併完的資料特徵進行重新排序
 df = df.T
@@ -247,21 +256,39 @@ df = df.T
 #排序
 df = df[["Type","Brand","Model Name","Official Price","Ports & Slots","Camera","Display","Primary Battery","Processor","Graphics Card","Hard Drive","Memory","Operating System","Audio and Speakers","Height(mm)","Width(mm)","Depth(mm)","Weight(kg)","WWAN","NFC","FPR_model","FPR",'Power Supply',"Web Link"]]
 
+rows_to_convert = ["Official Price","Height(mm)","Width(mm)","Depth(mm)","Weight(kg)"]
+df.loc[:, rows_to_convert] = df.loc[:, rows_to_convert].applymap(convert_to_int)
+
 df1 = df1.T      
 #排序
 df1 = df1[["Type","Brand","Model Name","Official Price","Ports & Slots","Display","Processor","Graphics Card","Hard Drive","Memory","Operating System","Audio and Speakers","Height(mm)","Width(mm)","Depth(mm)","Weight(kg)",'Power Supply',"Web Link"]]
 
+rows_to_convert = ["Official Price","Height(mm)","Width(mm)","Depth(mm)","Weight(kg)"]
+df1.loc[:, rows_to_convert] = df1.loc[:, rows_to_convert].applymap(convert_to_int)
+
 df2 = df2.T
 df2 = df2[["Type","Brand","Model Name","Official Price","Ports & Slots","Power Supply","Weight(kg)","Web Link"]]
+
+rows_to_convert = ["Official Price","Weight(kg)"]
+df2.loc[:, rows_to_convert] = df2.loc[:, rows_to_convert].applymap(convert_to_int)
 
 df = df.T.fillna('NA')
 df1 = df1.T.fillna('NA')
 df2 = df2.T.fillna('NA')
-    
+
 # #儲存資料
-writer = pd.ExcelWriter('Data_products_total.xlsx', engine='xlsxwriter')
+writer = pd.ExcelWriter('Competitors Data_.xlsx', engine='xlsxwriter')
 df.to_excel(writer, sheet_name='laptop', index=True,header = False)
 df1.to_excel(writer, sheet_name='desktop', index=True,header = False)
 df2.to_excel(writer, sheet_name='docking', index=True,header = False)
 writer.save()
 
+# #儲存資料
+writer = pd.ExcelWriter('Competitors Data Convert_.xlsx', engine='xlsxwriter')
+df = df.T
+df1 = df1.T
+df2 = df2.T
+df.to_excel(writer, sheet_name='laptop', index=False,header = True)
+df1.to_excel(writer, sheet_name='desktop', index=False,header = True)
+df2.to_excel(writer, sheet_name='docking', index=False,header = True)
+writer.save()
