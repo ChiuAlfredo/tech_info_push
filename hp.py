@@ -165,12 +165,14 @@ def get_content(keyword,total_page_number,file_name,**kwargs):
                     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
                 }
 
-                response = requests.request("GET", url,headers=headers)
-
+                response = requests.request("GET", url,headers=headers)               
                 json_data = json.loads(response.text)
-                
-                price_one = json_data['priceData'][0]['gsPrice']
+                try:
+                    price_one = json_data['priceData'][0]['gsPrice']
+                except:
+                    price_one = "No money"
                 part_price.append(price_one)
+                
         price.extend(part_price)
         product_name.extend([i['product_name'][0] for i in all_data_list])
     create_directory(f'data/hp/{file_name}/')
@@ -215,7 +217,7 @@ def read_json(file_path):
 
     # Loop over all files and read them into a Python object
     for file in json_files:
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding='utf-8') as f:
             data.append(json.load(f))
             
     return data
@@ -276,7 +278,7 @@ class hp_crawl():
     # 讀取web_url
     def get_web_url_list(self):
         if self.is_crawl_web_url:
-            with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r') as f:
+            with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
         
             self.web_url_list = data['url']
@@ -287,7 +289,7 @@ class hp_crawl():
     # 讀取product_price
     def get_prodct_price(self):
         if self.is_crawl_web_url:
-            with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r') as f:
+            with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 
             self.product_price = data['price']
@@ -298,7 +300,7 @@ class hp_crawl():
     # 讀取product_name
     def get_product_name(self):
         if self.is_crawl_web_url:
-            with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r') as f:
+            with open(f'data/hp/{self.file_name}/{self.file_name}_{self.total_pages}.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 
             self.product_name = data['product_name']
@@ -503,6 +505,5 @@ hp_docking.clean_disclaim()
 hp_docking.combine_data_laptop()
 
 # try_time()
-
 
 

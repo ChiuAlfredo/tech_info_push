@@ -215,7 +215,7 @@ def read_json(file_path):
 
     # Loop over all files and read them into a Python object
     for file in json_files:
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding='utf-8') as f:
             data.append(json.load(f))
             
     return data
@@ -270,7 +270,7 @@ class lenovo_crawl():
     # 讀取web_url
     def get_web_url_list(self):
         if self.is_crawl_web_url:
-            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
+            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
         
             self.web_url_list = data['web_url']
@@ -280,7 +280,7 @@ class lenovo_crawl():
     # 讀取product_code
     def get_product_code(self):
         if self.is_crawl_web_url:
-            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
+            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
         
             self.product_code = data['product_code']
@@ -290,7 +290,7 @@ class lenovo_crawl():
     # 讀取page_info
     def get_page_info(self):
         if self.is_crawl_web_url:
-            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
+            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 
             self.page_info = data
@@ -300,7 +300,7 @@ class lenovo_crawl():
     # 讀取total_rows
     def get_total_rows(self):
         if self.is_crawl_web_url:
-            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
+            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 
             self.total_rows = len(data['web_url'])
@@ -310,7 +310,7 @@ class lenovo_crawl():
     # 讀取product_name
     def get_product_name(self):
         if self.is_crawl_web_url:
-            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
+            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 
             self.product_name = data['product_name']
@@ -321,7 +321,7 @@ class lenovo_crawl():
     # 讀取product_price
     def get_prodct_price(self):
         if self.is_crawl_web_url:
-            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r') as f:
+            with open(f'data/lenovo/{self.file_name}/{self.file_name}_.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 
             self.product_price = data['price']
@@ -490,6 +490,5 @@ lenovo_thinksta.get_data_normal()
 lenovo_thinksta.clean()
 
 # try_time()
-
 
 
