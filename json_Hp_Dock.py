@@ -42,7 +42,7 @@ def process_value(value):
 
 titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Power Supply","Weight","Web Link"]
 json_data = ['./data/hp/docking__product.json']
-print(len(json_data))
+
 for i in range(len(json_data)):
     # 打开JSON文件
     with open(json_data[i], 'r', encoding='utf-8') as file:
