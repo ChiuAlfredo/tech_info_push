@@ -17,9 +17,9 @@ logging.basicConfig(filename='bug.log',
                     format='%(asctime)s %(filename)s %(levelname)s:%(message)s',
                     level=logging.INFO)
 
-##讀取下載的IP代理位置檔案
-#proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
-#proxy_data = proxy.values.tolist()
+#讀取下載的IP代理位置檔案
+proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
+proxy_data = proxy.values.tolist()
 
 try:
     my_header = {'user-agent':UserAgent().random} 
@@ -27,9 +27,7 @@ try:
     titles = ["Type","Brand","Model Name","Official Price","Ports & Slots","Display","Processor",'Dimensions and Weight',"Graphics Card","Storage","Memory","Operating System","Audio and Speakers",'Power',"Web Link"]
     #設定網址
     url = "https://www.dell.com/en-us/search/desktop?r=36679&p={}&ac=facetselect&t=Product"
-    
     DELL_DOCK_data = requests.get(url, headers=my_header)
-    print(url)
     sleep(2)
     
     i = 1
@@ -90,7 +88,7 @@ try:
     #直到抓到的數量為0
     i=i+1
     while new_number != tatle_number:
-        delay = random.uniform(2.0, 8.0)
+        delay = random.uniform(1.0, 5.0)
         sleep(delay)
         url = "https://www.dell.com/en-us/search/desktop?r=36679&p={}&ac=facetselect&t=Product".format(i)
         i=i+1
@@ -137,12 +135,9 @@ try:
                     Display_data.append(reset_Display)
     j=0
     ip_number = 0
-    #new_ip = random.choice(proxy_data)[0]
+    new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link_data)):
-        if j % 50== 0:
-          delay = random.uniform(30.0, 60.0)
-        sleep(delay)
         print("Dell_DT {}".format(j))
         delay = random.uniform(0.5, 5.0)
         sleep(delay)
@@ -157,33 +152,33 @@ try:
         
         #開啟搜尋頁面
         option = webdriver.ChromeOptions()
-        ##每50次換一個IP
-        #if ip_number == 50:
-        #    new_ip = random.choice(proxy_data)[0]
-        #    #隨機選擇一個代理
-        #    random_proxy = new_ip
-        #    option.add_argument("--proxy-server=http://"+random_proxy)
-        #    ip_number = 0
-        #else:
-        #    random_proxy = new_ip
-        #    option.add_argument("--proxy-server=http://"+random_proxy)
-        option.add_argument("headless")
+        #每50次換一個IP
+        if ip_number == 50:
+            new_ip = random.choice(proxy_data)[0]
+            #隨機選擇一個代理
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+        else:
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+        # option.add_argument("headless")
         dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
         dell_dock.get(url_dell)
         sleep(2)
         
-        #while "Access Denied" in dell_dock.page_source:
-        #    dell_dock.quit()
-        #    sleep(2)
-        #    new_ip = random.choice(proxy_data)[0]
-        #    #隨機選擇一個代理
-        #    random_proxy = new_ip
-        #    option.add_argument("--proxy-server=http://"+random_proxy)
-        #    ip_number = 0
-        #    option.add_argument("headless")
-        #    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-        #    dell_dock.get(url_dell)
-        #    sleep(2)
+        while "Access Denied" in dell_dock.page_source:
+            dell_dock.quit()
+            sleep(2)
+            new_ip = random.choice(proxy_data)[0]
+            #隨機選擇一個代理
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+            option.add_argument("headless")
+            dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+            dell_dock.get(url_dell)
+            sleep(2)
             
         dell_dock.execute_script("document.body.style.zoom='50%'")
         sleep(2)
@@ -265,32 +260,32 @@ try:
             number = 0    
             while number < 7:
                 option = webdriver.ChromeOptions()                
-                #if ip_number == 50:
-                #    new_ip = random.choice(proxy_data)[0]
-                #    #隨機選擇一個代理
-                #    random_proxy = new_ip
-                #    option.add_argument("--proxy-server=http://"+random_proxy)
-                #    ip_number = 0
-                #else:
-                #    random_proxy = new_ip
-                #    option.add_argument("--proxy-server=http://"+random_proxy)
+                if ip_number == 50:
+                    new_ip = random.choice(proxy_data)[0]
+                    #隨機選擇一個代理
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                else:
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
                 option.add_argument("headless")
                 dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
                 dell_dock.get(link_data[j] + '#ratings_section')
                 sleep(2)
                 
-                #while "Access Denied" in dell_dock.page_source:
-                #    dell_dock.quit()
-                #    sleep(2)
-                #    new_ip = random.choice(proxy_data)[0]
-                #    #隨機選擇一個代理
-                #    random_proxy = new_ip
-                #    option.add_argument("--proxy-server=http://"+random_proxy)
-                #    ip_number = 0
-                #    option.add_argument("headless")
-                #    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-                #   dell_dock.get(link_data[j] + '#ratings_section')
-                #    sleep(2)
+                while "Access Denied" in dell_dock.page_source:
+                    dell_dock.quit()
+                    sleep(2)
+                    new_ip = random.choice(proxy_data)[0]
+                    #隨機選擇一個代理
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                    option.add_argument("headless")
+                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                    dell_dock.get(link_data[j] + '#ratings_section')
+                    sleep(2)
                     
                 sleep(2)
                 # 獲取當前滾動位置
@@ -356,32 +351,32 @@ try:
             while number < 9:
                 option = webdriver.ChromeOptions()
                 
-                #if ip_number == 50:
-                #    new_ip = random.choice(proxy_data)[0]
-                #    random_proxy = new_ip
-                #    option.add_argument("--proxy-server=http://"+random_proxy)
-                #    ip_number = 0
-                #else:
-                #    random_proxy = new_ip
-                #    option.add_argument("--proxy-server=http://"+random_proxy)
+                if ip_number == 50:
+                    new_ip = random.choice(proxy_data)[0]
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                else:
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
                     
                 option.add_argument("headless")
                 dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
                 dell_dock.get(url_dell) 
                 sleep(2)
                 
-                #while "Access Denied" in dell_dock.page_source:
-                #    dell_dock.quit()
-                #    sleep(2)
-                #    new_ip = random.choice(proxy_data)[0]
-                #    #隨機選擇一個代理
-                #    random_proxy = new_ip
-                #    option.add_argument("--proxy-server=http://"+random_proxy)
-                #    ip_number = 0
-                #    option.add_argument("headless")
-                #    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-                #    dell_dock.get(url_dell)
-                #    sleep(2)
+                while "Access Denied" in dell_dock.page_source:
+                    dell_dock.quit()
+                    sleep(2)
+                    new_ip = random.choice(proxy_data)[0]
+                    #隨機選擇一個代理
+                    random_proxy = new_ip
+                    option.add_argument("--proxy-server=http://"+random_proxy)
+                    ip_number = 0
+                    option.add_argument("headless")
+                    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+                    dell_dock.get(url_dell)
+                    sleep(2)
                     
                 dell_dock.execute_script("document.body.style.zoom='50%'")
                 dell_dock.execute_script("window.scrollTo(0, document.body.scrollHeight*{});".format(0.4 + number*0.05))
@@ -403,7 +398,7 @@ try:
                 number = number +1
         if Model_Name not in D_W_dic and len(Dimensions_Weight) > 20:
             D_W_dic[Model_Name] = Dimensions_Weight.strip()
-            
+        Ports_Slots = Ports_Slots.split(">")[-1]    
         B = [Type, Brand, Model_Name, Official_Price, Ports_Slots.strip(), Display, Processor, Dimensions_Weight.strip(), Graphics_Card, Storage, Memory, Operating_System, Audio_Speakers,Power_Supply, Web_Link]
         A = pd.Series(titles)
         if j == 0:
@@ -412,8 +407,7 @@ try:
             B = pd.DataFrame(B,index = A)
             B.rename(columns={B.columns[0]:j+1}, inplace=True)
             C = C.merge(B,how = "outer",left_index=True, right_index=True)
-    delay = random.uniform(2.0, 8.0)
-    sleep(delay)
+    
     C = C.T
     C.reset_index(drop = True, inplace = True)
     re_rext = 0    
@@ -422,7 +416,7 @@ try:
             C["Dimensions and Weight"][re_rext] = D_W_dic.get(C["Model Name"][re_rext])
             
     C = C.T
-    C.to_excel("DELL_DT_1.xlsx")  
+    C.to_excel("DELL_DT_1.xlsx")
     
     import dell_DT_re
 except Exception as bug:

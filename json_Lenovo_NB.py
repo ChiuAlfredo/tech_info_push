@@ -229,36 +229,39 @@ for i in range(len(json_data)):
                         Dim_1 = Dim[D_cut].split("mm")
                         if len(Dim_1[2]) < 2:
                             Dim_1 = Dim[D_cut].split("x")
-                            H = Dim_1[0].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
+                            H = Dim_1[0].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("models")[-1].strip()
                             W = Dim_1[1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-                            De = Dim_1[2].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                            De = Dim_1[2].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].split("-")[-1].strip()
                         else:
-                            H = Dim_1[0].split("x")[-1].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].strip()
+                            H = Dim_1[0].split("x")[-1].split(":")[-1].split("-")[-1].split("at")[-1].split("~")[-1].split("covers")[-1].split("chassis")[-1].split("as")[-1].split("–")[-1].split("aluminum")[-1].split("mm")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("models")[-1].strip()
                             W = Dim_1[1].split("x")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
-                            De = Dim_1[2].split("x")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                            De = Dim_1[2].split("x")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("~")[-1].split("mm")[0].split(";")[-1].split(">")[-1].split("-")[-1].strip()
                     elif "mm" in Dim[D_cut] and "inches" in Dim[D_cut]:
                         hwd = 0
                         for hwd in range(len(Dim)):
                             if "mm" in Dim[hwd]:
-                                H = Dim[hwd].split(":")[-1].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("mm")[0].split("at")[-1].strip()
+                                H = Dim[hwd].split(":")[-1].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("mm")[0].split("at")[-1].split("models")[-1].strip()
                                 W = Dim[hwd].split(":")[-1].split("x")[1].split(";")[-1].split(">")[-1].split("mm")[0].strip()
-                                De = Dim[hwd].split(":")[-1].split("x")[2].split("as")[-1].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                                De = Dim[hwd].split(":")[-1].split("x")[2].split("as")[-1].split("mm")[0].split(";")[-1].split(">")[-1].split("-")[-1].strip()
                     elif "mm" in Dim[D_cut] and (len(Dim[D_cut].split("mm")[0]) > len(Dim[D_cut].split("mm")[1])):                        
-                        H = Dim[D_cut].split("(mm")[0].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("mm")[0].split("at")[-1].split("as")[-1].split("-")[-1].split("–")[-1].strip()
+                        H = Dim[D_cut].split("(mm")[0].split("x")[0].split("from")[-1].split(";")[-1].split(">")[-1].split("mm")[0].split("at")[-1].split("as")[-1].split("-")[-1].split("–")[-1].split("models")[-1].strip()
                         W = Dim[D_cut].split("(mm")[0].split("x")[1].split(";")[-1].split(">")[-1].split("mm")[0].strip()
-                        De = Dim[D_cut].split("(mm")[0].split("x")[2].split("mm")[0].split(";")[-1].split(">")[-1].strip()
+                        De = Dim[D_cut].split("(mm")[0].split("x")[2].split("mm")[0].split(";")[-1].split(">")[-1].split("-")[-1].strip()
                     else:
                         if "mm" in Dim[D_cut]:
                             Dim_1 = Dim[D_cut].split(":")[-1].split("mm")[0]
-                            H = Dim_1.split("x")[0].split("-")[-1].strip()
+                            H = Dim_1.split("x")[0].split("-")[-1].split("models")[-1].strip()
                             W = Dim_1.split("x")[1].split("-")[-1].strip()
                             De = Dim_1.split("x")[2].split("-")[-1].strip()
-                if float(H) > Hb:
-                    Hb = float(H)
-                if float(W) > Wb:
-                    Wb = float(W)
-                if float(De) > Deb:
-                    Deb = float(De)
+                try:
+                    if float(H) > Hb:
+                        Hb = float(H)
+                    if float(W) > Wb:
+                        Wb = float(W)
+                    if float(De) > Deb:
+                        Deb = float(De)
+                except:
+                    pass
         if Hb > 0:
             if "dimensions (w x d x h)" in D[4] or "dimensions(w x d x h)" in D[4]:
                 Height = round(Deb,2)
@@ -282,7 +285,7 @@ for i in range(len(json_data)):
                         Wei = float(Wei)
                         symbol = ">"
                     else:
-                        Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("<")[-1].split(":")[-1].split(";")[-1]
+                        Wei = W_cut[0].split("K")[0].split("k")[0].split("/")[-1].split("(")[-1].split("<")[-1].split(":")[-1].split(";")[-1].split("–")[-1]
                         Wei = float(Wei)
                 else:
                     if "<" in W_cut[0]: 
