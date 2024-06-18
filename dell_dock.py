@@ -17,9 +17,9 @@ logging.basicConfig(filename='bug.log',
                     format='%(asctime)s %(filename)s %(levelname)s:%(message)s',
                     level=logging.INFO)
 
-##讀取下載的IP代理位置檔案
-#proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
-#proxy_data = proxy.values.tolist()
+#讀取下載的IP代理位置檔案
+proxy = pd.read_csv('proxyscrape_premium_http_proxies.txt', delimiter='\t', encoding='utf-8',header=None)
+proxy_data = proxy.values.tolist()
 
 try:       
     my_header = {'user-agent':UserAgent().random}
@@ -38,6 +38,9 @@ try:
         L_NB_soup = BeautifulSoup(DELL_DOCK_data.text,'html.parser')
         sleep(2)
         #抓取商品數量<第一頁>
+        all_number = L_NB_soup.select("p.pageinfo > label")    
+        new_number = all_number[0].text.split("-")[-1].strip()
+        tatle_number = all_number[1].text
         De_dock_data = L_NB_soup.select("article")
         data = 0
         for data in De_dock_data:          
@@ -48,8 +51,8 @@ try:
     
     #直到抓到的數量為0
     i=i+1
-    while len(De_dock_data) != 0:
-        delay = random.uniform(2.0, 8.0) 
+    while new_number != tatle_number:
+        delay = random.uniform(1.0, 5.0)
         sleep(delay)
         url = "https://www.dell.com/en-us/search/docking?p={}&c=8407%2C8408&f=true&ac=categoryfacetselect".format(i)
         DELL_DOCK_data = requests.get(url, headers=my_header)
@@ -58,6 +61,8 @@ try:
             L_NB_soup = BeautifulSoup(DELL_DOCK_data.text,'html.parser')
             sleep(2)
             #抓取特徵名稱
+            all_number = L_NB_soup.select("p.pageinfo > label")    
+            new_number = all_number[0].text.split("-")[-1].strip()
             De_dock_data = L_NB_soup.select("article")
             data = 0
             for data in De_dock_data:          
@@ -67,44 +72,42 @@ try:
                     link.append("https:{}".format(D_deta_url[0]["href"]))
     j=0
     ip_number = 0
-    #new_ip = random.choice(proxy_data)[0]
+    new_ip = random.choice(proxy_data)[0]
     #網頁爬取資料
     for j in range(len(link)):
-        if j % 50 == 0:
-            delay = random.uniform(30.0, 60.0)
-            sleep(delay)
-        delay = random.uniform(2.0, 8.0) 
+        delay = random.uniform(1.0, 5.0)
         sleep(delay)
         print("Dell_Dock {}".format(j))
         url_dell = link[j] + "#techspecs_section"
+        print(url_dell)
         Type, Brand, Model_Name, Official_Price, Weight, Thunderbolt_Port = "","Dell","","","",""
         USB_C, USB_A, Display_Port, HDMI, LAN_RJ45 = "","","","",""
         Audio_Jack, Power_Supply, Web_Link = "","",link[j]
         #開啟搜尋頁面
         option = webdriver.ChromeOptions()
-        ##每50次換一個IP
-        #if ip_number == 50:
-        #    new_ip = random.choice(proxy_data)[0]
-        #    #隨機選擇一個代理
-        #    random_proxy = new_ip
-        #    option.add_argument("--proxy-server=http://"+random_proxy)
-        #    ip_number = 0
-        #else:
-        #    random_proxy = new_ip
-        #    option.add_argument("--proxy-server=http://"+random_proxy)
+        #每50次換一個IP
+        if ip_number == 50:
+            new_ip = random.choice(proxy_data)[0]
+            #隨機選擇一個代理
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+        else:
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
         option.add_argument("headless")
         dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
         dell_dock.get(url_dell)
-        #while "Access Denied" in dell_dock.page_source:
-        #    dell_dock.quit()
-        #    sleep(2)
-        #    new_ip = random.choice(proxy_data)[0]
-        #    random_proxy = new_ip
-        #    option.add_argument("--proxy-server=http://"+random_proxy)
-        #    ip_number = 0
-        #    option.add_argument("headless")
-        #    dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
-        #    dell_dock.get(url_dell)
+        while "Access Denied" in dell_dock.page_source:
+            dell_dock.quit()
+            sleep(2)
+            new_ip = random.choice(proxy_data)[0]
+            random_proxy = new_ip
+            option.add_argument("--proxy-server=http://"+random_proxy)
+            ip_number = 0
+            option.add_argument("headless")
+            dell_dock = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=option)
+            dell_dock.get(url_dell)
             
         dell_dock.execute_script("document.body.style.zoom='50%'")
         sleep(2)
