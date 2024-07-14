@@ -1,12 +1,8 @@
 import json
 import pandas as pd
-from selenium import webdriver
 from bs4 import BeautifulSoup
-from time import sleep
 import requests
 
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
 def process_value(value):
     if isinstance(value, list):
