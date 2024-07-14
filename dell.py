@@ -63,14 +63,14 @@ def search_crawl(keyword, company):
 
         page += 1
 
-    with open(f"./{company}/{keyword}_search.json", "w") as f:
+    with open(f"./data/{company}/{keyword}_search.json", "w") as f:
         json.dump(products_list, f)
 
     return products_list
 
 
 def detail_crawl(keyword, company):
-    with open(f"./{company}/{keyword}_search.json", "r") as f:
+    with open(f"./data/{company}/{keyword}_search.json", "r") as f:
         products_list = json.load(f)
 
     product_detail_list = []
@@ -239,20 +239,20 @@ def detail_crawl(keyword, company):
             print(e)
             error_link.append(**product)
 
-    with open(f"./{company}/{keyword}_detail_list.json", "w") as f:
+    with open(f"./data/{company}/{keyword}_detail_list.json", "w") as f:
         json.dump(product_detail_list, f)
 
-    with open(f"./{company}/{keyword}_more_list.json", "w") as f:
+    with open(f"./data/{company}/{keyword}_more_list.json", "w") as f:
         json.dump(error_link, f)
 
     return product_detail_list
 
 
 def detail_crawl_more(keyword, company):
-    with open(f"./{company}/{keyword}_more_list.json", "r") as f:
+    with open(f"./data/{company}/{keyword}_more_list.json", "r") as f:
         error_link_previous = json.load(f)
 
-    with open(f"./{company}/{keyword}_detail_list.json", "r") as f:
+    with open(f"./data/{company}/{keyword}_detail_list.json", "r") as f:
         product_detail_list = json.load(f)
 
     error_link = []
@@ -588,22 +588,22 @@ def detail_crawl_more(keyword, company):
             print(e)
             error_link.append(**error_product)
 
-    with open(f"./{company}/{keyword}_detail_list.json", "w") as f:
+    with open(f"./data/{company}/{keyword}_detail_list.json", "w") as f:
         json.dump(product_detail_list, f)
 
-    with open(f"./{company}/{keyword}_error_list.json", "w") as f:
+    with open(f"./data/{company}/{keyword}_error_list.json", "w") as f:
         json.dump(error_link, f)
 
     return product_detail_list
 
 
 def detail_laptop(keyword, company):
-    with open(f"./{company}/{keyword}_detail_list.json", "r") as f:
+    with open(f"./data/{company}/{keyword}_detail_list.json", "r") as f:
         product_detail_list = json.load(f)
 
     df_laptop = pd.DataFrame(product_detail_list)
 
-    df_laptop.to_csv(f"./{company}/{keyword}_detail_list.csv",encoding='utf-8-sig')
+    df_laptop.to_csv(f"./data/{company}/{keyword}_detail_list.csv",encoding='utf-8-sig')
     ports_columns_list =     [
         "ports & slots",
         "ports",
@@ -775,9 +775,30 @@ def detail_laptop(keyword, company):
     df_laptop["Official Price"] = df_laptop["Official Price"].str.replace(
         "Dell Price", ""
     )
+    
+    def determine_type(row):
+        model_name = row["Model Name"].lower()
+        if "chrome" in model_name:
+            row["Operating System"] = "Chrome OS"
+            return "Chrome"
+        elif "precision" in model_name or "workstation" in model_name:
+            return "Workstation"
+        elif "alienware" in model_name or "gaming" in model_name:
+            return "Gaming"
+        elif "latitude" in model_name or "vostro" in model_name:
+            return "Commercial"
+        elif "inspiron" in model_name or "xps" in model_name:
+            return "Consumer"
+        else:
+            return "None Type_NB"
+
+    # 应用函数
+    df_laptop["Type"] = df_laptop.apply(determine_type, axis=1)
+    
 
     # 指定要输出的字段列表
     columns_to_output = [
+        "Type",
         "Brand",
         "Model Name",
         "Official Price",
@@ -803,14 +824,14 @@ def detail_laptop(keyword, company):
         "Web Link",
     ]
     df_laptop[columns_to_output].to_csv(
-        f"./{company}/{keyword}.csv", encoding="utf-8-sig", index=False
+        f"./data/{company}/{keyword}.csv", encoding="utf-8-sig", index=False
     )
 
     df_laptop = df_laptop[columns_to_output]
     return df_laptop
 
 def detail_desktop(keyword, company):
-    with open(f"./{company}/{keyword}_detail_list.json", "r") as f:
+    with open(f"./data/{company}/{keyword}_detail_list.json", "r") as f:
         product_detail_list = json.load(f)
 
     df_desktop = pd.DataFrame(product_detail_list)
@@ -970,9 +991,27 @@ def detail_desktop(keyword, company):
     df_desktop["Official Price"] = df_desktop["Official Price"].str.replace(
         "Dell Price", ""
     )
+    
+    
+    def determine_type_desktop(row):
+        model_name = row["Model Name"].lower()
+        if "precision" in model_name or "workstation" in model_name:
+            return "Workstation"
+        elif "alienware" in model_name:
+            return "Gaming"
+        elif "optiplex" in model_name or "vostro" in model_name:
+            return "Commercial"
+        elif "inspiron" in model_name or "xps" in model_name:
+            return "Consumer"
+        else:
+            return "None Type_DT"
+
+    # 应用函数
+    df_desktop["Type"] = df_desktop.apply(determine_type_desktop, axis=1)
 
     # 指定要输出的字段列表
     columns_to_output = [
+            "Type",
             "Brand",
             "Model Name",
             "Official Price",
@@ -992,19 +1031,19 @@ def detail_desktop(keyword, company):
             "Web Link",
         ]
     df_desktop[columns_to_output].to_csv(
-        f"./{company}/{keyword}.csv", encoding="utf-8-sig", index=False
+        f"./data/{company}/{keyword}.csv", encoding="utf-8-sig", index=False
     )
 
     df_desktop = df_desktop[columns_to_output]
     return df_desktop
 
 def detail_docking(keyword, company):
-    with open(f"./{company}/{keyword}_detail_list.json", "r") as f:
+    with open(f"./data/{company}/{keyword}_detail_list.json", "r") as f:
         product_detail_list = json.load(f)
 
     df_docking = pd.DataFrame(product_detail_list)
 
-    df_docking.to_csv(f"./{company}/{keyword}_detail_list.csv",encoding='utf-8-sig')
+    df_docking.to_csv(f"./data/{company}/{keyword}_detail_list.csv",encoding='utf-8-sig')
     ports_columns_list = [
         "expansion / connectivity",
         "interfaces/ports",
@@ -1087,8 +1126,10 @@ def detail_docking(keyword, company):
     df_docking["Official Price"] = df_docking["Official Price"].str.replace(
         "Dell Price", ""
     )
+    df_docking['Type'] = ""
     
     columns_to_output = [
+        "Type",
         "Brand",
         "Model Name",
         "Official Price",
@@ -1099,7 +1140,7 @@ def detail_docking(keyword, company):
 
     ]
     df_docking[columns_to_output].to_csv(
-        f"./{company}/{keyword}.csv", encoding="utf-8-sig", index=False
+        f"./data/{company}/{keyword}.csv", encoding="utf-8-sig", index=False
     )
 
     df_docking = df_docking[columns_to_output]
@@ -1110,7 +1151,7 @@ keyword_list = ["laptop", "desktop", "docking"]
 company = "Dell"
 
 for keyword in keyword_list:
-    # keyword = keyword_list[2]
+    keyword = keyword_list[2]
     search_crawl(keyword, company)
     
     if keyword == "laptop":
