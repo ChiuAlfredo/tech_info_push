@@ -15,7 +15,7 @@ import json_Lenovo_Dock
 import json_Lenovo_NB
 import json_Lenovo_DT
 
-import reorganize_data
+import old.reorganize_data as reorganize_data
 
 
 end_time = time.perf_counter()
