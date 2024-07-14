@@ -17,7 +17,7 @@ def get_monday():
 
 day = get_monday()
 output_path = f'./data/output/Competitors_Data_{day.year}{day.month:02d}{day.day:02d}.xlsx'
-output_convert_path = f'./data/output/Competitors_Data_Convert-{day.year}{day.month:02d}{day.day:02d}.xlsx'
+output_convert_path = f'./data/output/Competitors_Data_Convert_{day.year}{day.month:02d}{day.day:02d}.xlsx'
 
 with pd.ExcelWriter(output_path, engine='openpyxl', mode='w') as writer, \
     pd.ExcelWriter(output_convert_path, engine='openpyxl', mode='w') as writer_convert:
