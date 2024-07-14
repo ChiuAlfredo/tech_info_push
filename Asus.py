@@ -63,9 +63,9 @@ def check_value_lengths(spec_dict):
         return len(next(iter(spec_dict.values())))
 
 
-def dict_to_list(spec_dict, col_num=0):
+def dict_to_list(spec_dict, product_num=0):
     result_list = []
-    for i in range(col_num):
+    for i in range(product_num):
         dict_list = []
         for key in spec_dict.keys():
             dict_list.append({key: spec_dict[key][i]})
@@ -230,10 +230,10 @@ def rog_crawl(soup):
 
     spec_dict = dim_transform(spec_dict)
 
-    col_num = check_value_lengths(spec_dict)
-    spec_dict["Web Link"] = [link] * col_num
+    product_num = check_value_lengths(spec_dict)
+    spec_dict["Web Link"] = [link] * product_num
 
-    return dict_to_list(spec_dict, col_num)
+    return dict_to_list(spec_dict, product_num)
 
 
 def home_work_creators(soup):
@@ -338,18 +338,17 @@ import time
 
 start_time = time.time()
 
-# product_link_list=product_link_list[:100]
+# product_link_list=product_link_list[:50]
 product_detail_list = []
 error_link = []
 for link in tqdm(product_link_list):
     print(link)
-    # link = product_link_list[13]
+    # link = product_link_list[1]
     # link  = 'https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A15-2024/'
 
     # 可能會出現同個網址，一個網址要多抓多種型號
     result_list = []
     try:
-
         if "rog" in link and "bag" not in link:
             burp0_url = link + "/spec/"
             burp0_headers = {
@@ -395,13 +394,40 @@ for link in tqdm(product_link_list):
 
             if soup.select(".TechSpec__rowTableTitle__3GLj4") != []:
                 result_list = home_work_creators(soup)
-                product_detail_list.extend(result_list)
+                
             elif soup.select(".insoweTable>section") != []:
                 result_list = zenbook_14_crawl(soup)
-                product_detail_list.extend(result_list)
             elif soup.select(".productSpecItems>div") != []:
                 result_list = TUF_crawl(soup)
-                product_detail_list.extend(result_list)
+        
+            if 'expertbook' in link:
+                burp0_url = link + ""
+                burp0_headers = {
+                    "Sec-Ch-Ua": '"Not/A)Brand";v="8", "Chromium";v="126"',
+                    "Accept": "application/json, text/plain, */*",
+                    "Accept-Language": "zh-TW",
+                    "Sec-Ch-Ua-Mobile": "?0",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.57 Safari/537.36",
+                    "Sec-Ch-Ua-Platform": '"Windows"',
+                    "Origin": "https://www.asus.com",
+                    "Sec-Fetch-Site": "same-site",
+                    "Sec-Fetch-Mode": "cors",
+                    "Sec-Fetch-Dest": "empty",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Priority": "u=1, i",
+                    "Connection": "keep-alive",
+                }
+                response = requests.get(burp0_url, headers=burp0_headers)
+                
+                if 'NFC'  in str(response.content ):
+                    result_list = [i + [{'NFC': 'True'}] for i in result_list]
+                else:
+                    result_list = [i + [{'NFC': 'False'}] for i in result_list]
+            else:
+                result_list = [i + [{'NFC': 'False'}] for i in result_list]
+            product_detail_list.extend(result_list)
+                
+            
 
         else:
             print("no fit")
@@ -409,9 +435,7 @@ for link in tqdm(product_link_list):
     except:
         error_link.append(link)
 
-end_time = time.time()
 
-print("Execution time: ", end_time - start_time, "seconds")
 
 with open("./Asus/laptop_detail_list.json", "w") as f:
     json.dump(product_detail_list, f)
@@ -646,12 +670,31 @@ combined_dicts = [
 
 df_laptop = pd.DataFrame(combined_dicts)
 # 處理同樣欄位不同名稱
-df_laptop["operating system"] = df_laptop["operating system"].fillna(
-    df_laptop["operation system"]
-)
-df_laptop["Model Name"] = df_laptop["Model Name"].fillna(df_laptop["product_name"])
+if 'operation system' in df_laptop.columns:
+    df_laptop["operating system"] = df_laptop["operating system"].fillna(
+        df_laptop["operation system"]
+    )
+# df_laptop["Model Name"] = df_laptop["Model Name"].fillna(df_laptop["product_name"])
 df_laptop["Brand"] = "Asus"
 df_laptop["Official Price"] = None
+
+def check_network_type(value):
+    # Normalize the case for consistent matching
+    value = str(value).lower()
+    if '4g' in value and '5g' in value:
+        return '4G/5G'
+    elif '4g' in value:
+        return '4G'
+    elif '5g' in value:
+        return '5G'
+    else:
+        return None  # or 'Not Available', depending on your preference
+    
+df_laptop['WWAN'] = df_laptop['network and communication'].apply(check_network_type)
+df_laptop['FPR'] = df_laptop['security'].str.contains('Fingerprint')
+df_laptop['FPR_model'] =  None
+df_laptop['Power Supply']  = df_laptop['power supply'].str.extract(r'(\d+W AC Adapter)')
+
 df_laptop.rename(
     columns={
         "i/o ports": "Ports & Slots",
@@ -684,7 +727,13 @@ laptop_columns=[
     "Height(mm)",
     "Width(mm)",
     "Depth(mm)",
-    "Weight(kg)"
+    "Weight(kg)",
+    "WWAN",
+    "NFC",
+    "FPR",
+    "FPR_model",
+    "Power Supply",
+    "Web Link",
 ]
 
 
