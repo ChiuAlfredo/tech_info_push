@@ -121,4 +121,8 @@ for i in range(len(json_data)):
             B = pd.DataFrame(B,index = A)
             B.columns = [j-1]
             C = C.merge(B,how = "outer",left_index=True, right_index=True)
-C.to_excel("Lenovo_docking.xlsx")
+            
+C = C.T
+C['Weight(kg)'] = C['Weight']
+C = C[["Type","Brand","Model Name","Official Price","Ports & Slots","Power Supply","Weight(kg)","Web Link"]]
+C.to_csv("./data/lenovo/docking.csv",encoding="utf-8-sig",index=False)

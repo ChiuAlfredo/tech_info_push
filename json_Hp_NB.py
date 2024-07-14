@@ -255,6 +255,11 @@ for i in range(len(json_data)):
                     C = C.merge(B,how = "outer",left_index=True, right_index=True) 
         except:
             pass
-                
-    C.to_excel("HP_NB.xlsx")
+
+C =C.T
+C['Hard Drive'] = C['Storage']
+C['WWAN'] = C['Wireless']
+C['Power Supply'] = C['Power']
+C = C[["Type","Brand","Model Name","Official Price","Ports & Slots","Camera","Display","Primary Battery","Processor","Graphics Card","Hard Drive","Memory","Operating System","Audio and Speakers","Height(mm)","Width(mm)","Depth(mm)","Weight(kg)","WWAN","NFC","FPR_model","FPR",'Power Supply',"Web Link"]]
+C.to_csv("./data/hp/laptop.csv",encoding='utf-8-sig',index=False)
     
