@@ -1151,7 +1151,7 @@ keyword_list = ["laptop", "desktop", "docking"]
 company = "Dell"
 
 for keyword in keyword_list:
-    keyword = keyword_list[2]
+    # keyword = keyword_list[2]
     search_crawl(keyword, company)
     
     if keyword == "laptop":
