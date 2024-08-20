@@ -4,6 +4,8 @@ import json
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 import pandas as pd
+from requests.exceptions import TooManyRedirects
+
 
 
 def search_crawl(keyword, company):
@@ -76,119 +78,15 @@ def detail_crawl(keyword, company):
     product_detail_list = []
     error_link = []
     for product in tqdm(products_list):
-        # product = products_list[0]
+        # product = products_list[404]
         try:
             # burp0_url = 'https://www.dell.com/en-us/shop/dell-computer-laptops/mobile-precision-5690-ai-ready/spd/precision-16-5690-laptop/xctop5690usaivp'
             burp0_url = product["Web Link"]
-            burp0_cookies = {
-                "search-visitorId": "fa91cb13-eefa-4498-af12-3da6919d5160",
-                "DellCEMSession": "62E3E1AD97375350700F45FC6512EF67",
-                "akGD": "%7B%22country%22%3A%22TW%22%2C%22region%22%3A%22%22%7D",
-                "um_g_uc": "false",
-                "akaas_dell_com_product_search_us": "1723270848~rv=46~id=4661a4adb5bb115d4df78c599b5929bd",
-                "check": "true",
-                "s_ecid": "MCMID%7C05594863603858791913966452533384812014",
-                "txUid": "CraxQWaPecG1L7VKRsh4Ag==",
-                "AMCVS_4DD80861515CAB990A490D45%40AdobeOrg": "1",
-                "AMCV_4DD80861515CAB990A490D45%40AdobeOrg": "179643557%7CMCIDTS%7C19916%7CMCMID%7C05594863603858791913966452533384812014%7CMCAID%7CNONE%7CMCOPTOUT-1720686051s%7CNONE%7CvVersion%7C5.5.0",
-                "lwp": "c=us&l=en&s=bsd&cs=04",
-                "dc-ctxt": "c=US&l=en&sdn=work",
-                "ak_bmsc": "D5B6FFDD3175D4B9406680C1C366F599~000000000000000000000000000000~YAAQhIpFyzljzJCQAQAAeaNzoBjQOADERZYs13py685OfPujopRw7brsakdsxEiE0G4pXoAnTgupERkzYN/3Ygzx1ujOL9YwsAmsXtKPVR0NfzMIcCXyYqahoZ+YPaylAKOQjhPDo7Fd9QGq0zFdADVnL7JTLFDyr/1RRoXBGmMtjfqSDAK2z+1ADya9wWGCe1BoaHUD13DXb+Sx5ix0DqPFMpjEgD5ZHgancrh+UaZRLzhs4jGs+H062fGaI6ZGmkqvewg2SDb1acLBGbZs4oBdW94FyLDj7bt3EoEtzCGF+4oVz1/8+/vvKiss0Nz9RlYzVlAifr6EpWV5qIU6CIC3wA21hll5GhUy8jH17NqLKysR8IN0yWQdwxDKE//fqicuUNgY26HRA1/mGp0Axwv26EH9gs5ENNuvKApK5Gv9g6m2bwaE89bOMdoughULnTwe5Llwl3J6yg==",
-                "rumCki": "false",
-                "s_c49": "c%3Dus%26l%3Den%26s%3Dbsd%26cs%3D04",
-                "v36": "laptop",
-                "s_cc": "true",
-                "__privaci_cookie_consent_uuid": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46",
-                "__privaci_cookie_consent_generated": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46",
-                "__privaci_cookie_no_action": '{"status":"no-action-consent"}',
-                "_gcl_au": "1.1.1678367427.1720678865",
-                "dell_cmp_consent": '{"s":1,"m":1,"e":1}',
-                "d_vi": "848a45cbb45a0300d0798f662600000023010000",
-                "dell_consent_map": "139%7C140",
-                "_cls_v": "9dc90fc3-cbe6-42d5-9542-c7a2df6a2cf6",
-                "_cls_s": "7d9487d1-e5dd-40e2-8762-03c17b86f52f:0",
-                "_ga": "GA1.1.1795885693.1720678865",
-                "ajs_anonymous_id": "023e8c65-3bbf-4224-bdaa-323eed962092",
-                "_cs_c": "0",
-                "_fbp": "fb.1.1720678865737.353943247",
-                "FPID": "FPID2.2.b1WEQc6AyZu2v%2FWqvf%2BaIOi88m1Jllk49mo8i5jMQ8c%3D.1720678865",
-                "FPAU": "1.1.1678367427.1720678865",
-                "FPLC": "da42pareJ9DDbdUsepE9NGENDZky%2FJsB2Q5H9xU3X5sMauhj8yrjkX0t%2FBeSCxr7fnTlqYaIgm7vkBhglbSsbtFq9TIcgfz9EFfxqj1k4O3u%2B3L%2FHu1oJjDjlPR51A%3D%3D",
-                "_scid": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785",
-                "_an_uid": "4436268287014373078",
-                "_gd_visitor": "1a3db6f0-2c82-4a4b-8857-38041b965e6e",
-                "_gd_session": "6470b0de-3d40-4f88-850e-e9ef6af653a1",
-                "_ScCbts": "%5B%5D",
-                "_sctr": "1%7C1720627200000",
-                "_abck": "115AC061C9005533F55227986749F8A0~0~YAAQhIpFyzgQzZCQAQAATI2qoAwy+OeZHaFyiuIROm6l/N/8lvDh3JRyQpzrBywzSx2jodNNXMuoOsIRnIe2MyjB1YQqFvRslv3X3kVKsSB8te211msv7vhw/Lx1336eeNYfmppyzXKdulKEWTeUT5BkDweDs2kNniPtRSbD0Ds8dovSdoKv3egcAylvXpAUGcd5gnGmv8OSLtHRLaasWR4x9c0HdKyz7SKDGiReR3dOS9tp54OA302BBOveEpoZtry6lqF8oiK8k49FpgescfTM0Ludzw2bEo1kNoCMpNd+BGbaHzq8sSAN+4IKFVpoPgjo003MI4KQlFSncYIL8QYT4rkyg4KDVy6WyRh4vSI8prVauGIf25uWZqW7eWcUsszDX/taWgTuNdPJWe5ZW7p3JMth5A==~-1~-1~1720686050",
-                "AKA_A2": "A",
-                "akavpau_vp2": "1720685973~id=a46d1e3d9e89dcd44b5b215256348af5",
-                "bm_sz": "C762CAE0F9F8EF00367946E5D02918B9~YAAQxONH0q8MlZ+QAQAAQrvboBgDQJcwIUvI3w4OfJ5Y3t4F/hKK5/0XS04nNJflJ6u4yh9F5+wtSYVVAyrXmjaTfCDAISajXRitLlfUKC/LdAJDZWN/IGYHTdfJ0ZZ+1vntU4I4M5TW+LP0aNOUuSMierAhoB31LSlpDbMFDyRwoXHgdIvOzHNLWXvyhweY8+Kv6Nm4AZvc3FBe9JTTRTC+KaCxdNzsXh8UugC6cFx1u2bGVJ9bxwZdkBNYMpJc3Ouce6eWzw0LGw5NlxOiFYDgwWXWRydFQmTzQUjX6adpeH3IWhDR5qcF++rb2LS/KItMSDqUw+kGifE4Om4z+D4l5ikPYnOm6t5RwCl2scbIei/0FVrPOKwXfX+xReZqa/YK6ibD8r09FgJ7ytzCbOTwE+AJRQ==~3227973~3687988",
-                "mbox": "PC#81a2e7edaca34af1838859a74a05ec00.32_0#1783930475|session#12efc507c1984004bc87de995034771b#1720687535",
-                "mboxEdgeCluster": "32",
-                "ooc-country-code": "us",
-                "akavpau_maintenance_vp": "1720685985~id=231f07aadf356a434fcf9b630fba58ad",
-                "akaas_dell_com_configure_unifiedpd_splits": "1723277685~rv=61~id=c5c02ba29f96949499e0cb8f33224eb7",
-                "adcloud": "{%22_les_v%22:%22y%2Cdell.com%2C1720687486%22}",
-                "gpv_pn": "us%7Cen%7Cbsd%7C04%7Cstp%7Cshop%7Ceuc%7Cunifiedproductdetails%7Cinspiron-14-7440-laptop",
-                "s_ips": "773",
-                "s_tp": "7040",
-                "s_ppv": "us%257Cen%257Cbsd%257C04%257Cstp%257Cshop%257Ceuc%257Cunifiedproductdetails%257Cinspiron-14-7440-laptop%2C11%2C11%2C11%2C773%2C9%2C1",
-                "cidlid": "%3A%3A",
-                "s_depth": "1",
-                "s_vnc365": "1752221687136%26vn%3D2",
-                "s_ivc": "true",
-                "_cs_mk": "0.39712391903850053_1720685688595",
-                "FPGSID": "1.1720685689.1720685689.G-5932KMEGPX.EzrulQerMWi3Bc8jTpeXJw",
-                "p13np": "dhs",
-                "_lr_geo_location": "TW",
-                "d_dnb": "true",
-                "_uetsid": "a72e76603f5d11ef937513c7b412d44f",
-                "_uetvid": "a72e9a603f5d11ef9e9f83c81ad3cedd",
-                "_scid_r": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785",
-                "_rdt_uuid": "1720685694616.e8c35a74-6347-4f53-80a5-b5c301820c60",
-                "_evga_b184": "{%22uuid%22:%220bf99460a2cca1a8%22}",
-                "_sfid_c405": "{%22anonymousId%22:%220bf99460a2cca1a8%22%2C%22consents%22:[]}",
-                "_ga_1234567890": "GS1.1.1720685674.2.1.1720685695.0.0.1329871230",
-                "_fbp": "fb.1.1720678865737.353943247",
-                "_tt_enable_cookie": "1",
-                "_ttp": "rwG7PC8y1a_ZaSYIm0cIeWWELW8",
-                "_pin_unauth": "dWlkPU5HUXhPR05rWW1FdFlqZzRZeTAwTUdOaExXRmhNemt0TVRjMU1XVTRaVFZqTWpCbA",
-                "_ga_16419196": "GS1.1.1720685674.2.0.1720685701.0.0.0",
-                "_ga_16418520": "GS1.1.1720685674.2.0.1720685701.0.0.0",
-                "__qca": "P0-557024765-1720685693346",
-                "_cs_cvars": "%7B%7D",
-                "_cs_id": "4dffab88-9eaa-ae95-ed72-c334bacc6de1.1720678869.2.1720685722.1720685669.1709063960.1754842869031.1",
-                "_cs_s": "2.5.0.1720687522476",
-                "ipe_s": "07a89636-0851-a14e-9c3d-52e685e57213",
-                "ipe.184.pageViewedCount": "1",
-                "ipe.184.pageViewedDay": "193",
-                "ipe_184_fov": "%7B%22numberOfVisits%22%3A1%2C%22sessionId%22%3A%2207a89636-0851-a14e-9c3d-52e685e57213%22%2C%22expiry%22%3A%222024-08-10T08%3A15%3A24.058Z%22%2C%22lastVisit%22%3A%222024-07-11T08%3A15%3A24.058Z%22%7D",
-                "bm_sv": "DC1FB9A765FDF16764D9E8C42A4D7BD1~YAAQxONH0vtElZ+QAQAAg7jdoBhIheiqCd5TCv6Y+GTT7GyTPlSdz6g+Jnud1lIWLFU6IlpZFHzq0D9ajVzs1EHWN9pMJ3q18vDLnyirncJpW2UmPx8uo0WP2a/V5qcPoIRerbuEeLFblG+aLx5oquHyhifrlD2AjhI4Ni52/MUyCLaSUDdovGX+rFP/gPSa97cl2mQgheiSS+fT2PDyUFr6DMTmmGhdl/Dya1qz9ygoMDhO2yF7iKarARn6POw=~1",
-            }
-            burp0_headers = {
-                "Cache-Control": "max-age=0",
-                "Dpr": "1",
-                "Sec-Ch-Dpr": "1",
-                "Viewport-Width": "1600",
-                "Sec-Ch-Viewport-Width": "1600",
-                "Sec-Ch-Ua": '"Not/A)Brand";v="8", "Chromium";v="126"',
-                "Sec-Ch-Ua-Mobile": "?0",
-                "Sec-Ch-Ua-Platform": '"Windows"',
-                "Accept-Language": "zh-TW",
-                "Upgrade-Insecure-Requests": "1",
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.127 Safari/537.36",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-                "Sec-Fetch-Site": "none",
-                "Sec-Fetch-Mode": "navigate",
-                "Sec-Fetch-User": "?1",
-                "Sec-Fetch-Dest": "document",
-                "Accept-Encoding": "gzip, deflate, br",
-                "Priority": "u=0, i",
-            }
-            response = requests.get(
-                burp0_url, headers=burp0_headers, cookies=burp0_cookies
-            )
+
+            # burp0_cookies = {"search-visitorId": "fa91cb13-eefa-4498-af12-3da6919d5160", "akGD": "%7B%22country%22%3A%22TW%22%2C%22region%22%3A%22%22%7D", "s_ecid": "MCMID%7C05594863603858791913966452533384812014", "AMCV_4DD80861515CAB990A490D45%40AdobeOrg": "179643557%7CMCIDTS%7C19916%7CMCMID%7C05594863603858791913966452533384812014%7CMCAID%7CNONE%7CMCOPTOUT-1720686051s%7CNONE%7CvVersion%7C5.5.0", "lwp": "c=us&l=en&s=bsd&cs=04", "__privaci_cookie_consent_uuid": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46", "__privaci_cookie_consent_generated": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46", "_gcl_au": "1.1.1678367427.1720678865", "d_vi": "848a45cbb45a0300d0798f662600000023010000", "_cls_v": "9dc90fc3-cbe6-42d5-9542-c7a2df6a2cf6", "_ga": "GA1.1.1795885693.1720678865", "ajs_anonymous_id": "023e8c65-3bbf-4224-bdaa-323eed962092", "_cs_c": "0", "_fbp": "fb.1.1720678865737.353943247", "FPID": "FPID2.2.b1WEQc6AyZu2v%2FWqvf%2BaIOi88m1Jllk49mo8i5jMQ8c%3D.1720678865", "FPAU": "1.1.1678367427.1720678865", "_scid": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785", "_gd_visitor": "1a3db6f0-2c82-4a4b-8857-38041b965e6e", "_sctr": "1%7C1720627200000", "_evga_b184": "{%22uuid%22:%220bf99460a2cca1a8%22}", "_sfid_c405": "{%22anonymousId%22:%220bf99460a2cca1a8%22%2C%22consents%22:[]}", "_fbp": "fb.1.1720678865737.353943247", "_tt_enable_cookie": "1", "_ttp": "rwG7PC8y1a_ZaSYIm0cIeWWELW8", "_pin_unauth": "dWlkPU5HUXhPR05rWW1FdFlqZzRZeTAwTUdOaExXRmhNemt0TVRjMU1XVTRaVFZqTWpCbA", "__qca": "P0-557024765-1720685693346", "s_vnc365": "1752287676089%26vn%3D3", "mbox": "PC#81a2e7edaca34af1838859a74a05ec00.32_0#1783996481|session#3108bd02081b4c0aaa3bc521b0eadea5#1720753541", "adcloud": "{%22_les_v%22:%22y%2Cdell.com%2C1720753480%22}", "_rdt_uuid": "1720685694616.e8c35a74-6347-4f53-80a5-b5c301820c60", "_uetvid": "a72e9a603f5d11ef9e9f83c81ad3cedd", "_scid_r": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785", "BVBRANDID": "b50f55fd-fa93-44e7-ae4d-faac503eb833", "p13np": "dhs", "_abck": "115AC061C9005533F55227986749F8A0~0~YAAQxONH0iWOfquQAQAAMqjPsAwl55mGitTzibc6hcli5BvO7ploBgxMZkPOG1PERJeVs9n96FUuC4GZdWydCOcRxvdFfaaFObASuLtqp1K5Jb3mLXeotvYAslJ8FFKzKcqytBsIzz0appbH7lClj2NKosUQ5F2FPotVzN04YEG2DN+gR/JpT5N3pXRYSAlbK33gRL+mnSztcCk2+gscxcDl2vjmgUil8uskBMPI0+5d0haYi4u7UYWkt5yX5AFpKg/BcEXnHHJZS1WyI+mcw0aCKEeVOyvqRWV4lbgaHBv/WJT62tM/iPL3xq+KRfQsfppAd6Pp5cRoTgEjR9Aw/qgF9O1NNucGFSF5iO40GtQj8psGr3XS5q5+Lw0Qo2xjO7+nCRB4raKRO7VjyPuNCkhJhVnPcg==~-1~-1~1720953316", "_cs_id": "4dffab88-9eaa-ae95-ed72-c334bacc6de1.1720678869.4.1720953753.1720953753.1709063960.1754842869031.1", "_ga_1234567890": "GS1.1.1720953754.4.0.1720953754.0.0.1388017742", "_ga_16419196": "GS1.1.1720953754.4.0.1720953754.0.0.0", "_ga_16418520": "GS1.1.1720953754.4.0.1720953754.0.0.0"}
+            # burp0_headers = {"Dpr": "1", "Sec-Ch-Dpr": "1", "Viewport-Width": "1600", "Sec-Ch-Viewport-Width": "1600", "Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Sec-Ch-Ua-Mobile": "?0", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept-Language": "zh-TW", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "Sec-Fetch-Site": "none", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1", "Sec-Fetch-Dest": "document", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=0, i", "Connection": "keep-alive"}
+
+            response = requests.get(burp0_url)
             soup = BeautifulSoup(response.content, "html.parser")
             
 
@@ -207,8 +105,10 @@ def detail_crawl(keyword, company):
                 spect_dict = {}
                 for i in product_soup:
                     # i  = product_soup[0]
-                    spect_dict[i.select_one('.spec__child__heading').get_text(strip=True).lower()] = ','.join([i.get_text(strip=True) for i in i.select('.spec__item')])
-
+                    spect_dict[i.select_one('.spec__child__heading').get_text(strip=True).lower()] = ',\n'.join([i.get_text(strip=True) for i in i.select('.spec__item')])
+            else:
+                error_link.append(**product)
+                
             if spect_dict == {}:
                 ports_and_slots_element = soup.select_one('[data-title="Ports & Slots"]')
                 if ports_and_slots_element:
@@ -234,10 +134,12 @@ def detail_crawl(keyword, company):
                     if "finger" in content_text:
                         spect_dict["FPR"] = "Yes"
                 product_detail_list.append({**product, **spect_dict})
-
+        except TooManyRedirects as e:
+            # logging.error("Too many redirects: %s", e)
+            error_link.append(product)
         except Exception as e:
             print(e)
-            error_link.append(**product)
+            error_link.append(product)
 
     with open(f"./data/{company}/{keyword}_detail_list.json", "w") as f:
         json.dump(product_detail_list, f)
@@ -257,11 +159,11 @@ def detail_crawl_more(keyword, company):
 
     error_link = []
     for error_product in tqdm(error_link_previous):
-        # error_product = error_link_previous[43]
+        # error_product = error_link_previous[59]
         try:
             link = error_product["Web Link"]
 
-            # link = 'https://www.dell.com/en-us/shop/dell-computer-laptops/mobile-precision-5690-ai-ready/spd/precision-16-5690-laptop/xctop5690usaivp'
+            # link = 'https://www.dell.com/en-us/shop/desktop-computers/xps-desktop/spd/xps-8960-desktop/usexpsthcto8960rpl27'
             # https://www.dell.com/en-us/shop/pdr/latitude-15-5550-laptop/gctol5550usvp?selectionState=&cartItemId=
             # https://www.dell.com/en-us/shop/dell-computer-laptops/latitude-5550-laptop/spd/latitude-15-5550-laptop/gctol5550usvp?redirectTo=SOC
 
@@ -271,114 +173,9 @@ def detail_crawl_more(keyword, company):
                 + "?selectionState=&cartItemId="
             )
 
-            burp0_cookies = {
-                "search-visitorId": "fa91cb13-eefa-4498-af12-3da6919d5160",
-                "DellCEMSession": "62E3E1AD97375350700F45FC6512EF67",
-                "akGD": "%7B%22country%22%3A%22TW%22%2C%22region%22%3A%22%22%7D",
-                "um_g_uc": "false",
-                "akaas_dell_com_product_search_us": "1723270848~rv=46~id=4661a4adb5bb115d4df78c599b5929bd",
-                "check": "true",
-                "s_ecid": "MCMID%7C05594863603858791913966452533384812014",
-                "txUid": "CraxQWaPecG1L7VKRsh4Ag==",
-                "AMCVS_4DD80861515CAB990A490D45%40AdobeOrg": "1",
-                "AMCV_4DD80861515CAB990A490D45%40AdobeOrg": "179643557%7CMCIDTS%7C19916%7CMCMID%7C05594863603858791913966452533384812014%7CMCAID%7CNONE%7CMCOPTOUT-1720686051s%7CNONE%7CvVersion%7C5.5.0",
-                "lwp": "c=us&l=en&s=bsd&cs=04",
-                "dc-ctxt": "c=US&l=en&sdn=work",
-                "ak_bmsc": "D5B6FFDD3175D4B9406680C1C366F599~000000000000000000000000000000~YAAQhIpFyzljzJCQAQAAeaNzoBjQOADERZYs13py685OfPujopRw7brsakdsxEiE0G4pXoAnTgupERkzYN/3Ygzx1ujOL9YwsAmsXtKPVR0NfzMIcCXyYqahoZ+YPaylAKOQjhPDo7Fd9QGq0zFdADVnL7JTLFDyr/1RRoXBGmMtjfqSDAK2z+1ADya9wWGCe1BoaHUD13DXb+Sx5ix0DqPFMpjEgD5ZHgancrh+UaZRLzhs4jGs+H062fGaI6ZGmkqvewg2SDb1acLBGbZs4oBdW94FyLDj7bt3EoEtzCGF+4oVz1/8+/vvKiss0Nz9RlYzVlAifr6EpWV5qIU6CIC3wA21hll5GhUy8jH17NqLKysR8IN0yWQdwxDKE//fqicuUNgY26HRA1/mGp0Axwv26EH9gs5ENNuvKApK5Gv9g6m2bwaE89bOMdoughULnTwe5Llwl3J6yg==",
-                "rumCki": "false",
-                "s_c49": "c%3Dus%26l%3Den%26s%3Dbsd%26cs%3D04",
-                "v36": "laptop",
-                "s_cc": "true",
-                "__privaci_cookie_consent_uuid": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46",
-                "__privaci_cookie_consent_generated": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46",
-                "__privaci_cookie_no_action": '{"status":"no-action-consent"}',
-                "_gcl_au": "1.1.1678367427.1720678865",
-                "dell_cmp_consent": '{"s":1,"m":1,"e":1}',
-                "d_vi": "848a45cbb45a0300d0798f662600000023010000",
-                "dell_consent_map": "139%7C140",
-                "_cls_v": "9dc90fc3-cbe6-42d5-9542-c7a2df6a2cf6",
-                "_cls_s": "7d9487d1-e5dd-40e2-8762-03c17b86f52f:0",
-                "_ga": "GA1.1.1795885693.1720678865",
-                "ajs_anonymous_id": "023e8c65-3bbf-4224-bdaa-323eed962092",
-                "_cs_c": "0",
-                "_fbp": "fb.1.1720678865737.353943247",
-                "FPID": "FPID2.2.b1WEQc6AyZu2v%2FWqvf%2BaIOi88m1Jllk49mo8i5jMQ8c%3D.1720678865",
-                "FPAU": "1.1.1678367427.1720678865",
-                "FPLC": "da42pareJ9DDbdUsepE9NGENDZky%2FJsB2Q5H9xU3X5sMauhj8yrjkX0t%2FBeSCxr7fnTlqYaIgm7vkBhglbSsbtFq9TIcgfz9EFfxqj1k4O3u%2B3L%2FHu1oJjDjlPR51A%3D%3D",
-                "_scid": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785",
-                "_an_uid": "4436268287014373078",
-                "_gd_visitor": "1a3db6f0-2c82-4a4b-8857-38041b965e6e",
-                "_gd_session": "6470b0de-3d40-4f88-850e-e9ef6af653a1",
-                "_ScCbts": "%5B%5D",
-                "_sctr": "1%7C1720627200000",
-                "_abck": "115AC061C9005533F55227986749F8A0~0~YAAQhIpFyzgQzZCQAQAATI2qoAwy+OeZHaFyiuIROm6l/N/8lvDh3JRyQpzrBywzSx2jodNNXMuoOsIRnIe2MyjB1YQqFvRslv3X3kVKsSB8te211msv7vhw/Lx1336eeNYfmppyzXKdulKEWTeUT5BkDweDs2kNniPtRSbD0Ds8dovSdoKv3egcAylvXpAUGcd5gnGmv8OSLtHRLaasWR4x9c0HdKyz7SKDGiReR3dOS9tp54OA302BBOveEpoZtry6lqF8oiK8k49FpgescfTM0Ludzw2bEo1kNoCMpNd+BGbaHzq8sSAN+4IKFVpoPgjo003MI4KQlFSncYIL8QYT4rkyg4KDVy6WyRh4vSI8prVauGIf25uWZqW7eWcUsszDX/taWgTuNdPJWe5ZW7p3JMth5A==~-1~-1~1720686050",
-                "AKA_A2": "A",
-                "akavpau_vp2": "1720685973~id=a46d1e3d9e89dcd44b5b215256348af5",
-                "bm_sz": "C762CAE0F9F8EF00367946E5D02918B9~YAAQxONH0q8MlZ+QAQAAQrvboBgDQJcwIUvI3w4OfJ5Y3t4F/hKK5/0XS04nNJflJ6u4yh9F5+wtSYVVAyrXmjaTfCDAISajXRitLlfUKC/LdAJDZWN/IGYHTdfJ0ZZ+1vntU4I4M5TW+LP0aNOUuSMierAhoB31LSlpDbMFDyRwoXHgdIvOzHNLWXvyhweY8+Kv6Nm4AZvc3FBe9JTTRTC+KaCxdNzsXh8UugC6cFx1u2bGVJ9bxwZdkBNYMpJc3Ouce6eWzw0LGw5NlxOiFYDgwWXWRydFQmTzQUjX6adpeH3IWhDR5qcF++rb2LS/KItMSDqUw+kGifE4Om4z+D4l5ikPYnOm6t5RwCl2scbIei/0FVrPOKwXfX+xReZqa/YK6ibD8r09FgJ7ytzCbOTwE+AJRQ==~3227973~3687988",
-                "mbox": "PC#81a2e7edaca34af1838859a74a05ec00.32_0#1783930475|session#12efc507c1984004bc87de995034771b#1720687535",
-                "mboxEdgeCluster": "32",
-                "ooc-country-code": "us",
-                "akavpau_maintenance_vp": "1720685985~id=231f07aadf356a434fcf9b630fba58ad",
-                "akaas_dell_com_configure_unifiedpd_splits": "1723277685~rv=61~id=c5c02ba29f96949499e0cb8f33224eb7",
-                "adcloud": "{%22_les_v%22:%22y%2Cdell.com%2C1720687486%22}",
-                "gpv_pn": "us%7Cen%7Cbsd%7C04%7Cstp%7Cshop%7Ceuc%7Cunifiedproductdetails%7Cinspiron-14-7440-laptop",
-                "s_ips": "773",
-                "s_tp": "7040",
-                "s_ppv": "us%257Cen%257Cbsd%257C04%257Cstp%257Cshop%257Ceuc%257Cunifiedproductdetails%257Cinspiron-14-7440-laptop%2C11%2C11%2C11%2C773%2C9%2C1",
-                "cidlid": "%3A%3A",
-                "s_depth": "1",
-                "s_vnc365": "1752221687136%26vn%3D2",
-                "s_ivc": "true",
-                "_cs_mk": "0.39712391903850053_1720685688595",
-                "FPGSID": "1.1720685689.1720685689.G-5932KMEGPX.EzrulQerMWi3Bc8jTpeXJw",
-                "p13np": "dhs",
-                "_lr_geo_location": "TW",
-                "d_dnb": "true",
-                "_uetsid": "a72e76603f5d11ef937513c7b412d44f",
-                "_uetvid": "a72e9a603f5d11ef9e9f83c81ad3cedd",
-                "_scid_r": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785",
-                "_rdt_uuid": "1720685694616.e8c35a74-6347-4f53-80a5-b5c301820c60",
-                "_evga_b184": "{%22uuid%22:%220bf99460a2cca1a8%22}",
-                "_sfid_c405": "{%22anonymousId%22:%220bf99460a2cca1a8%22%2C%22consents%22:[]}",
-                "_ga_1234567890": "GS1.1.1720685674.2.1.1720685695.0.0.1329871230",
-                "_fbp": "fb.1.1720678865737.353943247",
-                "_tt_enable_cookie": "1",
-                "_ttp": "rwG7PC8y1a_ZaSYIm0cIeWWELW8",
-                "_pin_unauth": "dWlkPU5HUXhPR05rWW1FdFlqZzRZeTAwTUdOaExXRmhNemt0TVRjMU1XVTRaVFZqTWpCbA",
-                "_ga_16419196": "GS1.1.1720685674.2.0.1720685701.0.0.0",
-                "_ga_16418520": "GS1.1.1720685674.2.0.1720685701.0.0.0",
-                "__qca": "P0-557024765-1720685693346",
-                "_cs_cvars": "%7B%7D",
-                "_cs_id": "4dffab88-9eaa-ae95-ed72-c334bacc6de1.1720678869.2.1720685722.1720685669.1709063960.1754842869031.1",
-                "_cs_s": "2.5.0.1720687522476",
-                "ipe_s": "07a89636-0851-a14e-9c3d-52e685e57213",
-                "ipe.184.pageViewedCount": "1",
-                "ipe.184.pageViewedDay": "193",
-                "ipe_184_fov": "%7B%22numberOfVisits%22%3A1%2C%22sessionId%22%3A%2207a89636-0851-a14e-9c3d-52e685e57213%22%2C%22expiry%22%3A%222024-08-10T08%3A15%3A24.058Z%22%2C%22lastVisit%22%3A%222024-07-11T08%3A15%3A24.058Z%22%7D",
-                "bm_sv": "DC1FB9A765FDF16764D9E8C42A4D7BD1~YAAQxONH0vtElZ+QAQAAg7jdoBhIheiqCd5TCv6Y+GTT7GyTPlSdz6g+Jnud1lIWLFU6IlpZFHzq0D9ajVzs1EHWN9pMJ3q18vDLnyirncJpW2UmPx8uo0WP2a/V5qcPoIRerbuEeLFblG+aLx5oquHyhifrlD2AjhI4Ni52/MUyCLaSUDdovGX+rFP/gPSa97cl2mQgheiSS+fT2PDyUFr6DMTmmGhdl/Dya1qz9ygoMDhO2yF7iKarARn6POw=~1",
-            }
-            burp0_headers = {
-                "Cache-Control": "max-age=0",
-                "Dpr": "1",
-                "Sec-Ch-Dpr": "1",
-                "Viewport-Width": "1600",
-                "Sec-Ch-Viewport-Width": "1600",
-                "Sec-Ch-Ua": '"Not/A)Brand";v="8", "Chromium";v="126"',
-                "Sec-Ch-Ua-Mobile": "?0",
-                "Sec-Ch-Ua-Platform": '"Windows"',
-                "Accept-Language": "zh-TW",
-                "Upgrade-Insecure-Requests": "1",
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.127 Safari/537.36",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-                "Sec-Fetch-Site": "none",
-                "Sec-Fetch-Mode": "navigate",
-                "Sec-Fetch-User": "?1",
-                "Sec-Fetch-Dest": "document",
-                "Accept-Encoding": "gzip, deflate, br",
-                "Priority": "u=0, i",
-            }
+
             response = requests.get(
-                new_link, headers=burp0_headers, cookies=burp0_cookies
+                new_link
             )
             soup = BeautifulSoup(response.content, "html.parser")
 
@@ -549,6 +346,7 @@ def detail_crawl_more(keyword, company):
                     
                     spect_dict[key] = value
             
+            
                 
             if spect_dict == {}:
                 error_link.append({**error_product})
@@ -584,9 +382,13 @@ def detail_crawl_more(keyword, company):
                     spect_dict["FPR"] = "Yes"
                     
                 product_detail_list.append({**error_product, **spect_dict})
+                
+        except TooManyRedirects as e:
+            # logging.error("Too many redirects: %s", e)
+            error_link.append(error_product)
         except Exception as e:
             print(e)
-            error_link.append(**error_product)
+            error_link.append(error_product)
 
     with open(f"./data/{company}/{keyword}_detail_list.json", "w") as f:
         json.dump(product_detail_list, f)
@@ -769,7 +571,7 @@ def detail_laptop(keyword, company):
     df_laptop["FPR"] = df_laptop.apply(set_fpr, axis=1)
     df_laptop["FPR_model"] = None
 
-    df_laptop["Power Supply"] = df_laptop["power"] + df_laptop["power supply"]
+    df_laptop["Power Supply"] = df_laptop["power"] 
     df_laptop["Brand"] = company
 
     df_laptop["Official Price"] = df_laptop["Official Price"].str.replace(

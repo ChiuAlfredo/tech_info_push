@@ -1,0 +1,215 @@
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): odinapi.asus.com:443
+DEBUG:urllib3.connectionpool:https://odinapi.asus.com:443 "GET /recent-data/apiv2/SearchResult?SystemCode=asus&WebsiteCode=global&SearchKey='laptop'&SearchType=products&SearchPDLine=&SearchPDLine2=&PDLineFilter=&TopicFilter=&CateFilter=&PageSize=900&Pages=1&LocalFlag=0&siteID=www&sitelang= HTTP/1.1" 200 162900
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/ASUS-Vivobook-16X-OLED-K3604//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/ASUS-Vivobook-16X-OLED-K3604/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/asus-vivobook-16x-oled-k3604/techspec/ HTTP/1.1" 200 55640
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-L1-L1400//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-L1-L1400/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-work/expertbook/expertbook-l1-l1400/techspec/ HTTP/1.1" 200 55871
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-Flip-14-TP412//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-Flip-14-TP412/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/vivobook-flip-14-tp412/techspec/ HTTP/1.1" 200 59249
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): rog.asus.com:443
+DEBUG:urllib3.connectionpool:https://rog.asus.com:443 "GET /laptops/rog-flow/rog-flow-z13-2023-series//spec/ HTTP/1.1" 200 None
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1503-electro-punk-model/
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-14X-UM5401-AMD-Ryzen-6000-series//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-14X-UM5401-AMD-Ryzen-6000-series/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/zenbook/zenbook-14x-um5401-amd-ryzen-6000-series/techspec/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-L2-L2402C-AMD-Ryzen-5000-series//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-L2-L2402C-AMD-Ryzen-5000-series/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-work/expertbook/expertbook-l2-l2402c-amd-ryzen-5000-series/techspec/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-Flip-UX360//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-Flip-UX360/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/zenbook/zenbook-flip-ux360/techspec/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-OLED-B5602F-12th-Gen-Intel//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-OLED-B5602F-12th-Gen-Intel/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-work/expertbook/expertbook-b5-flip-oled-b5602f-12th-gen-intel/techspec/ HTTP/1.1" 200 55426
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/ASUS-Vivobook-S-16-OLED-M5606//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/ASUS-Vivobook-S-16-OLED-M5606/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/asus-vivobook-s-16-oled-m5606/techspec/ HTTP/1.1" 200 57912
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-15-UX533//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-15-UX533/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/zenbook/zenbook-15-ux533/techspec/ HTTP/1.1" 200 60451
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-S-UX391//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/Zenbook-S-UX391/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/zenbook/zenbook-s-ux391/techspec/ HTTP/1.1" 200 57769
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-16X-M1603-AMD-Ryzen-5000-series//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-16X-M1603-AMD-Ryzen-5000-series/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/vivobook-16x-m1603-amd-ryzen-5000-series/techspec/ HTTP/1.1" 200 57477
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-B7-Flip-B7402-13th-Gen-Intel//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Work/ExpertBook/ExpertBook-B7-Flip-B7402-13th-Gen-Intel/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-work/expertbook/expertbook-b7-flip-b7402-13th-gen-intel/techspec/ HTTP/1.1" 200 55709
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-S15-S530//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-S15-S530/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/vivobook-s15-s530/techspec/ HTTP/1.1" 200 57416
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-14-OLED-X1405//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-14-OLED-X1405/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/vivobook-14-oled-x1405/techspec/ HTTP/1.1" 200 60861
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F17-2022//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F17-2022/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-gaming/tuf-gaming/asus-tuf-gaming-f17-2022/techspec/ HTTP/1.1" 200 58533
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Vivobook/Vivobook-Pro-16-OLED-K6602//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Vivobook/Vivobook-Pro-16-OLED-K6602/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-creators/vivobook/vivobook-pro-16-oled-k6602/techspec/ HTTP/1.1" 200 62790
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Gaming/TUF-Gaming/FoneMate//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Gaming/TUF-Gaming/FoneMate/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-gaming/tuf-gaming/fonemate/techspec/ HTTP/1.1" 200 52635
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-M7601-AMD-Ryzen-6000-Series//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-M7601-AMD-Ryzen-6000-Series/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-creators/vivobook/vivobook-pro-16x-m7601-amd-ryzen-6000-series/techspec/ HTTP/1.1" 200 54758
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-Pro-14-M3401-AMD-Ryzen-5000-Series//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-Pro-14-M3401-AMD-Ryzen-5000-Series/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/vivobook-pro-14-m3401-amd-ryzen-5000-series/techspec/ HTTP/1.1" 200 54307
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-S15-S532-11th-Gen-Intel//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Vivobook/Vivobook-S15-S532-11th-Gen-Intel/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/vivobook/vivobook-s15-s532-11th-gen-intel/techspec/ HTTP/1.1" 200 56498
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): rog.asus.com:443
+DEBUG:urllib3.connectionpool:https://rog.asus.com:443 "GET /laptops/rog-zephyrus/2021-rog-zephyrus-g14-aw-se-series//spec/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): rog.asus.com:443
+DEBUG:urllib3.connectionpool:https://rog.asus.com:443 "GET /laptops/rog-zephyrus/rog-zephyrus-m-gm501-series//spec/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): rog.asus.com:443
+DEBUG:urllib3.connectionpool:https://rog.asus.com:443 "GET /laptops/rog-zephyrus/rog-zephyrus-duo-16-2022-series//spec/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Zenbook/Zenbook-Pro-15-OLED-UX535//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Zenbook/Zenbook-Pro-15-OLED-UX535/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-creators/zenbook/zenbook-pro-15-oled-ux535/techspec/ HTTP/1.1" 200 56097
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): rog.asus.com:443
+DEBUG:urllib3.connectionpool:https://rog.asus.com:443 "GET /laptops/rog-strix/rog-strix-scar-15-series//spec/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Students/Chromebook/ASUS-Chromebook-Enterprise-CM30-Detachable-CM3001//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Students/Chromebook/ASUS-Chromebook-Enterprise-CM30-Detachable-CM3001/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-students/chromebook/asus-chromebook-enterprise-cm30-detachable-cm3001/techspec/ HTTP/1.1" 200 52116
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Zenbook/Zenbook-Pro-Duo-15-OLED-UX582-11th-Gen-Intel//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Zenbook/Zenbook-Pro-Duo-15-OLED-UX582-11th-Gen-Intel/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-creators/zenbook/zenbook-pro-duo-15-oled-ux582-11th-gen-intel/techspec/ HTTP/1.1" 200 57630
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1500-gaming-backpack-model/
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1102//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1102/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-home/chromebook/asus-chromebook-cx1-cx1102/techspec/ HTTP/1.1" 200 53532
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Vivobook/ASUS-Vivobook-Pro-15-OLED-K6502//techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Creators/Vivobook/ASUS-Vivobook-Pro-15-OLED-K6502/techspec/ HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /laptops/for-creators/vivobook/asus-vivobook-pro-15-oled-k6502/techspec/ HTTP/1.1" 200 64330
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.asus.com:443
+DEBUG:urllib3.connectionpool:https://www.asus.com:443 "GET /Laptops/For-Home/Zenbook/zenbook-14-oled-ux3402//techspec/ HTTP/1.1" 301 None
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-messenger-14-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-backpack-bp1501g-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1503-electro-punk-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-backpack-15-6-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1500-gaming-backpack-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-3D-OLED-H7604/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-zephyrus-g14-sleeve-2022-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp2701-gaming-backpack-cybertext-edition/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp3703-core-gaming-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bc1001-waist-pack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp2500-gaming-backpack-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Work/All-series/ExpertBook-P1-P1440/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-shuttle-ii-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-carry-sleeve-15-6-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1503-gaming-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-ergoair-gaming-backpack/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-carry-sleeve-16/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S14-S410UQ/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-messenger-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-flow-sleeve-2022-model/
+INFO:root:no data:  https://www.asus.com/Laptops/Accessories/All-series/ASUS-65W-USB-C-Ultra-Mini-Universal-Adapter/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-zephyrus-g14-sleeve-ga401-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-bp4701-gaming-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp2701-gaming-backpack-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Max-X441UV/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-tech-pouch-bc1003/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-carry-bag-bc1004/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-weekender-17-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-PZ13-HT5306/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P5-P5405/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C213/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-3D-OLED-K6604/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-backpack-17-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp3703-gaming-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-sackpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-backpack-bp1501g-holographic-edition-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-gaming-backpack-16/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-artillery-backpack-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Flip-TP301UA/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bc1002-crossbody-bag-model/
+INFO:root:no data:  https://www.asus.com/Displays-Desktops/All-in-One-PCs/Everyday-use/Vivo-AiO-V200IB/
+INFO:root:no data:  https://www.asus.com/Displays-Desktops/Tower-PCs/ExpertCenter/ASUSPRO-D520MT/
+INFO:root:no data:  https://www.asus.com/Displays-Desktops/All-in-One-PCs/Everyday-use/Vivo-AiO-V220IB/
+INFO:root:no data:  https://www.asus.com/Displays-Desktops/Tower-PCs/Everyday-use/ASUS-S500TER/
+INFO:root:no data:  https://www.asus.com/Displays-Desktops/All-in-One-PCs/Everyday-use/Vivo-AiO-V220IC/
+INFO:root:no data:  https://www.asus.com/Accessories/Docks-Dongles-and-Cable/ASUS-Docks-Dongles-and-Cable/ASUS_USB30_HZ3A_Docking_Station/
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
+ERROR:root:'text'
+ERROR:root:list indices must be integers or slices, not str
