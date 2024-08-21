@@ -367,8 +367,8 @@ def detail_laptop(company, keyword):
         else:
             # Return the original string if no match is found
             return weight_str
-    
-    merged_df['Weight(kg)'] =  merged_df['weight_x'].apply(lbs_to_kg)
+    merged_df['weight'] = merged_df['weight_x'].astype(str) + merged_df['weight_y'].astype(str)
+    merged_df['Weight(kg)'] =  merged_df['weight'].apply(lbs_to_kg)
     merged_df['WWAN'] = 'TBD'
     
     #TODO keyboard中也會出現
