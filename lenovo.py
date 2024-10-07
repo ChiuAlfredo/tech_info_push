@@ -24,30 +24,53 @@ def timing_decorator(func):
 # 獲取頁面
 def get_page_json(page_number,keyword,**kwargs):
 
-    url = f"https://www.lenovo.com/us/en/search?fq=?&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
 
-    # url ='https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Laptops&rows=60&sort=relevance&display_tab=Products&more=1&page=11'
-    payload = {}
+    burp0_url = f"https://openapi.lenovo.com:443/us/en/ofp/search/global/cache/products/get/_tsc?fq=%3F&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
+    # burp0_cookies = {"zipcode": "60654", "leid": "2.jyl8T/tyDem", "AKA_A2": "A", "bm_sz": "98BB93CC1164DE89AD3375F37CF986DF~YAAQzONH0iA7d2KSAQAAEJKYZhl41bBkXSe/zVmTXbEGcpuDvoEgndtORkOIHXJj+hf1YGMx+ZD1cnafMwUZ7W2WaJHBILl60NkKTk009C0LVfAWBPPPHUjIB82sWrDEXAWQU/PcEG5PQAcGy6iz5tJf6Qg3K2tkp4PVR4qJbSg5sV4XfJGCe0JSUl10apPvH1fYpLKkg0p+J6+TVUx66lb98ISC6u04dwaQHtcArQLqD7a624BPHV4pDepKDp3JaVDJlH7jG6p/i6Nad2qYAUO2Pq6Nh3rcJmyjM0qznlVLzv61MwsT+iCGCNnZ4pMU0tXH7ZNURJ3P6nnJmA5hFaZ8kUgSZZCQguSzFUkUF/R0i9csCxPrb2MoSdMHFtF42GV6lVmxXQUhhZTySA==~3486777~4469048", "ak_bmsc": "5F67B13068F8622F7B20F0A929ABD4D6~000000000000000000000000000000~YAAQzONH0h88d2KSAQAAu5iYZhm5js/2uNaq9zMAct/J69obBAsSn5XG4itG4ZkvcJUXj44iWEZbnD2TCvJc6iBvbX9V46jyrwAz37qDGjkpIyB49kGBVSQ9ormcNyj9GoRCobB46Ed77/8lDU/qaWEyAB0CqUcxVLS9GKE2+r8M7hlt96iG3EpD3giHIrzvuWGOxSrgUtSqyLXgg+LD9dPW7Lk8e5FAMNyBGB8AgywfQCsX8vLsL01aCdLf9N3HcebvCXPhlv+CKGAUQT+aRjo4Z4Nd202aajqfFLDtq+UR4XXwgMo+ffjv+7RIPrH5uzICKffNpfzR/s3Gs2YxhCQjHiWm2kKa4zftMw1Pbe5AHd4+Oliczo17lfSi9Hg3DhD+4EA80YUkwa1ipKk5uM+V6eLoJ9N2x+oFIZX+obqOZHohdLpsdN3ctLQcXEuP2IkMow==", "searchabran": "40", "bm_sv": "538D69FC82FB1256C0235CBBF595A86C~YAAQzONH0nc8d2KSAQAAHJuYZhk0Ly2wHqwKVVxfEP0f/nLDZ7XVZhuF4T11y2brRmKBxuKBVUeSYCc2y4lk+a0uu0WUolO7VdsbinjGqVsf0aFHQ8FLBnDDDKqsYd+HECowIVvIR8BdPGdoWm6zzGIfDXnGywUeTKoPzAbIntroydbAbfCRZ6Y7I29DWs1g16J+3W8VmglW/EtUQBJ4fKX5gBU4xS1Y1EfBBanVqfi9WaWP2Oppr9/t5JFTsjIJ~1", "kndctr_F6171253512D2B8C0A490D45_AdobeOrg_cluster": "sgp3", "kndctr_F6171253512D2B8C0A490D45_AdobeOrg_identity": "CiY3OTQ1Mjc1MjU2MjYyNTEwMjY1MzgxMDczODg3NDQ4OTY5MzI2OVITCKm04rSmMhABGAEqBFNHUDMwAKABsLTitKYysAEG8AGptOK0pjI=", "AMCV_F6171253512D2B8C0A490D45%40AdobeOrg": "MCMID|79452752562625102653810738874489693269", "_abck": "B9AB135C27B773BCB14ABE60FD05380A~0~YAAQzONH0qk8d2KSAQAAU5yYZgx6Fd/xic8H3gmCYXLbNPvl4DJvbC4cYAwNzDNQvbu0MVmds2W/hQCHZ5ZZsznGBnIfGsPqK5IS0anFIhTaiQBBWVeiPpAkufHxRHp8YiK/bTuEm5REP9EqhqXR/3euKbczeyRdf0eY4nTKMorlivlsbfLUyjHF+Jg5lGxOdbCc2BMZpb8IFPKkN3iloOeyqm/42B+9DsEf0qd+POOdezwct/mY54rvHxsB3ZhdyFv5UhLHucXfXN6tpIL+/pk1yLxwC3Jmsh7BsxbINbQfSxserMc58qCGPUsH8KelA2Ba930ze8ZoPt8MQ1AuGsl4oYLwqPs5XpiLAEz0/HijQz8LOY5VBk2QBmzJmP7JLaIiL7cFivxVppSKKE3uC3jcb6toKDxqzhv/60CtQKzjtuocRoBcZMRjltEtkywpaNCYB+rGFy24~-1~||0||~1728301730"}
+    burp0_headers = {"Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Accept-Language": "zh-TW", "Sec-Ch-Ua-Mobile": "?0", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept": "*/*", "Origin": "https://www.lenovo.com", "Sec-Fetch-Site": "same-site", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Dest": "empty", "Referer": "https://www.lenovo.com/us/en/search?fq=%3F&text=laptop&rows=20&sort=relevance&display_tab=Products&page=2&more=1", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=1, i"}
+    response = requests.get(burp0_url, headers=burp0_headers)
+
+    data_json = response.json()["data"]['data'][0]['products']
+    
+    for index,i in enumerate(data_json):
+        try :i['id']
+        except:
+            data_json.pop(index)
+
+            
+
+    web_url_list = ['https://www.lenovo.com/us/en/'+i['url'] for i in data_json]
+    for index,i in enumerate(data_json):
+        i['url']
+    product_name_list = [i['productName']for i in data_json]
+    product_code_list = [i['productCode']for i in data_json]
+
+
+
+    # url = f"https://www.lenovo.com/us/en/search?fq=%3F&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
+    # # url = 'https://www.lenovo.com/us/en/search?fq=%3F&text=laptop&rows=20&sort=relevance&display_tab=Products&page=2&more=1'
+    # # url ='https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Laptops&rows=60&sort=relevance&display_tab=Products&more=1&page=11'
+    # payload = {}
 
    
-    burp0_headers = {"Sec-Ch-Ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\"", "Sec-Ch-Ua-Mobile": "?0", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept-Language": "zh-TW", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.127 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "Sec-Fetch-Site": "none", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1", "Sec-Fetch-Dest": "document", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=0, i", "Connection": "keep-alive"}
-    response = requests.get(url, headers=burp0_headers)
+    # burp0_headers = {"Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Sec-Ch-Ua-Mobile": "?0", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept-Language": "zh-TW", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "Sec-Fetch-Site": "none", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1", "Sec-Fetch-Dest": "document", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=0, i", "Connection": "keep-alive"}
+    # response = requests.get(url, headers=burp0_headers)
 
-    print(page_number)
+    # print(page_number)
 
 
-    soup = BeautifulSoup(response.text, 'html.parser')
-    # print(soup)
+    # soup = BeautifulSoup(response.text, 'html.parser')
+    # # print(soup)
     
-    # len(soup.select('.part_number'))
+    # # len(soup.select('.part_number'))
     
-    web_url_soup = soup.select('.product_item>.product_name>a')
-    product_name_soup = soup.select('.product_item>.product_name')
-    product_code_soup = soup.select('.product_item>.product_name>a')
+    # web_url_soup = soup.select('.product_item>.product_name>a')
+    # product_name_soup = soup.select('.product_item>.product_name')
+    # product_code_soup = soup.select('.product_item>.product_name>a')
     
-    web_url_list = [i.get('href') for i in web_url_soup]
-    product_name_list = [i.text for i in product_name_soup]
-    product_code_list = [i.get('data-productcode') for i in product_code_soup]
+    # web_url_list = [i.get('href') for i in web_url_soup]
+    # product_name_list = [i.text for i in product_name_soup]
+    # product_code_list = [i.get('data-productcode') for i in product_code_soup]
     
     product_number = len(web_url_list)
     print(len(product_name_list))
@@ -56,35 +79,55 @@ def get_page_json(page_number,keyword,**kwargs):
 
 # 獲取thinksta
 def get_page_json_thinksta(page_number,keyword,**kwargs):
-
-    url = f'https://www.lenovo.com/us/en/search?fq=%7B!ex=prodCat%7Dlengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1'
-    print(url)
-    # url ='https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Laptops&rows=60&sort=relevance&display_tab=Products&more=1&page=11'
-    payload = {}
     
-    headers ={
-        'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
-        # 'Cookie':'zipcode=60654; leid=2.Y+i9b/nJUlF; searchabran=2; AMCV_F6171253512D2B8C0A490D45%40AdobeOrg=MCMID|22796032703182726071512371125726346184; navposkey=pc_nav; fsid=19; BVBRANDID=da21a037-de34-4ab3-987a-52d6b0be7a7d; ftv_for_usen=%252Fpc%252F; aamtest1=auto%3D549200; Adform%20Cookie%20ID=4059607695632243559; fl_guid=5701551EFF6D83; _ga=GA1.1.1746570426.1696555783; _mibhv=anon-1696555783300-6860938145_4876; _gcl_au=1.1.1993526881.1696555784; _tt_enable_cookie=1; _ttp=TDYcYSlEw5lhQzyTmx1l-lsM8WM; _fbp=fb.1.1696555788053.1759168665; _mkto_trk=id:183-WCT-620&token:_mch-lenovo.com-1696555788090-60972; ki_r=; _rdt_uuid=1696555790511.3082e1b5-8344-465f-8dae-02c1afc93e2e; QuantumMetricUserID=309abf2bad683b1de82791752efec793; algorithmId_adobe=%7B%22algorithmId%22%3Anull%7D; ki_s=199507%3A0.0.0.0.0; bluecoreNV=false; aam_sc=aamsc%3D3901189%7C3872579%7C10138496%7C10137485%7C9562573%7C11003488; _scid=e996b99e-96bd-4d70-a8eb-ca87cc0a0ac4; _scid_r=e996b99e-96bd-4d70-a8eb-ca87cc0a0ac4; _sctr=1%7C1696953600000; apay-session-set=hzQOmnSszVvZwfIIZuAHKg8vrSREuk4Eo7ZDs%2FLOqVjpEhfkYJ5YVAYZyVc29BU%3D; has_consent_cookie=; kndctr_F6171253512D2B8C0A490D45_AdobeOrg_consent=general%3Din; fsid=19; _uetvid=d358ad0063e711ee9310ad79f9d8b198; _evidon_consent_cookie={"consent_date":"2023-10-06T01:45:02.780Z","categories":{"1":{"essential":true,"analytics":true,"advertising":false,"social media":false}},"vendors":{"1":{"11":true,"14":false,"17":false,"31":true,"51":false,"63":true,"66":false,"80":false,"81":false,"82":false,"84":false,"99":false,"103":true,"108":true,"111":true,"128":true,"131":false,"149":false,"167":true,"174":false,"242":true,"249":false,"253":true,"257":false,"259":false,"290":true,"307":true,"321":true,"348":false,"384":false,"395":true,"414":true,"426":false,"442":false,"467":true,"480":true,"523":true,"560":false,"611":true,"662":true,"674":false,"688":true,"828":true,"831":false,"905":false,"933":true,"937":true,"1028":false,"1267":false,"1272":true,"1306":false,"1412":false,"1647":true,"1727":true,"2230":true,"2516":false,"2594":true,"3042":true,"3058":true,"3355":true,"3490":false,"3778":true,"3878":true,"4160":false,"4526":false,"4748":true,"4948":false,"5130":true,"5296":false,"6171":true,"6357":true,"6359":true,"6609":true,"6638":false}},"cookies":{"1":{}},"gpc":1,"consent_type":2}; kndctr_F6171253512D2B8C0A490D45_AdobeOrg_identity=CiYyMjc5NjAzMjcwMzE4MjcyNjA3MTUxMjM3MTEyNTcyNjM0NjE4NFIRCKSl6pSwMRgBKgRTR1AzMAGgAeDRsPq6MagB7%2Dr2vuuQuqZJsAEG8AHq6uPSuzE%3D; LOSAD=1; p3094257258_done=1; p3094257258_done=1; _page_type_=Single%20Model%20PDP; kndctr_F6171253512D2B8C0A490D45_AdobeOrg_cluster=sgp3; s_inv=4580; s_vnc365=1731219983511%26vn%3D18; s_ivc=true; QuantumMetricSessionID=96fc47dbc94f9305c1775d35b71d9d4e; bm_mi=EB868BF2C19A71704F05AFDD4F45A7B0~YAAQz+NH0gqJqKaLAQAAYiEQvRXR9NUAWZ6Q1RxUFtzKMfb81S4y8hkfqekIXJXr02Ge/zPEQl8hrRCZxzEWyxK6FYMH64hllEr6gF5G40GPox5Ajs0G/gX+gk26YGsyVzCYJRPbXGgCi04WeuW6tvpLXV4zsQcKRYZn5cyjVbfzMGV4BCPp5RuDGA/V0IXErP6OMRMLgXlklMSH27CW/bvCehz2cyL+u0saG/sfALiGiJ/Xoku22OHH3oqYifjLMKtrcLArb+2l4Fp7N9c2PVFnkU3wL2aonfS3GGoIhILj2L/jot0kgyLkKOBZtu7DcyHuR7NESJG/yKyMjnmNLPDPeILw8ow1Md+ZDM88RR9OC5bpyCKk092B0wDrSoQOerxrAfOi5tIdMOaP0F6H7gH5hu2PeIllskQ0aUENqJf+WTX6HBWuKGBSfLIB1t0b~1; ak_bmsc=DC14E4D15661434ED05E97878E609BE5~000000000000000000000000000000~YAAQz+NH0tuJqKaLAQAAgicQvRWWDRyYiMu/Fisxozj5i7nR9QbgjE0Pec1cCeaXwBGgUjQmy+gyVCwzQHRZxqLzk+cISswvCYRBL8dISdJ0aUyRsCUHMP+ipe7s81LPczlvvn4lMenHqchuv36bsLd9XQHRG4tiROX521QK2TPquSjoHlRlEPVkkFfhQDO8W+pLel8N+abIPgEKodeyyIW8Sqr1SaMhI4Nq53PAVVAzdqfLPfbxLQLobNKO5lbHJ11luFqa+oVRqRyfa3YVSKFkj2tFcRTVNyD+dcQAx+HmipnqMRjp2eQTlg15g/34zraFqxjPEK3p4AX6XB6NgmKjRch+jDBzZc3uwAAG2IWcr7lTmSt+T+48rtw2QUvvJeON1Heu5hDjQwIgRkvPnZF565hx0MeN1BBD0q62UJFy734j3m8l9+d/jGhLRIkimV6yUktr1N00tzDny6x7Hkl9zFlOaa1+bGLeQY7fTo5hsZSjxMdMGUNukyUt8BGNcgKLmAxRzMLypEQEVKVEMgu4dVhc9OnTpzafkr0aOUjEsFr1bl4r5zOH0YVoQCJV/ZvxuM9Q2+NyKtpY/dXtffjAfjWFniYL3zRsxhreIcevfOCfuzaKHXd7gbD20cy527JwZ8N3mvRS5x++xePKwE7RLQ==; recentlypns=90UX0004US%2C90V7003HUS%2CF0GH00PBUS%2CF0EU00MAUS%2C90VJ000EUS%2C90SM00C5US; fusionEXPID=flash_na_app_qpl_MLR_Flash_NER; s_eVar57=s.products_evar; s_eng_rfd=12.12; AKA_A2=A; _abck=540660EA9576B22ADDEF089463DBB37F~0~YAAQzONH0mzX/K6LAQAAKLxLvQqLxhxYmAUJXu6SytpfaJyyNthvOs7eJl7s51eAflV5WrG67dzAPGxwlsEH0XgheiRXcDoCEsRzbt+0GLS1K+PyzEnueJVL80svaF/DN04MfBBQkqYzhTMqRjTfOCjwHlRv7US5F2MAli9iJAxTDG5rhXSONekSnhgVLUoaa7I+FdIJSNHV0VVA6KOuPVI5lf08BCSRlpsewJ9f+6/1/aSK50HDDwntWAGBJPMYNUmPC4BgI1BiQfOrYJiAhs03XiA2FXmyDO1Cf9W7GO+EzsHmTS/ZXupydWR1sDVTTWJC553t7MXn3VnnTMuPGoqKDsnlXXc1l8Gw4vEVcupmlcX92ehxvWCE0Hn50NLxcQwrYBV7pSZ/xNhr9/7suuET3CqPqGP+~-1~-1~1699691479; s_dur=1699687939130; bc_invalidateUrlCache_targeting=1699687940976; fusionQueryId=bt8y1Pbzwt; bm_sz=91322B11B187BB341CFD60D14829BD09~YAAQzONH0sR6/a6LAQAAEXVSvRXXXcKS8u2cRofODfxYyZ0eyVwHSDinVsSHM67qcCOrrTq0i6wGL7NGVXCmpqw8EA09sw+psYT1P+tFp29KlgLg1XtcuPFm+SVYH/uJjMzk1SjYgWGQyaj3IUIiCofZeahyH+8XbPYSLtNOlps0feoBmbu6VzSDApRcRA87E0QOxR0S+4JnKNhiVLvwC994LzpN2HFnptfxB71xB7I2mmoGQemCRSnrUEug9HOfWPxfUelo+R90/0Crw4Xy82xLI6uf6yXa9XGU3c5I/otFqNu9ubVdMd/rEfB/V5LK7cU7UcFYRHf95+8=~3487793~3294008; s_tslv=1699688394620; s_tot_rfd=0.91; _ga_LXNLK45HZF=GS1.1.1699683982.19.1.1699688395.0.0.0; _ga_1RPSEV71KD=GS1.1.1699683982.15.1.1699688395.60.0.0; ki_t=1696555788502%3B1699683986706%3B1699688395656%3B8%3B155; mp_lenovo_us_mixpanel=%7B%22distinct_id%22%3A%20%2218b029ad5ce1b8-0872ace045a4a8-18525634-13c680-18b029ad5d535%22%2C%22bc_persist_updated%22%3A%201696555783639%7D; _ga_X0H82YEL7G=GS1.1.1699683982.15.1.1699688395.60.0.0; inside-us3=218290524-1731bf7cf3f5fc6879fd48c675d59188f8407b850772e0f9b48518d68faa898b-0-0; exitsurveynotdisplayed=Page%20count%20not%20met; RT="z=1&dm=lenovo.com&si=a29aea7b-13e3-4d20-ae35-c5c617791161&ss=lotqb8z0&sl=5&tt=cqn&bcn=%2F%2F684d0d47.akstat.io%2F&ld=9ucc&ul=9y77&hd=9yc3"; akavpau_WaitingRoomController=1699688708~id=6b8e1423783b8921e58e3c7f473e425b; bm_sv=BB9422D2F2F866366D19CF4F4932BA8B~YAAQzONH0iWG/a6LAQAAI+ZSvRVD6CFZ4m6Uo/FbmAeEs5xc75gFf974VaQs4DOx86aW7yyI/L7N7Sunr9qDTOLrPed5TaL0GNz0XPgdLWnDbz4Xm698xgFS35KhS135WbYHswaNLTGo5POTPM38ejHeQ4h1beYY6FEYzqNIVDF/ztkGTv+4RP/wwsVsRQBCMHzuiXj3GpVpGMIB915Z8BvEFxPpN1aN6nlZRk7A29WSkideZPvyeW2A4sKWT7jm9ngifDnUhbP+~1',
-        'Upgrade-Insecure-Requests': '1'
-    }
+    burp0_url = f"https://openapi.lenovo.com:443/us/en/ofp/search/global/cache/products/get/_tsc?fq=%7B!ex=prodCat%7Dlengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1"
+    # burp0_cookies = {"zipcode": "60654", "leid": "2.jyl8T/tyDem", "AKA_A2": "A", "bm_sz": "98BB93CC1164DE89AD3375F37CF986DF~YAAQzONH0iA7d2KSAQAAEJKYZhl41bBkXSe/zVmTXbEGcpuDvoEgndtORkOIHXJj+hf1YGMx+ZD1cnafMwUZ7W2WaJHBILl60NkKTk009C0LVfAWBPPPHUjIB82sWrDEXAWQU/PcEG5PQAcGy6iz5tJf6Qg3K2tkp4PVR4qJbSg5sV4XfJGCe0JSUl10apPvH1fYpLKkg0p+J6+TVUx66lb98ISC6u04dwaQHtcArQLqD7a624BPHV4pDepKDp3JaVDJlH7jG6p/i6Nad2qYAUO2Pq6Nh3rcJmyjM0qznlVLzv61MwsT+iCGCNnZ4pMU0tXH7ZNURJ3P6nnJmA5hFaZ8kUgSZZCQguSzFUkUF/R0i9csCxPrb2MoSdMHFtF42GV6lVmxXQUhhZTySA==~3486777~4469048", "ak_bmsc": "5F67B13068F8622F7B20F0A929ABD4D6~000000000000000000000000000000~YAAQzONH0h88d2KSAQAAu5iYZhm5js/2uNaq9zMAct/J69obBAsSn5XG4itG4ZkvcJUXj44iWEZbnD2TCvJc6iBvbX9V46jyrwAz37qDGjkpIyB49kGBVSQ9ormcNyj9GoRCobB46Ed77/8lDU/qaWEyAB0CqUcxVLS9GKE2+r8M7hlt96iG3EpD3giHIrzvuWGOxSrgUtSqyLXgg+LD9dPW7Lk8e5FAMNyBGB8AgywfQCsX8vLsL01aCdLf9N3HcebvCXPhlv+CKGAUQT+aRjo4Z4Nd202aajqfFLDtq+UR4XXwgMo+ffjv+7RIPrH5uzICKffNpfzR/s3Gs2YxhCQjHiWm2kKa4zftMw1Pbe5AHd4+Oliczo17lfSi9Hg3DhD+4EA80YUkwa1ipKk5uM+V6eLoJ9N2x+oFIZX+obqOZHohdLpsdN3ctLQcXEuP2IkMow==", "searchabran": "40", "bm_sv": "538D69FC82FB1256C0235CBBF595A86C~YAAQzONH0nc8d2KSAQAAHJuYZhk0Ly2wHqwKVVxfEP0f/nLDZ7XVZhuF4T11y2brRmKBxuKBVUeSYCc2y4lk+a0uu0WUolO7VdsbinjGqVsf0aFHQ8FLBnDDDKqsYd+HECowIVvIR8BdPGdoWm6zzGIfDXnGywUeTKoPzAbIntroydbAbfCRZ6Y7I29DWs1g16J+3W8VmglW/EtUQBJ4fKX5gBU4xS1Y1EfBBanVqfi9WaWP2Oppr9/t5JFTsjIJ~1", "kndctr_F6171253512D2B8C0A490D45_AdobeOrg_cluster": "sgp3", "kndctr_F6171253512D2B8C0A490D45_AdobeOrg_identity": "CiY3OTQ1Mjc1MjU2MjYyNTEwMjY1MzgxMDczODg3NDQ4OTY5MzI2OVITCKm04rSmMhABGAEqBFNHUDMwAKABsLTitKYysAEG8AGptOK0pjI=", "AMCV_F6171253512D2B8C0A490D45%40AdobeOrg": "MCMID|79452752562625102653810738874489693269", "_abck": "B9AB135C27B773BCB14ABE60FD05380A~0~YAAQzONH0qk8d2KSAQAAU5yYZgx6Fd/xic8H3gmCYXLbNPvl4DJvbC4cYAwNzDNQvbu0MVmds2W/hQCHZ5ZZsznGBnIfGsPqK5IS0anFIhTaiQBBWVeiPpAkufHxRHp8YiK/bTuEm5REP9EqhqXR/3euKbczeyRdf0eY4nTKMorlivlsbfLUyjHF+Jg5lGxOdbCc2BMZpb8IFPKkN3iloOeyqm/42B+9DsEf0qd+POOdezwct/mY54rvHxsB3ZhdyFv5UhLHucXfXN6tpIL+/pk1yLxwC3Jmsh7BsxbINbQfSxserMc58qCGPUsH8KelA2Ba930ze8ZoPt8MQ1AuGsl4oYLwqPs5XpiLAEz0/HijQz8LOY5VBk2QBmzJmP7JLaIiL7cFivxVppSKKE3uC3jcb6toKDxqzhv/60CtQKzjtuocRoBcZMRjltEtkywpaNCYB+rGFy24~-1~||0||~1728301730"}
+    burp0_headers = {"Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Accept-Language": "zh-TW", "Sec-Ch-Ua-Mobile": "?0", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept": "*/*", "Origin": "https://www.lenovo.com", "Sec-Fetch-Site": "same-site", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Dest": "empty", "Referer": "https://www.lenovo.com/us/en/search?fq=%3F&text=laptop&rows=20&sort=relevance&display_tab=Products&page=2&more=1", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=1, i"}
+    response = requests.get(burp0_url, headers=burp0_headers)
 
-    response = requests.request("GET", url,headers=headers, data=payload)
-
-    print(page_number)
-
-
-    soup = BeautifulSoup(response.text, 'html.parser')
-    # print(soup)
+    data_json = response.json()["data"]['data'][0]['products']
     
-    # len(soup.select('.part_number'))
+    for index,i in enumerate(data_json):
+        try :i['id']
+        except:
+            data_json.pop(index)
+
+    web_url_list = ['https://www.lenovo.com/us/en/'+i['url'] for i in data_json]
+    product_name_list = [i['productName']for i in data_json]
+    product_code_list = [i['productCode']for i in data_json]
+
+
+
+    # url = f'https://www.lenovo.com/us/en/search?fq=%7B!ex=prodCat%7Dlengs_Product_facet_ProdCategories:PCs%20Tablets&text={keyword}&rows=60&sort=relevance&display_tab=Products&page={page_number}&more=1'
+    # print(url)
+    # # url ='https://www.lenovo.com/us/en/search?fq={!ex=prodCat}lengs_Product_facet_ProdCategories:PCs%20Tablets&text=Laptops&rows=60&sort=relevance&display_tab=Products&more=1&page=11'
+    # payload = {}
     
-    web_url_soup = soup.select('.product_item>.product_name>a')
-    product_name_soup = soup.select('.product_item>.product_name')
-    product_code_soup = soup.select('.product_item>.product_name>a')
+    # # headers ={
+    # #     'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+    # #     # 'Cookie':'zipcode=60654; leid=2.Y+i9b/nJUlF; searchabran=2; AMCV_F6171253512D2B8C0A490D45%40AdobeOrg=MCMID|22796032703182726071512371125726346184; navposkey=pc_nav; fsid=19; BVBRANDID=da21a037-de34-4ab3-987a-52d6b0be7a7d; ftv_for_usen=%252Fpc%252F; aamtest1=auto%3D549200; Adform%20Cookie%20ID=4059607695632243559; fl_guid=5701551EFF6D83; _ga=GA1.1.1746570426.1696555783; _mibhv=anon-1696555783300-6860938145_4876; _gcl_au=1.1.1993526881.1696555784; _tt_enable_cookie=1; _ttp=TDYcYSlEw5lhQzyTmx1l-lsM8WM; _fbp=fb.1.1696555788053.1759168665; _mkto_trk=id:183-WCT-620&token:_mch-lenovo.com-1696555788090-60972; ki_r=; _rdt_uuid=1696555790511.3082e1b5-8344-465f-8dae-02c1afc93e2e; QuantumMetricUserID=309abf2bad683b1de82791752efec793; algorithmId_adobe=%7B%22algorithmId%22%3Anull%7D; ki_s=199507%3A0.0.0.0.0; bluecoreNV=false; aam_sc=aamsc%3D3901189%7C3872579%7C10138496%7C10137485%7C9562573%7C11003488; _scid=e996b99e-96bd-4d70-a8eb-ca87cc0a0ac4; _scid_r=e996b99e-96bd-4d70-a8eb-ca87cc0a0ac4; _sctr=1%7C1696953600000; apay-session-set=hzQOmnSszVvZwfIIZuAHKg8vrSREuk4Eo7ZDs%2FLOqVjpEhfkYJ5YVAYZyVc29BU%3D; has_consent_cookie=; kndctr_F6171253512D2B8C0A490D45_AdobeOrg_consent=general%3Din; fsid=19; _uetvid=d358ad0063e711ee9310ad79f9d8b198; _evidon_consent_cookie={"consent_date":"2023-10-06T01:45:02.780Z","categories":{"1":{"essential":true,"analytics":true,"advertising":false,"social media":false}},"vendors":{"1":{"11":true,"14":false,"17":false,"31":true,"51":false,"63":true,"66":false,"80":false,"81":false,"82":false,"84":false,"99":false,"103":true,"108":true,"111":true,"128":true,"131":false,"149":false,"167":true,"174":false,"242":true,"249":false,"253":true,"257":false,"259":false,"290":true,"307":true,"321":true,"348":false,"384":false,"395":true,"414":true,"426":false,"442":false,"467":true,"480":true,"523":true,"560":false,"611":true,"662":true,"674":false,"688":true,"828":true,"831":false,"905":false,"933":true,"937":true,"1028":false,"1267":false,"1272":true,"1306":false,"1412":false,"1647":true,"1727":true,"2230":true,"2516":false,"2594":true,"3042":true,"3058":true,"3355":true,"3490":false,"3778":true,"3878":true,"4160":false,"4526":false,"4748":true,"4948":false,"5130":true,"5296":false,"6171":true,"6357":true,"6359":true,"6609":true,"6638":false}},"cookies":{"1":{}},"gpc":1,"consent_type":2}; kndctr_F6171253512D2B8C0A490D45_AdobeOrg_identity=CiYyMjc5NjAzMjcwMzE4MjcyNjA3MTUxMjM3MTEyNTcyNjM0NjE4NFIRCKSl6pSwMRgBKgRTR1AzMAGgAeDRsPq6MagB7%2Dr2vuuQuqZJsAEG8AHq6uPSuzE%3D; LOSAD=1; p3094257258_done=1; p3094257258_done=1; _page_type_=Single%20Model%20PDP; kndctr_F6171253512D2B8C0A490D45_AdobeOrg_cluster=sgp3; s_inv=4580; s_vnc365=1731219983511%26vn%3D18; s_ivc=true; QuantumMetricSessionID=96fc47dbc94f9305c1775d35b71d9d4e; bm_mi=EB868BF2C19A71704F05AFDD4F45A7B0~YAAQz+NH0gqJqKaLAQAAYiEQvRXR9NUAWZ6Q1RxUFtzKMfb81S4y8hkfqekIXJXr02Ge/zPEQl8hrRCZxzEWyxK6FYMH64hllEr6gF5G40GPox5Ajs0G/gX+gk26YGsyVzCYJRPbXGgCi04WeuW6tvpLXV4zsQcKRYZn5cyjVbfzMGV4BCPp5RuDGA/V0IXErP6OMRMLgXlklMSH27CW/bvCehz2cyL+u0saG/sfALiGiJ/Xoku22OHH3oqYifjLMKtrcLArb+2l4Fp7N9c2PVFnkU3wL2aonfS3GGoIhILj2L/jot0kgyLkKOBZtu7DcyHuR7NESJG/yKyMjnmNLPDPeILw8ow1Md+ZDM88RR9OC5bpyCKk092B0wDrSoQOerxrAfOi5tIdMOaP0F6H7gH5hu2PeIllskQ0aUENqJf+WTX6HBWuKGBSfLIB1t0b~1; ak_bmsc=DC14E4D15661434ED05E97878E609BE5~000000000000000000000000000000~YAAQz+NH0tuJqKaLAQAAgicQvRWWDRyYiMu/Fisxozj5i7nR9QbgjE0Pec1cCeaXwBGgUjQmy+gyVCwzQHRZxqLzk+cISswvCYRBL8dISdJ0aUyRsCUHMP+ipe7s81LPczlvvn4lMenHqchuv36bsLd9XQHRG4tiROX521QK2TPquSjoHlRlEPVkkFfhQDO8W+pLel8N+abIPgEKodeyyIW8Sqr1SaMhI4Nq53PAVVAzdqfLPfbxLQLobNKO5lbHJ11luFqa+oVRqRyfa3YVSKFkj2tFcRTVNyD+dcQAx+HmipnqMRjp2eQTlg15g/34zraFqxjPEK3p4AX6XB6NgmKjRch+jDBzZc3uwAAG2IWcr7lTmSt+T+48rtw2QUvvJeON1Heu5hDjQwIgRkvPnZF565hx0MeN1BBD0q62UJFy734j3m8l9+d/jGhLRIkimV6yUktr1N00tzDny6x7Hkl9zFlOaa1+bGLeQY7fTo5hsZSjxMdMGUNukyUt8BGNcgKLmAxRzMLypEQEVKVEMgu4dVhc9OnTpzafkr0aOUjEsFr1bl4r5zOH0YVoQCJV/ZvxuM9Q2+NyKtpY/dXtffjAfjWFniYL3zRsxhreIcevfOCfuzaKHXd7gbD20cy527JwZ8N3mvRS5x++xePKwE7RLQ==; recentlypns=90UX0004US%2C90V7003HUS%2CF0GH00PBUS%2CF0EU00MAUS%2C90VJ000EUS%2C90SM00C5US; fusionEXPID=flash_na_app_qpl_MLR_Flash_NER; s_eVar57=s.products_evar; s_eng_rfd=12.12; AKA_A2=A; _abck=540660EA9576B22ADDEF089463DBB37F~0~YAAQzONH0mzX/K6LAQAAKLxLvQqLxhxYmAUJXu6SytpfaJyyNthvOs7eJl7s51eAflV5WrG67dzAPGxwlsEH0XgheiRXcDoCEsRzbt+0GLS1K+PyzEnueJVL80svaF/DN04MfBBQkqYzhTMqRjTfOCjwHlRv7US5F2MAli9iJAxTDG5rhXSONekSnhgVLUoaa7I+FdIJSNHV0VVA6KOuPVI5lf08BCSRlpsewJ9f+6/1/aSK50HDDwntWAGBJPMYNUmPC4BgI1BiQfOrYJiAhs03XiA2FXmyDO1Cf9W7GO+EzsHmTS/ZXupydWR1sDVTTWJC553t7MXn3VnnTMuPGoqKDsnlXXc1l8Gw4vEVcupmlcX92ehxvWCE0Hn50NLxcQwrYBV7pSZ/xNhr9/7suuET3CqPqGP+~-1~-1~1699691479; s_dur=1699687939130; bc_invalidateUrlCache_targeting=1699687940976; fusionQueryId=bt8y1Pbzwt; bm_sz=91322B11B187BB341CFD60D14829BD09~YAAQzONH0sR6/a6LAQAAEXVSvRXXXcKS8u2cRofODfxYyZ0eyVwHSDinVsSHM67qcCOrrTq0i6wGL7NGVXCmpqw8EA09sw+psYT1P+tFp29KlgLg1XtcuPFm+SVYH/uJjMzk1SjYgWGQyaj3IUIiCofZeahyH+8XbPYSLtNOlps0feoBmbu6VzSDApRcRA87E0QOxR0S+4JnKNhiVLvwC994LzpN2HFnptfxB71xB7I2mmoGQemCRSnrUEug9HOfWPxfUelo+R90/0Crw4Xy82xLI6uf6yXa9XGU3c5I/otFqNu9ubVdMd/rEfB/V5LK7cU7UcFYRHf95+8=~3487793~3294008; s_tslv=1699688394620; s_tot_rfd=0.91; _ga_LXNLK45HZF=GS1.1.1699683982.19.1.1699688395.0.0.0; _ga_1RPSEV71KD=GS1.1.1699683982.15.1.1699688395.60.0.0; ki_t=1696555788502%3B1699683986706%3B1699688395656%3B8%3B155; mp_lenovo_us_mixpanel=%7B%22distinct_id%22%3A%20%2218b029ad5ce1b8-0872ace045a4a8-18525634-13c680-18b029ad5d535%22%2C%22bc_persist_updated%22%3A%201696555783639%7D; _ga_X0H82YEL7G=GS1.1.1699683982.15.1.1699688395.60.0.0; inside-us3=218290524-1731bf7cf3f5fc6879fd48c675d59188f8407b850772e0f9b48518d68faa898b-0-0; exitsurveynotdisplayed=Page%20count%20not%20met; RT="z=1&dm=lenovo.com&si=a29aea7b-13e3-4d20-ae35-c5c617791161&ss=lotqb8z0&sl=5&tt=cqn&bcn=%2F%2F684d0d47.akstat.io%2F&ld=9ucc&ul=9y77&hd=9yc3"; akavpau_WaitingRoomController=1699688708~id=6b8e1423783b8921e58e3c7f473e425b; bm_sv=BB9422D2F2F866366D19CF4F4932BA8B~YAAQzONH0iWG/a6LAQAAI+ZSvRVD6CFZ4m6Uo/FbmAeEs5xc75gFf974VaQs4DOx86aW7yyI/L7N7Sunr9qDTOLrPed5TaL0GNz0XPgdLWnDbz4Xm698xgFS35KhS135WbYHswaNLTGo5POTPM38ejHeQ4h1beYY6FEYzqNIVDF/ztkGTv+4RP/wwsVsRQBCMHzuiXj3GpVpGMIB915Z8BvEFxPpN1aN6nlZRk7A29WSkideZPvyeW2A4sKWT7jm9ngifDnUhbP+~1',
+    # #     'Upgrade-Insecure-Requests': '1'
+    # # }
     
-    web_url_list = [i.get('href') for i in web_url_soup]
-    product_name_list = [i.text for i in product_name_soup]
-    product_code_list = [i.get('data-productcode') for i in product_code_soup]
+    # burp0_headers = {"Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Sec-Ch-Ua-Mobile": "?0", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept-Language": "zh-TW", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "Sec-Fetch-Site": "none", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1", "Sec-Fetch-Dest": "document", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=0, i", "Connection": "keep-alive"}
+
+    # response = requests.request("GET", url,headers=burp0_headers)
+
+    # print(page_number)
+
+
+    # soup = BeautifulSoup(response.text, 'html.parser')
+    # # print(soup)
+    
+    # # len(soup.select('.part_number'))
+    
+    # web_url_soup = soup.select('.product_item>.product_name>a')
+    # product_name_soup = soup.select('.product_item>.product_name')
+    # product_code_soup = soup.select('.product_item>.product_name>a')
+    
+    # web_url_list = [i.get('href') for i in web_url_soup]
+    # product_name_list = [i.text for i in product_name_soup]
+    # product_code_list = [i.get('data-productcode') for i in product_code_soup]
     
     product_number = len(web_url_list)
     print(len(product_name_list))
