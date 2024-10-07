@@ -27,7 +27,8 @@ from bs4 import BeautifulSoup
 # 獲取搜尋也面資訊
 def get_page_json(page_number,keyword,**kwargs):
     # get page info 
-    url = "https://essearchapi-na.hawksearch.com/api/v2/search"
+    # url = "https://essearchapi-na.hawksearch.com/api/v2/search"
+    url = 'https://hp.searchapi-na.hawksearch.com/api/v2/search'
 
     payload = {
     "query": "type:product",
@@ -68,20 +69,19 @@ def save_json(data, filepath):
 
 # 獲取商品資訊
 def get_product_info(web_url,file_name,n):
+    
+
+
+
 
     web_keyword = urlparse(web_url).path.split('/')[-1]
 
     url = f"https://www.hp.com/us-en/shop/app/api/web/graphql/page/pdp%2F{web_keyword}/async"
-    proxies = {'https':'https://185.171.54.35:4153',
-               'http':'https://185.171.54.35:4153'}
+# https://www.hp.com/us-en/shop/app/api/web/graphql/page/pdp%2Fhp-laptop-17t-cn300-173-7p3q0av-1/footerLinks
     payload = {}
-    headers = {
-    'Origin': 'https://www.hp.com',
-    'Referer': 'https://www.hp.com/',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36',
-    }
+    burp0_headers = {"Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Tracestate": "3043875@nr=0-1-3043875-601394608-869c2273437acd8a----1728305079416", "Traceparent": "00-7dfe3a36b5c3009eda5de38187e6621d-869c2273437acd8a-01", "Accept-Language": "zh-TW", "Sec-Ch-Ua-Mobile": "?0", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkJyb3dzZXIiLCJhYyI6IjMwNDM4NzUiLCJhcCI6IjYwMTM5NDYwOCIsImlkIjoiODY5YzIyNzM0MzdhY2Q4YSIsInRyIjoiN2RmZTNhMzZiNWMzMDA5ZWRhNWRlMzgxODdlNjYyMWQiLCJ0aSI6MTcyODMwNTA3OTQxNn19", "Accept": "application/json, text/plain, */*", "Sec-Ch-Ua-Platform": "\"Windows\"", "Sec-Fetch-Site": "same-origin", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Dest": "empty", "Referer": "https://www.hp.com/us-en/shop/pdp/hp-laptop-17t-cn300-173-7p3q0av-1", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=1, i"}
 
-    response = requests.request("POST", url, headers=headers, data=payload)
+    response = requests.request("POST", url, headers=burp0_headers, data=payload)
 
     print(web_keyword)
     
@@ -90,7 +90,7 @@ def get_product_info(web_url,file_name,n):
     # 連線錯誤重新連線
     try:
         while 'Critical content mssing'  in json_data['errors'][0]['message']:
-            response = requests.request("POST", url, headers=headers, data=payload)
+            response = requests.request("POST", url, headers=burp0_headers, data=payload)
 
             print(web_keyword)
             json_data = json.loads(response.text)
@@ -110,13 +110,14 @@ def get_product_disclaim(web_url,file_name,n):
     proxies = {'https':'https://185.171.54.35:4153',
                'http':'https://185.171.54.35:4153'}
     payload = {}
-    headers = {
-    'Origin': 'https://www.hp.com',
-    'Referer': 'https://www.hp.com/',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36',
-    }
+    # headers = {
+    # 'Origin': 'https://www.hp.com',
+    # 'Referer': 'https://www.hp.com/',
+    # 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36',
+    # }
+    burp0_headers = {"Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Tracestate": "3043875@nr=0-1-3043875-601394608-869c2273437acd8a----1728305079416", "Traceparent": "00-7dfe3a36b5c3009eda5de38187e6621d-869c2273437acd8a-01", "Accept-Language": "zh-TW", "Sec-Ch-Ua-Mobile": "?0", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkJyb3dzZXIiLCJhYyI6IjMwNDM4NzUiLCJhcCI6IjYwMTM5NDYwOCIsImlkIjoiODY5YzIyNzM0MzdhY2Q4YSIsInRyIjoiN2RmZTNhMzZiNWMzMDA5ZWRhNWRlMzgxODdlNjYyMWQiLCJ0aSI6MTcyODMwNTA3OTQxNn19", "Accept": "application/json, text/plain, */*", "Sec-Ch-Ua-Platform": "\"Windows\"", "Sec-Fetch-Site": "same-origin", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Dest": "empty", "Referer": "https://www.hp.com/us-en/shop/pdp/hp-laptop-17t-cn300-173-7p3q0av-1", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=1, i"}
 
-    response = requests.request("GET", url, headers=headers, data=payload)
+    response = requests.request("GET", url, headers=burp0_headers, data=payload)
 
     print(web_keyword)
     

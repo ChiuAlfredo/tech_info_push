@@ -197,6 +197,7 @@ class hp_crawl():
             self.all_product_data = read_json(f'./data/hp/{self.file_name}_content/')
         all_product_data_spec = []
         for i in self.all_product_data:
+            # i=self.all_product_data[0]
             try:
                 all_product_data_spec.append(i['data']['page']['pageComponents']['pdpTechSpecs']['technical_specifications'])
             except:
