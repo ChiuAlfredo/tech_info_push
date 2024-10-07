@@ -213,3 +213,37 @@ ERROR:root:'text'
 ERROR:root:list indices must be integers or slices, not str
 ERROR:root:'text'
 ERROR:root:list indices must be integers or slices, not str
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-messenger-14-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-backpack-bp1501g-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1503-electro-punk-model/
+INFO:root:no data:  https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2023-series/
+INFO:root:no data:  https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2023-series/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-backpack-15-6-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1500-gaming-backpack-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Max-X441UV/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-3D-OLED-K6604/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-gaming-backpack-16/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-carry-sleeve-16/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-backpack-bp1501g-holographic-edition-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-carry-bag-bc1004/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-zephyrus-g14-sleeve-2022-model/
+INFO:root:list index out of range:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-15-S5507/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-backpack-17-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-carry-sleeve-15-6-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-zephyrus-g14-sleeve-ga401-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C213/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S14-S410UQ/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1500-gaming-backpack-model/
+INFO:root:no data:  https://www.asus.com/Laptops/Accessories/All-series/ASUS-65W-USB-C-Ultra-Mini-Universal-Adapter/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp2701-gaming-backpack-cybertext-edition/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-backpack-15-6-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Work/All-series/ExpertBook-P1-P1440/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-messenger-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-backpack-bp1501g-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1503-gaming-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-tech-pouch-bc1003/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Flip-TP301UA/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-shuttle-ii-backpack-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-PZ13-HT5306/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bc1001-waist-pack-model/
