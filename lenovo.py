@@ -903,22 +903,30 @@ lenovo_desktop.get_web_url()
 lenovo_desktop.get_data_normal()
 lenovo_desktop.clean()
 
+lenovo_thinksta = lenovo_crawl(keyword='thinkstation')
+lenovo_thinksta.get_web_url_thinsta()
+lenovo_thinksta.get_data_normal()
+lenovo_thinksta.clean()
+
+desktop_detail()
+
 
 lenovo_lap = lenovo_crawl(keyword='Laptops')
 lenovo_lap.get_web_url()
 lenovo_lap.get_data_normal()
 lenovo_lap.clean()
 
+laptop_detail()
+
 lenovo_dock = lenovo_crawl(keyword='Docking')
 lenovo_dock.get_web_url()
 lenovo_dock.get_data_normal()
 lenovo_dock.clean()
 
+docking_detail()
 
-lenovo_thinksta = lenovo_crawl(keyword='thinkstation')
-lenovo_thinksta.get_web_url_thinsta()
-lenovo_thinksta.get_data_normal()
-lenovo_thinksta.clean()
+
+
 
 # try_time()
 
