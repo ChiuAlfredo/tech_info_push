@@ -40,8 +40,12 @@ def get_page_json(page_number,keyword,**kwargs):
             
 
     web_url_list = ['https://www.lenovo.com/us/en/'+i['url'] for i in data_json]
+    # for index,i in enumerate(data_json):
+    #     i['productName']
     for index,i in enumerate(data_json):
-        i['url']
+        try :i['productName']
+        except:
+            i['productName'] = i['summary']
     product_name_list = [i['productName']for i in data_json]
     product_code_list = [i['productCode']for i in data_json]
 
@@ -214,7 +218,13 @@ def get_product_price(product_code,file_name,n):
 
     
     json_data = json.loads(response.text)
-    price = json_data['data'][product_code][4]
+    
+    try:
+        price = json_data['data'][product_code][4]
+    except:
+        response = requests.request("GET", url, headers=headers, data=payload)
+        json_data = json.loads(response.text)
+        price = json_data['data'][product_code][4]
     
     price_json = {'price':price}
     
