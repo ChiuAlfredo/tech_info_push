@@ -597,7 +597,7 @@ def data_to_excel_laptop():
     
     
     df[columns_to_output].to_csv(
-        f"./data/hp/desktop.csv", encoding="utf-8-sig", index=False
+        f"./data/hp/laptop.csv", encoding="utf-8-sig", index=False
     )
     
     
