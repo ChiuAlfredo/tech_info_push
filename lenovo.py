@@ -8,7 +8,7 @@ import re
 
 import time
 from functools import wraps
-
+import pandas as pd
 # 計算時間
 def timing_decorator(func):
     @wraps(func)
@@ -512,6 +512,388 @@ class lenovo_crawl():
 
         self.data_list = list(zip(self.product_name,self.web_url_list,all_product_price,all_product_data,all_product_data_more))
         save_json(self.data_list,f'data/lenovo/{self.file_name}_product.json')
+        
+        
+def desktop_detail():
+    with open('data/lenovo/Desktops_product.json', 'r', encoding='utf-8') as f:
+        data_1 = json.load(f)
+    with open('data/lenovo/thinkstation_product.json', 'r', encoding='utf-8') as f:
+        data_2 = json.load(f)
+        
+    data = data_1 + data_2
+    
+    data_list =[]
+    product_name = [{'Model Name':i[0]} for i in data]
+    web_url = [{'Web Link':i[1]} for i in data]
+    price = [{'Official Price':i[2]} for i in data]
+    feature = [i[3] for i in data]
+    dimension, port, weight = [],[],[]
+    
+    def clean_html(html_string):
+        soup = BeautifulSoup(html_string, 'html.parser')
+        return soup.get_text(separator='\n').strip()
+    
+    for i in data:
+        try:
+            dimension.append({'Dimensions (H x W x D)':clean_html(i[4]['Dimensions (H x W x D)'])})
+        except:
+            dimension.append({'Dimensions (H x W x D)':''})
+        try:
+            port.append({'Ports/Slots':clean_html(i[4]['Ports/Slots'])})
+        except:
+            port.append({'Ports/Slots':''})
+        try:
+            weight.append({'Weight':clean_html(i[4]['Weight'])})
+        except:
+            weight.append({'Weight':''})
+    for i,data_ in enumerate(data):
+        data_list.append({**product_name[i],**web_url[i],**price[i],**feature[i],**dimension[i],**port[i],**weight[i]})
+
+
+
+    df = pd.DataFrame(data_list)
+    df['Type'] = df['Model Name'].apply(lambda x: 'Chrome' if 'chrome' in x.lower() else 'Workstation' if 'workstation' in x.lower() else 'Gaming' if 'omen' in x.lower() or 'victus' in x.lower() else 'Commercial' if 'thin client' in x.lower() or 'pro' in x.lower() or 'elite' in x.lower() or 't550' in x.lower() else 'Consumer' if 'pavilion' in x.lower() or 'envy' in x.lower() else 'None Type_DT')
+    
+    
+    df["Ports/Slots"] = df["Ports/Slots"].fillna("")
+    df["Ports"] = df["Ports"].fillna("")
+    df["Ports & Slots"] = df["Ports/Slots"] + "\n" + df["Ports"]
+    
+    df['Graphics Card'] = df['Graphic Card']
+    
+    df['Hard Drive'] = df['Storage']
+    
+    df['Operating System'] = df['Operating System']
+    
+    df['Audio and Speakers'] = None
+    
+    df['Power Supply'] = df['AC Adapter / Power Supply'].apply(lambda x: x if pd.notna(x) else None)
+    # Function to convert inches to centimeters
+    def inches_to_cm(inches):
+        return round(inches * 2.54, 2)
+
+    # Function to extract and convert dimensions
+    def convert_dimensions(dimensions):
+        # dimensions = df["Dimensions (H x W x D)"][2]
+        if dimensions!='':
+            match = re.search(r"(\d+\.?\d*)mm x (\d+\.?\d*)mm x (\d+\.?\d*)mm", dimensions)
+            
+            if match:
+                height_mm = float(match.group(1))
+                width_mm = float(match.group(2))
+                depth_mm = float(match.group(3))
+                    
+                        
+                    
+                return height_mm, width_mm, depth_mm
+            else:
+                return '', '', ''
+                
+        else:
+            return '', '', ''
+    df["Dimensions (H x W x D)"].fillna("", inplace=True)
+    df[["Height(mm)", "Width(mm)", "Depth(mm)"]] = df["Dimensions (H x W x D)"].apply(convert_dimensions).apply(pd.Series)
+    
+    def extract_and_convert_to_kg(weight_str):
+        if pd.notna(weight_str):
+        
+            match = re.search(r"(\d+(\.\d+)?)\s*kg", weight_str)
+            if match:
+                weight_lb = float(match.group(1))
+                weight_kg = round(weight_lb, 2)
+                return weight_kg
+            return None
+        return None
+
+    df["Weight"].fillna("", inplace=True)
+    df["Weight(kg)"] = df["Weight"].apply(extract_and_convert_to_kg)
+    
+    df['Brand'] = "Lenovo"
+    
+    df['Model Name'] = df['Model Name']
+    
+    
+
+    columns_to_output = [
+            "Type",
+            "Brand",
+            "Model Name",
+            "Official Price",
+            "Ports & Slots",
+            "Display",
+            "Processor",
+            "Graphics Card",
+            "Hard Drive",
+            "Memory",
+            "Operating System",
+            "Audio and Speakers",
+            "Height(mm)",
+            "Width(mm)",
+            "Depth(mm)",
+            "Weight(kg)",
+            "Power Supply",
+            "Web Link",
+        ]
+    df[columns_to_output].to_csv(
+        f"./data/lenovo/desktop.csv", encoding="utf-8-sig", index=False
+    )
+def laptop_detail():
+
+    with open('data/lenovo/Laptops_product.json', 'r', encoding='utf-8') as f:
+        data_1 = json.load(f)
+        
+    data = data_1 
+    
+    data_list =[]
+    product_name = [{'Model Name':i[0]} for i in data]
+    web_url = [{'Web Link':i[1]} for i in data]
+    price = [{'Official Price':i[2]} for i in data]
+    feature = [i[3] for i in data]
+    dimension, port, weight,audio,Camera,battery = [],[],[],[],[],[]
+    other_list = [str(i[4]) for i in data]
+    
+    def clean_html(html_string):
+        soup = BeautifulSoup(html_string, 'html.parser')
+        return soup.get_text(separator='\n').strip()
+    
+    for i in data:
+        try:
+            dimension.append({'Dimensions (H x W x D)':clean_html(i[4]['Dimensions (H x W x D)'])})
+        except:
+            dimension.append({'Dimensions (H x W x D)':''})
+        try:
+            port.append({'Ports/Slots':clean_html(i[4]['Ports/Slots'])})
+        except:
+            port.append({'Ports/Slots':''})
+        try:
+            weight.append({'Weight':clean_html(i[4]['Weight'])})
+        except:
+            weight.append({'Weight':''})
+        try:
+            audio.append({'Audio and Speakers':clean_html(i[4]['Audio and Speakers'])})
+        except:
+            audio.append({'Audio and Speakers':''})
+        try:
+            Camera.append({'Camera':clean_html(i[4]['Camera'])})
+        except:
+            Camera.append({'Camera':''})
+        try:
+            battery.append({'Primary Battery':clean_html(i[4]['Primary Battery'])})
+        except:
+            battery.append({'Primary Battery':''})
+            
+    for i,data_ in enumerate(data):
+        data_list.append({**product_name[i],**web_url[i],**price[i],**feature[i],**dimension[i],**port[i],**weight[i],**audio[i],**Camera[i]})
+
+
+
+    df = pd.DataFrame(data_list)
+    df['Type'] = df['Model Name'].apply(lambda x: 'Chrome' if 'chrome' in x.lower() else 'Workstation' if 'workstation' in x.lower() else 'Gaming' if 'omen' in x.lower() or 'victus' in x.lower() else 'Commercial' if 'thin client' in x.lower() or 'pro' in x.lower() or 'elite' in x.lower() or 't550' in x.lower() else 'Consumer' if 'pavilion' in x.lower() or 'envy' in x.lower() else 'None Type_DT')
+    
+    
+    df["Ports/Slots"] = df["Ports/Slots"].fillna("")
+    df["Ports"] = df["Ports"].fillna("")
+    df["Ports & Slots"] = df["Ports/Slots"] + "\n" + df["Ports"]
+    
+    df['Graphics Card'] = df['Graphic Card']
+    
+    df['Hard Drive'] = df['Storage']
+    
+    df['Operating System'] = df['Operating System']
+    
+    df['Audio and Speakers'] = df['Audio and Speakers']
+    
+    df['Power Supply'] = df['AC Adapter / Power Supply'].apply(lambda x: x if pd.notna(x) else None)
+    
+    df['Primary Battery'] = df['Battery']
+    
+    # Function to convert inches to centimeters
+    def inches_to_cm(inches):
+        return round(inches * 2.54, 2)
+
+    # Function to extract and convert dimensions
+    def convert_dimensions(dimensions):
+        # dimensions = df["Dimensions (H x W x D)"][2]
+        if dimensions!='':
+            match = re.search(r"(\d+\.?\d*)mm x (\d+\.?\d*)mm x (\d+\.?\d*)mm", dimensions)
+            
+            if match:
+                height_mm = float(match.group(1))
+                width_mm = float(match.group(2))
+                depth_mm = float(match.group(3))
+                    
+                        
+                    
+                return height_mm, width_mm, depth_mm
+            else:
+                return '', '', ''
+                
+        else:
+            return '', '', ''
+    df["Dimensions (H x W x D)"].fillna("", inplace=True)
+    df[["Height(mm)", "Width(mm)", "Depth(mm)"]] = df["Dimensions (H x W x D)"].apply(convert_dimensions).apply(pd.Series)
+    
+    def extract_and_convert_to_kg(weight_str):
+        if pd.notna(weight_str):
+        
+            match = re.search(r"(\d+(\.\d+)?)\s*kg", weight_str)
+            if match:
+                weight_lb = float(match.group(1))
+                weight_kg = round(weight_lb, 2)
+                return weight_kg
+            return None
+        return None
+
+    df["Weight"].fillna("", inplace=True)
+    df["Weight(kg)"] = df["Weight"].apply(extract_and_convert_to_kg)
+    
+    df['Brand'] = "Lenovo"
+    
+    df['Model Name'] = df['Model Name']
+    
+    
+    df['NFC'] = None
+    df['FPR_model'] = None
+    for index,i in enumerate(other_list):
+        # index = 0
+        # i = disclaim_list[index]
+        
+        if '4G' in i:
+            # print(index)
+            df.loc[index,'WWAN'] = '4G'
+        elif '5G' in i:
+            df.loc[index,'WWAN'] = '5G'
+            
+        if 'NFC' in i:
+            df.loc[index,'NFC'] = 'Yes'
+            
+        if 'Fingerprint' in i:
+            df.loc[index,'FPR'] = 'Yes'
+            
+
+    
+    
+    
+
+    columns_to_output = [
+        "Type",
+        "Brand",
+        "Model Name",
+        "Official Price",
+        "Ports & Slots",
+        "Camera",
+        "Display",
+        "Primary Battery",
+        "Processor",
+        "Graphics Card",
+        "Hard Drive",
+        "Memory",
+        "Operating System",
+        "Audio and Speakers",
+        "Height(mm)",
+        "Width(mm)",
+        "Depth(mm)",
+        "Weight(kg)",
+        "WWAN",
+        "NFC",
+        "FPR_model",
+        "FPR",
+        "Power Supply",
+        "Web Link",
+    ]
+    df[columns_to_output].to_csv(
+        f"./data/lenovo/laptop.csv", encoding="utf-8-sig", index=False
+    )
+def docking_detail():
+    with open('data/lenovo/Docking_product.json', 'r', encoding='utf-8') as f:
+        data_1 = json.load(f)
+   
+    data = data_1 
+    
+    data_list =[]
+    product_name = [{'Model Name':i[0]} for i in data]
+    web_url = [{'Web Link':i[1]} for i in data]
+    price = [{'Official Price':i[2]} for i in data]
+    feature = [i[3] for i in data]
+    dimension, port, weight = [],[],[]
+    
+    def clean_html(html_string):
+        soup = BeautifulSoup(html_string, 'html.parser')
+        return soup.get_text(separator='\n').strip()
+    
+    for i in data:
+        try:
+            dimension.append({'Dimensions (H x W x D)':clean_html(i[4]['Dimensions (H x W x D)'])})
+        except:
+            dimension.append({'Dimensions (H x W x D)':''})
+        try:
+            port.append({'Ports/Slots':clean_html(i[4]['Ports/Slots'])})
+        except:
+            port.append({'Ports/Slots':''})
+        try:
+            weight.append({'Weight':clean_html(i[4]['Weight'])})
+        except:
+            weight.append({'Weight':''})
+    for i,data_ in enumerate(data):
+        data_list.append({**product_name[i],**web_url[i],**price[i],**feature[i],**dimension[i],**port[i],**weight[i]})
+
+
+
+    df = pd.DataFrame(data_list)
+    df['Type'] = df['Model Name'].apply(lambda x: 'Chrome' if 'chrome' in x.lower() else 'Workstation' if 'workstation' in x.lower() else 'Gaming' if 'omen' in x.lower() or 'victus' in x.lower() else 'Commercial' if 'thin client' in x.lower() or 'pro' in x.lower() or 'elite' in x.lower() or 't550' in x.lower() else 'Consumer' if 'pavilion' in x.lower() or 'envy' in x.lower() else 'None Type_DT')
+    
+    
+    df["Charging Port"] = df["Charging Port"].fillna("")
+    df['Thunderbolt Port'] = df['Thunderbolt Port'].fillna("")
+    df['USB Ports'] = df['USB Ports'].fillna("")
+    df['Video Ports'] = df['Video Ports'].fillna("")
+    df['Ethernet'] = df['Ethernet'].fillna("")
+    
+    df["Ports & Slots"] = df["Ports/Slots"] 
+    
+   
+
+    df['Output Power'] = df['Output Power'].fillna("")
+    df['Input Power'] = df['Input Power'].fillna("")
+
+    df['Power Supply'] = df['Output Power'] + "\n" + df['Input Power']
+    # Function to convert inches to centimeters
+   
+    def extract_and_convert_to_kg(weight_str):
+        if pd.notna(weight_str):
+        
+            match = re.search(r"(\d+(\.\d+)?)\s*kg", weight_str)
+            if match:
+                weight_lb = float(match.group(1))
+                weight_kg = round(weight_lb, 2)
+                return weight_kg
+            return None
+        return None
+
+    df["Weight"].fillna("", inplace=True)
+    df["Weight(kg)"] = df["Weight"].apply(extract_and_convert_to_kg)
+    
+    df['Brand'] = "Lenovo"
+    
+    df['Model Name'] = df['Model Name']
+    
+    
+    columns_to_output = [
+        "Type",
+        "Brand",
+        "Model Name",
+        "Official Price",
+        "Ports & Slots",
+        "Weight(kg)",
+        "Power Supply",
+        "Web Link",
+
+    ]
+    df[columns_to_output].to_csv(
+        f"./data/lenovo/docking.csv", encoding="utf-8-sig", index=False
+    )
+    
+    
 
 # @timing_decorator
 # def try_time():
