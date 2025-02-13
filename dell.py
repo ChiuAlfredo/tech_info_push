@@ -32,6 +32,7 @@ class DellCrawler:
 keyword_list = ["laptop", "desktop", "docking"]
 company = "Dell"
 for keyword in keyword_list:
+    # keyword = keyword_list[2]
     dell = DellCrawler(keyword, company)
     dell.get_product_link()
     dell.get_product_detail()

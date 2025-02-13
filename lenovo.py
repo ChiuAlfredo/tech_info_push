@@ -653,12 +653,26 @@ def laptop_detail():
     other_list = [str(i[4]) for i in data]
     
     def clean_html(html_string):
+        if not html_string:
+            return ''
+        # html_string = "<span style=""white-space:nowrap;"">Windows 11</span> Home</br> Lenovo recommends Windows 11 Pro for business."
+        # Parse HTML content
         soup = BeautifulSoup(html_string, 'html.parser')
-        return soup.get_text(separator='\n').strip()
+        # Extract text and clean up
+        text = soup.get_text(separator='\n').strip()
+        # Remove any remaining HTML tags and excessive whitespace
+        clean_text = re.sub(r'<[^>]+>', '', text)
+        clean_text = re.sub(r'\s+', ' ', clean_text)
+        return clean_text
     
     for i in data:
         try:
-            dimension.append({'Dimensions (H x W x D)':clean_html(i[4]['Dimensions (H x W x D)'])})
+            # Find any key containing 'dimensions' (case-insensitive)
+            dimension_key = next((key for key in i[4].keys() if 'dimensions' in key.lower()), None)
+            if dimension_key:
+                dimension.append({'Dimensions (H x W x D)': clean_html(i[4][dimension_key])})
+            else:
+                dimension.append({'Dimensions (H x W x D)': ''})
         except:
             dimension.append({'Dimensions (H x W x D)':''})
         try:
@@ -714,24 +728,33 @@ def laptop_detail():
     # Function to extract and convert dimensions
     def convert_dimensions(dimensions):
         # dimensions = df["Dimensions (H x W x D)"][2]
-        if dimensions!='':
-            match = re.search(r"(\d+\.?\d*)mm x (\d+\.?\d*)mm x (\d+\.?\d*)mm", dimensions)
-            
+
+        dimensions = str(dimensions).strip()
+
+        # 正则表达式
+        if dimensions:
+            # 匹配每个数值支持范围和单位
+            match = re.search(
+                r"(?:[^\d]*?)(\d+\.?\d*)(?:-\d+\.?\d*)?\s*(?:mm)?\s*x\s*"
+                r"(?:[^\d]*?)(\d+\.?\d*)(?:-\d+\.?\d*)?\s*(?:mm)?\s*x\s*"
+                r"(?:[^\d]*?)(\d+\.?\d*)(?:-\d+\.?\d*)?\s*(?:mm)?",
+                dimensions,
+                re.IGNORECASE
+            )
             if match:
-                height_mm = float(match.group(1))
-                width_mm = float(match.group(2))
-                depth_mm = float(match.group(3))
-                    
-                        
-                    
+            # 提取维度数值
+                height_mm = float(match.group(1)) if match.group(1) else None
+                width_mm = float(match.group(2)) if match.group(2) else None
+                depth_mm = float(match.group(3)) if match.group(3) else None
                 return height_mm, width_mm, depth_mm
-            else:
-                return '', '', ''
-                
-        else:
-            return '', '', ''
+        # 无法匹配返回空值
+        return None, None, None
+
     df["Dimensions (H x W x D)"].fillna("", inplace=True)
+    
     df[["Height(mm)", "Width(mm)", "Depth(mm)"]] = df["Dimensions (H x W x D)"].apply(convert_dimensions).apply(pd.Series)
+    
+    # df_1 = df[["Dimensions (H x W x D)","Height(mm)","Width(mm)","Depth(mm)",'Web Link']]
     
     def extract_and_convert_to_kg(weight_str):
         if pd.notna(weight_str):
@@ -801,6 +824,9 @@ def laptop_detail():
         "Power Supply",
         "Web Link",
     ]
+    for column in columns_to_output:
+        df[column] = df[column].apply(lambda x: clean_html(str(x)))
+    
     df[columns_to_output].to_csv(
         f"./data/lenovo/laptop.csv", encoding="utf-8-sig", index=False
     )

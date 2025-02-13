@@ -247,3 +247,716 @@ INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook
 INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-shuttle-ii-backpack-model/
 INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-PZ13-HT5306/
 INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bc1001-waist-pack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-classic-messenger-bag-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/2021-rog-strix-g17-series/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g17-series/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-17-2022-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-S533-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-16-Flip-OLED-TN3604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A15-2024/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-chakram-x-origin-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-S532-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-17-X705/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-B2402C-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-X513-11th-gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CR11-CR1104C/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-16-OLED-W7604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-OLED-B5602F-12th-Gen-Intel/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S14-S406UA/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-16X-OLED-N7600-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CX1-CX1400/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-cap/rog-slash-swappable-label-cap-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-ii-gl504-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-strix-impact-ii-moonlight-white-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-claymore-ii-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/2021-rog-strix-g15-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-gm50-plus-mouse-pad-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CR12-Flip-CR1204F/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ASUS-ExpertBook-B1-B1503/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-scabbard-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-15-OLED-UM535-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-17-M705/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-strix-impact-ii-gundam-edition-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1500-gaming-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/ASUS-Vivobook-Pro-15-K6500-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-H7600-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-B5302F-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-16X-OLED-M1603-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-One-W590/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-14-X1404/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/3-5mm-headsets/rog-strix-go-2-4-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/zenbook-14-ux3402/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A15-2022/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-S13-OLED-UX371-11th-Gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-flow/2021-rog-flow-x13-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-M433/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UM425/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-16-OLED-M5606/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-M7601-AMD-Ryzen-6000-Series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-keris-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/3-5mm-headsets/rog-delta-core-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/Zenbook/Zenbook-Pro-14-OLED-UX6404/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/wireless/rog-strix-impact-iii-wireless/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14X-OLED-S5402-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B3-Flip-B3402-Series-1/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-balteus-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-14X-OLED-K3405/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/VivoBook-15-X1500-11th-gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ASUSPRO-P1440/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-pugio-ii-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-M7600-AMD-Ryzen-6000-Series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-strix-carry-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-16X-M1603-AMD-Ryzen-4000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-X442/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P1-P1410-AMD-Ryzen-3000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-C423/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-balteus-qi-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-Flip-B2502F-13th-Gen-Intel/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-3D-OLED-H7604/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-sheath-gundam-edition-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-backpack-17-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-14-TP412/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-bp1800-gaming-backpack/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-OLED-X1405/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-16X-OLED-M7600-AMD-Ryzen-5000-Series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/accessories/rog-dye-sub-pbt-keycaps/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/accessories/rog-throne-core-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-C204/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-delta-origin-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/VivoBook-14-X1400-11th-gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Vibe-CX55-Flip-CX5501-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Vibe-CX34-Flip-CX3401-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Duo-UX481/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/accessories/rog-keycap-set-for-rx-switches-eva-02-edition/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-14-OLED-M6400-AMD-Ryzen-6000-Series/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-carry-sleeve-15-6-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/in-ear-headphone/rog-cetra-ii-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A17-2023/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-X413/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ASUS-ExpertBook-B1-B1403/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-14-UX463/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/All-series/ASUS-BR1100F/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/accessories/rog-pbt-doubleshot-keycap-set-for-rog-rx-switches-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/accessories/rog-gaming-wrist-rest-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-OLED-M7600-AMD-Ryzen-6000-Series/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Edition-30-UX334/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-15-OLED-M1505/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp3703-gaming-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-B5302F-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P2-P2540/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-chakram-x-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ASUS-P1512-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-S-14-UX5406/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/3-5mm-headsets/rog-strix-go-core-electro-punk-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-UX5401-11th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/wireless-headsets/rog-strix-go-bt-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-strix-edge-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-S433-11th-Gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/2021-rog-strix-scar-17-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-ii-origin-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B3-Flip-B3402-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-UX5400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C433/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-UX5401-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5602-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-14-TP410/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Enterprise-Flip-CX5-CX5500-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S13-S333/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-scabbard-ii-eva-edition-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Go-14-Flip-TP1401/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Plus-Enterprise-CX34-CX3402/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-cap/rog-slash-classic-baseball-cap-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/pbt-keycaps/rog-strix-flare-ii-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-15-OLED-S5506/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-X1402-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-M1402-AMD-Ryzen-4000-series/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-hard-case-luggage/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A15/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gx860-buzzard-mouse-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-14-UX461/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P5-P5405/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UX431/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-L2-L2402C-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5402C-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-S532/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-Flip-B2402F-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/ASUS-X515-11th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/pbt-keycaps/rog-strix-scope-ii-rx/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/vivobook-s-14-flip-tn3402/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-UX310UQ/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P1-P1403/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1502-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-15X-OLED-M3504/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Duo-14-UX482/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P1-P1510/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-shuttle-ii-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F16-2024/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-B2502C-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P1-P1503/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5402C-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1102/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Go-15-E510/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/accessories/rog-throne-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-L1-L1500/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-16-OLED-X1605/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-falchion-nx-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B3-B3404/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-X412/
+INFO:root:name 'zenbook_14_crawl' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-UX530/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-FX505DV/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-S-16-UM5606/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-OLED-H5600-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Zenbook/zenbook-pro-16x-oled-ux7602/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-UX5401-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/2021-ASUS-TUF-Dash-F15/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-17-X712/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-14-OLED-K3400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-B5602F-12th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-falchion-ace-hfx/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-16-OLED-W7600-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-13-OLED-UX363-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/ASUS-X415-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5404/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-C202/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/laptops/rog-strix/2021-rog-strix-g17-advantage-edition-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-harpe-ace-mini/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/2021-ASUS-TUF-Gaming-F15/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/laptops/rog-strix/2021-rog-strix-g15-advantage-edition-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-15-S5507/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-S-UX371-11th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bc1002-crossbody-bag-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-S13-UX392/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-duffle-bag/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/ImagineBook-MJ401TA/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-15-M3502-AMD-Ryzen-5000-Series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-delta-s-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15X-OLED-M1503-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/ASUS-X515/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/asus-vivobook-pro-15-oled-m6500/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CM30-Detachable-CM3001/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-keris-wireless-eva-edition-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-S-UX391/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/FoneMate/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-fusion-ii-500-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/vivobook-15-m1502/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g16-2023-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1100/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-17-M712/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Dash-F15-2022/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-OLED-K513-11th-gen-intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1402-12th-Gen-Intel/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Max-X441UV/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-15-OLED-M5506/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CM3-CM3200/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-15-UX535/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g18-2023-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-16X-M5602-AMD-Ryzen-6000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-K413/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CM14-CM1402C/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-C523/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-bp4701-gaming-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-X512/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-L2-Flip-L2502F-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/All-series/ASUS-BR1100C/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-strix-impact-ii-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UX435/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2022-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B7-Flip-B7402F-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-17X-M1703-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-UM5401-AMD-Ryzen-5000-Series/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g15-2022-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CR12-CR1204C/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CZ11-Flip-CZ1104F/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-crossbody-bag-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-15-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-moonstone-ace-l/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-sheath-pnk-ltd-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UM433-4000-series-Ryzen/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CR1-CR1100/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-B5402F-13th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-delta-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14X-OLED-M5402-AMD-Ryzen-6000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-S435/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-X571/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-azoth-extreme/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-B5402F-12th-Gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g-g531-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-13-Slate-OLED-Philip-Colbert-Edition/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/zenbook-14-oled-um3402/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14-M3402-AMD-Ryzen-5000-Series/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-cap/rog-slash-inside-out-camp-cap-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-ii-wireless-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-15X-OLED-M6501-AMD-Ryzen-6000-Series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/wireless-headsets/rog-pelta/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-zephyrus-g14-sleeve-ga401-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Enterprise-Flip-CX5-CX5400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15X-OLED-M1503-AMD-Ryzen-4000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ASUS-P1412-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Enterprise-CX9-CX9400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-12-TP203/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-carry-sleeve-16/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-UX310UA/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-weekender-17-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-14-OLED-K6400-12th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-strix-scope-nx-tkl-moonlight-white-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-16-OLED-W7600-11th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-strix-scope-nx-tkl-deluxe-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C214/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CX3-CX3400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-OLED-B5302C-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-13-OLED-UX325-11th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-delta-white-edition-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-hone-ace-aim-lab-edition-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-Flip-B2402F-12th-Gen-Intel/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-3-Deluxe-UX490/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-C424/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UM433/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-OLED-H7600-11th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-flow-sleeve-2022-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-15-UX580/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-L5-L5404/
+INFO:root:name 'pro_art_crawl' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-15-H500/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UM425-QA/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-UX510/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-backpack-bp1501g-holographic-edition-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-S-UX393-11th-Gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g15-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-L1-L1400/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Go-15-OLED-E1504F/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp3703-core-gaming-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-X-W730/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-backpack-bp1501g-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/gx1000-eagle-eye-mouse-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CX1-CX1500FKA/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-sheath-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-M433-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5302-12th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-ergoair-gaming-backpack/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/accessories/rog-polling-rate-booster/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-16-W7600-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-15-UX563/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-Flip-CR1-CR1100/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-strix-scope-tkl-gundam-edition-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-rx-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-C403/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B9-OLED-B9403-13th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-iii-wireless-aimpoint-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/wireless/rog-spatha-x-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-OLED-N7600-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-16-Flip-TP3607/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/vivobook-15-x1502/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-Enterprise-CM30-Detachable-CM3001/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-15-UM562-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-OLED-B5602-12th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-messenger-14-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5302C-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A16-2024/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/pbt-keycaps/rog-strix-scope-ii/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Zenbook/zenbook-pro-14-duo-oled-ux8402/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-carry-bag-bc1004/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Go-15-OLED-E1504G/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-L2-Flip-L2402F-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-OLED-N7601-12th-Gen-Intel/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS_Chromebook_C200/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-tkl-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-M533-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-Ultralight-UX435/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B3-Flip-B3402-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-B5402F-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-H5600-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-14X-OLED-N7401-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-K513-11th-gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CX5-CX5500/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-14-TM420/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UM431/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A17-2022/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-pugio-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-OLED-H7600-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-H7600-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-14-OLED-M5406/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-cap/rog-slash-cobra-buckle-cap-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-ii-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-falchion-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-PX13-HN7306/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F17-2023/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-15-UX534/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-16X-OLED-K3605/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-16X-M1603-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-13-UX363/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-ii-96-rx-wireless/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-UM5401-AMD-Ryzen-6000-series/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-sling-bag-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-multi-use-drawstring-bag-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-13-UX362/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P2-P2451/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-13-Slate-OLED-T3304/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S13-S330/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-14-OLED-S5406/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-16X-M5602-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-UM5401-AMD-Ryzen-6000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CM5-CM5500/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-16-OLED-W5600-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-14-OLED-UX3405/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-15-W500/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Work/All-series/ExpertBook-P1-P1440/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/3-5mm-headsets/rog-strix-go-core-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-chakram-core-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-18-2024/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-14-TM420-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14X-X1403-12th-Gen-Intel/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-14-UX480/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1500/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/in-ear-headphone/rog-cetra-ii-core-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-14-Flip-TP3407/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-OLED-X1505/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-deluxe-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-flow-x13-2022-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-theta-7-1-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UM425-UG/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/vivobook-s-14-flip-oled-tp3402/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-hone-ace-xxl/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Go-14-Flip-TP1400/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A14-2024/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-ii-origin-pnk-ltd-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-scabbard-ii-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CX1-CX1102/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-17-X1702-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-13-UX331/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-Flip-OLED-UN5401-AMD-Ryzen-5000-Series/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C213/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-17-se-2022-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/vivobook-s-14-flip-tp3402/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/3-5mm-headsets/rog-strix-go-core-moonlight-white-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-15-M3502-AMD-Ryzen-6000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-Duo-15-OLED-UX582-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Max-X441SA/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/ASUS-Vivobook-Pro-15-OLED-K6500-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-Flip-OLED-UN5401-AMD-Ryzen-6000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-13-UX325-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ASUS-ExpertBook-BM1-BM1403/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-flow-x16-2022-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-12-TP202/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-backpack-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-sheath-blk-ltd-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-14-TP470/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C302/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-17-H700/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-13-Slate-OLED-Steven-Harrington-Edition/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/ASUS-E210/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/wireless/rog-strix-impact-ii-wireless-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-strix-impact-iii-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-ii-core-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-S410/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Go-14-E410/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1101/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-strix-scope-rx-tkl-wireless-deluxe-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/pbt-keycaps/rog-strix-scope-nx-wireless-deluxe-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-15-OLED-UX564/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-B2502C-13th-Gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-16-2024/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-14-OLED-K5404/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14-OLED-K3402-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/ASUS-X415/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C434/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/2021-ASUS-TUF-Gaming-F17/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-tkl-electro-punk-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-18-2023-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-14X-OLED-N7400-11th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1503-gaming-backpack-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-strix-impact-ii-electro-punk-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-PZ13-HT5306/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CR11-Flip-CR1104F/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-zephyrus-g14-sleeve-2022-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14-M3402-AMD-Ryzen-6000-Series/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-artillery-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A15-2023/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-15-UM535-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-13-UX325/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F17-2022/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g-g731-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UX425-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Enterprise-CM14-CM1402C/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/VivoBook-17-X712-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-16-Flip-OLED-TP3604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-15X-OLED-K3504/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/2021-ASUS-TUF-Gaming-A15/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-gaming-backpack-16/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-strix-go-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CZ11-CZ1104C/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CX5-CX5400/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-S430/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14-OLED-M3402-AMD-Ryzen-6000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-14X-OLED-M7400-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Zenbook/Zenbook-Pro-15-OLED-UX535/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-delta-s-animate-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Go-12-E210/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-17-Fold-OLED-UX9702/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-16X-OLED-M5602-AMD-Ryzen-6000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/ASUS-Vivobook-Pro-15-OLED-M6500-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B7-Flip-B7402F-11th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-flow-z13-acrnm-rmt02/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-17X-K1703-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B7-Flip-B7402-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-14-OLED-M6400-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Enterprise-CM14-Flip-CM1402F/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-15-UX562/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-M6500-AMD-Ryzen-4000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-13-Slate-OLED-T3300/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/wireless/rog-keris-ii-ace/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-17-N705/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B9-B9450/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-C223/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-S-UX370/
+INFO:root:no data:  https://www.asus.com/Laptops/Accessories/All-series/ASUS-65W-USB-C-Ultra-Mini-Universal-Adapter/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-Space-Edition-UX5401-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-16X-OLED-M5602-AMD-Ryzen-5000-Series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-strix-scope-nx-tkl-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Detachable-CM3-CM3000/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-S-16-UX5606/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B6-Flip-B6602F-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Vivobook/Vivobook-14-M413/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-C436/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-17-M1702-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-17-W700/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/zenbook-14-um3402/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-N580/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-16X-M7600-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B3-B3604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/Vivobook-S15-M533/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-N7601-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5602-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1402-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-L2-L2502C-AMD-Ryzen-5000-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-harpe-ace-aim-lab-edition-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-16X-N7600-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-Flip-OLED-UP3404/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-15-2022-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/wireless/rog-gladius-iii-wireless-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CZ12-CZ1204C/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/accessories/rog-throne-qi-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1502-12th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ambidextrous/rog-harpe-ace-extreme/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/zenbook-14-oled-ux3402/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-14-OLED-M3401-AMD-Ryzen-5000-Series/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g17-2023-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S13-S333-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-14-M3401-AMD-Ryzen-5000-Series/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Flip-TP301UA/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g17-2022-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B9-B9400/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Plus-CM34-Flip-CM3401/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-15-UX564/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Zenbook/Zenbook-Pro-15-Flip-OLED-UP6502-12th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-sheath-electro-punk-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-strix-scope-ii-96-wireless/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F17/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-15-X1504/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-15X-M6501-AMD-Ryzen-6000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-15-OLED-UM3504/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-15-OLED-K3502-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F15-2022/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A16-2024-FA608/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-OLED-B5602-13th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UM425-UA/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-3D-OLED-K6604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-S431/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-15X-K6501-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/2021-ASUS-TUF-Gaming-A17/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-sackpack-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-mothership-gz700-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-16-W5600-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-M513-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1400/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-15X-OLED-K6501-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-X405/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-iii-wireless-aimpoint-eva-02-edition/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/pbt-keycaps/rog-strix-scope-pbt-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-azoth-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-14-OLED-UM3406/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bc1001-waist-pack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CR11-Flip-CR1102F/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/pbt-keycaps/rog-strix-flare-ii-animate-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-OLED-M7601-AMD-Ryzen-6000-Series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/in-ear-headphone/rog-cetra-true-wireless-speednova/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14-OLED-M3402-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-16-OLED-M1605/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-gladius-iii-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-14-UX450/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-16X-OLED-M3604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-UX5401-12th-Gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-ii-gl704-series/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp2701-gaming-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-16X-OLED-M1603-AMD-Ryzen-4000-series/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-UX560/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/3-5mm-headsets/rog-delta-s-core-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-14-K3402-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-15-M6500-AMD-Ryzen-5000-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-tkl-deluxe-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-UX3404/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CM14-Flip-CM1402F/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UX434/
+INFO:root:name 'zenbook_14_crawl' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UX430/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A16-Advantage-Edition-2023/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/wireless-headsets/rog-delta-s-wireless-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-hip-bag-model/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/in-ear-headphone/rog-cetra-ii-core-moonlight-white-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-protective-laptop-bag-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1500-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-X413-11th-gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Plus-Enterprise-CM34-Flip-CM3401/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-A17/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-nx-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-OLED-M513-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-Detachable-CZ1-CZ1000/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-OLED-M3500-AMD-Ryzen-5000-Series/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-UX410/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-Flip-OLED-UP5401-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-17X-K3704/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-OLED-M6500-AMD-Ryzen-4000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Vivobook/Vivobook-14-M413-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-N552/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-falchion-rx-low-profile/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-cap/rog-slash-bucket-hat-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-X540/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B9-B9400-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ASUS-ExpertBook-BM1-BM1503/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-UX433/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-S432/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-13-UX334/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/2021-rog-strix-scar-15-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-B2402C-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-X510/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14X-OLED-M1403-AMD-Ryzen-5000-series/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-17-x3d-2023/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1500-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-Duo-UX581/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-UM5401-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-S-13-OLED-UX5304/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-P16-H7606/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-16-OLED-H7604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S14-S433/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-keris-wireless-aimpoint-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-N7600-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-15-TP501/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Go-14-E1404F/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-X420/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/ASUS-Zenbook-DUO-2024-UX8406/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/All-series/ASUS-E510/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-17-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-15-UX533/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-3-UX390/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-Enterprise-Flip-CM5-CM5500-11th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-gm50-mouse-pad-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16-OLED-K6602/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-fusion-ii-300-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Zenbook/Zenbook-Pro-17-UM6702-AMD-Ryzen-6000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-13-OLED-UM325/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-UX561/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14X-M1403-AMD-Ryzen-5000-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-14-OLED-M1405/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CZ12-Flip-CZ1204F/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-ExpertBook-CX54-Chromebook-Plus-Enterprise-CX5403/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-X542/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-E201NA/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-OLED-K3500-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-FX505/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CX34-Flip-CX3401-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P1-P1510-AMD-Ryzen-3000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-S531/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-rx-eva-edition-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14-Flip-OLED-UP5401-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-Flip-OLED-B5302F-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-17-X1704/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-15-UM562/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Students/Chromebook/ASUS-Chromebook-CR11-CR1102C/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/wireless-headsets/rog-delta-ii/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Go-14-E1404G/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-P1-P1410/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-tech-pouch-bc1003/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CM1-CM1400/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-M3500-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Flip-CX5-CX5601-12th-Gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-flow-x13-2023-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B3-Detachable-B3000/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2023-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-14X-OLED-UX5400-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14-K413-11th-gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/in-ear-headphone/rog-cetra-true-wireless-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B1-B1400-12th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-sling-bag-2-0/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-15-K3500-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-14-UM462/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-UX360/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-Pro-16-W7600-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B2-Flip-B2502F-12th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/compact/rog-falchion-ace-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-17-2023-series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/Chromebook/ASUS-Chromebook-CX9-CX9400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F15-2023/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/headsets/usb-headsets/rog-delta-s-eva-edition-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15-M513/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/headsets-audio/in-ear-headphone/rog-cetra-rgb-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/TUF-Gaming/ASUS-TUF-Gaming-F15/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-15X-OLED-X1503-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Flip-13-UX363-11th-gen-Intel/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-flow/rog-flow-x16-2023-series/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g16-2024/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-messenger-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B5-B5402C-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-C425/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-16X-X1603-12th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/wireless/rog-keris-wireless-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-Pro-15-UX550/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1503-electro-punk-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-ExpertBook-CX54-Chromebook-Plus-CX5403/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Flip-14-TP401/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp2701-gaming-backpack-cybertext-edition/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-15-OLED-M3502-AMD-Ryzen-6000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-Plus-CX34-CX3402/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-S533/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-S-13-Flip-OLED-UP5302-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-Pro-14-K3400-11th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/vivobook-s-14-flip-oled-tn3402/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-16X-OLED-S5602-12th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-archer-backpack-15-6-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-15-OLED-M3502-AMD-Ryzen-5000-Series/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-17X-M3704/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Zenbook/Zenbook-Pro-Duo-15-OLED-UX582-11th-Gen-Intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/aura-rgb/rog-strix-scope-nx-deluxe-model/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-scar-16-2023-series/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/keyboards/pbt-keycaps/rog-strix-scope-rx-eva-02-edition/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-15-OLED-K5504/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/Zenbook-13-UX333/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Gaming/All-series/ASUS-V16-V3607/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-OLED-K6604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Creators/Vivobook/ASUS-Vivobook-Pro-15-OLED-K6502/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/keyboards/accessories/rog-pbt-keycap-set-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S14-S410UQ/
+INFO:root:name 'rog_crawl' is not defined:  https://rog.asus.com/laptops/rog-strix/rog-strix-g18-2024/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-15-K3502-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Work/ExpertBook/ExpertBook-B9-OLED-B9403-Series-1-intel/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mouse-pads/rog-strix-slice-mousepad-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S-16X-S5602-12th-Gen-Intel/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp2500-gaming-backpack-model/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-16X-OLED-X1603-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-14X-OLED-X1403-12th-Gen-Intel/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Chromebook/ASUS-Chromebook-CX1-CX1700/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Zenbook/zenbook-s-13-oled-um5302/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-Pro-15-OLED-N6506/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-16X-OLED-K3604/
+INFO:root:name 'home_work_creators' is not defined:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-S530/
+INFO:root:name 'rog_crawl_1' is not defined:  https://rog.asus.com/mice-mouse-pads/mice/ergonomic-right-handed/rog-chakram-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-classic-messenger-bag-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S14-S406UA/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-cap/rog-slash-swappable-label-cap-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1500-gaming-backpack-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-bag/rog-slash-classic-messenger-bag-model/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/Vivobook-S15-S532-11th-Gen-Intel/
+INFO:root:no data:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S14-S406UA/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/rog-slash/rog-slash-cap/rog-slash-swappable-label-cap-model/
+INFO:root:it's not laptop:  https://rog.asus.com/apparel-bags-gear/bags/rog-ranger-bp1500-gaming-backpack-model/
+INFO:root:list index out of range:  https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-16-OLED-M5606/

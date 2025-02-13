@@ -80,6 +80,7 @@ def detail_crawl(keyword, company):
         # product = products_list[404]
         try:
             # burp0_url = 'https://www.dell.com/en-us/shop/dell-computer-laptops/mobile-precision-5690-ai-ready/spd/precision-16-5690-laptop/xctop5690usaivp'
+            # burp0_url = "https://www.dell.com/en-us/shop/desktop-computers/optiplex-tower/spd/optiplex-7020t-desktop/s005do7020mtus_vp"
             burp0_url = product["Web Link"]
 
             # burp0_cookies = {"search-visitorId": "fa91cb13-eefa-4498-af12-3da6919d5160", "akGD": "%7B%22country%22%3A%22TW%22%2C%22region%22%3A%22%22%7D", "s_ecid": "MCMID%7C05594863603858791913966452533384812014", "AMCV_4DD80861515CAB990A490D45%40AdobeOrg": "179643557%7CMCIDTS%7C19916%7CMCMID%7C05594863603858791913966452533384812014%7CMCAID%7CNONE%7CMCOPTOUT-1720686051s%7CNONE%7CvVersion%7C5.5.0", "lwp": "c=us&l=en&s=bsd&cs=04", "__privaci_cookie_consent_uuid": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46", "__privaci_cookie_consent_generated": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46", "_gcl_au": "1.1.1678367427.1720678865", "d_vi": "848a45cbb45a0300d0798f662600000023010000", "_cls_v": "9dc90fc3-cbe6-42d5-9542-c7a2df6a2cf6", "_ga": "GA1.1.1795885693.1720678865", "ajs_anonymous_id": "023e8c65-3bbf-4224-bdaa-323eed962092", "_cs_c": "0", "_fbp": "fb.1.1720678865737.353943247", "FPID": "FPID2.2.b1WEQc6AyZu2v%2FWqvf%2BaIOi88m1Jllk49mo8i5jMQ8c%3D.1720678865", "FPAU": "1.1.1678367427.1720678865", "_scid": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785", "_gd_visitor": "1a3db6f0-2c82-4a4b-8857-38041b965e6e", "_sctr": "1%7C1720627200000", "_evga_b184": "{%22uuid%22:%220bf99460a2cca1a8%22}", "_sfid_c405": "{%22anonymousId%22:%220bf99460a2cca1a8%22%2C%22consents%22:[]}", "_fbp": "fb.1.1720678865737.353943247", "_tt_enable_cookie": "1", "_ttp": "rwG7PC8y1a_ZaSYIm0cIeWWELW8", "_pin_unauth": "dWlkPU5HUXhPR05rWW1FdFlqZzRZeTAwTUdOaExXRmhNemt0TVRjMU1XVTRaVFZqTWpCbA", "__qca": "P0-557024765-1720685693346", "s_vnc365": "1752287676089%26vn%3D3", "mbox": "PC#81a2e7edaca34af1838859a74a05ec00.32_0#1783996481|session#3108bd02081b4c0aaa3bc521b0eadea5#1720753541", "adcloud": "{%22_les_v%22:%22y%2Cdell.com%2C1720753480%22}", "_rdt_uuid": "1720685694616.e8c35a74-6347-4f53-80a5-b5c301820c60", "_uetvid": "a72e9a603f5d11ef9e9f83c81ad3cedd", "_scid_r": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785", "BVBRANDID": "b50f55fd-fa93-44e7-ae4d-faac503eb833", "p13np": "dhs", "_abck": "115AC061C9005533F55227986749F8A0~0~YAAQxONH0iWOfquQAQAAMqjPsAwl55mGitTzibc6hcli5BvO7ploBgxMZkPOG1PERJeVs9n96FUuC4GZdWydCOcRxvdFfaaFObASuLtqp1K5Jb3mLXeotvYAslJ8FFKzKcqytBsIzz0appbH7lClj2NKosUQ5F2FPotVzN04YEG2DN+gR/JpT5N3pXRYSAlbK33gRL+mnSztcCk2+gscxcDl2vjmgUil8uskBMPI0+5d0haYi4u7UYWkt5yX5AFpKg/BcEXnHHJZS1WyI+mcw0aCKEeVOyvqRWV4lbgaHBv/WJT62tM/iPL3xq+KRfQsfppAd6Pp5cRoTgEjR9Aw/qgF9O1NNucGFSF5iO40GtQj8psGr3XS5q5+Lw0Qo2xjO7+nCRB4raKRO7VjyPuNCkhJhVnPcg==~-1~-1~1720953316", "_cs_id": "4dffab88-9eaa-ae95-ed72-c334bacc6de1.1720678869.4.1720953753.1720953753.1709063960.1754842869031.1", "_ga_1234567890": "GS1.1.1720953754.4.0.1720953754.0.0.1388017742", "_ga_16419196": "GS1.1.1720953754.4.0.1720953754.0.0.0", "_ga_16418520": "GS1.1.1720953754.4.0.1720953754.0.0.0"}
@@ -165,7 +166,7 @@ def detail_crawl_more(keyword, company):
             # link = 'https://www.dell.com/en-us/shop/desktop-computers/xps-desktop/spd/xps-8960-desktop/usexpsthcto8960rpl27'
             # https://www.dell.com/en-us/shop/pdr/latitude-15-5550-laptop/gctol5550usvp?selectionState=&cartItemId=
             # https://www.dell.com/en-us/shop/dell-computer-laptops/latitude-5550-laptop/spd/latitude-15-5550-laptop/gctol5550usvp?redirectTo=SOC
-
+            # link = "https://www.dell.com/en-us/shop/desktop-computers/new-dell-tower-plus/spd/dell-ebt2250-desktop/useebt2250wcto01"
             new_link = (
                 "https://www.dell.com/en-us/shop/pdr"
                 + link.split("/spd", 1)[1]
@@ -447,7 +448,10 @@ def detail_laptop(keyword, company):
 
     df_laptop["Hard Drive"] = df_laptop["storage"]
 
-    df_laptop["Memory"] = df_laptop[["memory*", "memoryi"]].apply(
+    # df_laptop["Memory"] = df_laptop[["memory*", "memoryi"]].apply(
+    #     lambda x: ", ".join(x.dropna().astype(str)), axis=1
+    # )
+    df_laptop["Memory"] = df_laptop[["memory*"]].apply(
         lambda x: ", ".join(x.dropna().astype(str)), axis=1
     )
 
@@ -560,7 +564,7 @@ def detail_laptop(keyword, company):
             return "No"
         elif row["FPR"] == "Yes":
             return "Yes"
-        elif 'with finger' in str(row["keyboard"].lower()):
+        elif 'with finger' in str(row["keyboard"]).lower():
             return "Yes"
 
         else:
@@ -637,7 +641,7 @@ def detail_desktop(keyword, company):
 
     df_desktop = pd.DataFrame(product_detail_list)
 
-    # df_desktop.to_csv(f"./{company}/{keyword}_detail_list.csv",encoding='utf-8-sig')
+    df_desktop.to_csv(f"./data/{company}/{keyword}_detail_list.csv",encoding='utf-8-sig')
     ports_columns_list = [
         "ports & slots",
         "ports",
@@ -668,7 +672,7 @@ def detail_desktop(keyword, company):
 
     df_desktop["Display"] = df_desktop[
         [
-            "display",
+            # "display",
             "monitor",
         ]
     ].apply(lambda x: ", ".join(x.dropna().astype(str)), axis=1)
@@ -680,13 +684,19 @@ def detail_desktop(keyword, company):
 
     df_desktop["Hard Drive"] = df_desktop["storage"]
 
-    df_desktop["Memory"] = df_desktop[["memory*", "memoryi"]].apply(
+    # df_desktop["Memory"] = df_desktop[["memory*", "memoryi"]].apply(
+    #     lambda x: ", ".join(x.dropna().astype(str)), axis=1
+    # )
+    df_desktop["Memory"] = df_desktop[["memory*"]].apply(
         lambda x: ", ".join(x.dropna().astype(str)), axis=1
     )
 
     df_desktop["Operating System"] = df_desktop["operating system"]
 
-    df_desktop["Audio and Speakers"] = df_desktop["speakers"]
+    if "speakers" in df_desktop.columns:
+        df_desktop["Audio and Speakers"] = df_desktop["speakers"]
+    else:
+        df_desktop["Audio and Speakers"] = None
 
     def extract_dimension(text,dimension_type):
         
@@ -783,7 +793,7 @@ def detail_desktop(keyword, company):
     df_desktop["Power Supply"] = df_desktop[
         [
             "power",
-            "power supply",
+            # "power supply",
         ]
     ].apply(lambda x: ", ".join(x.dropna().astype(str)), axis=1)
 

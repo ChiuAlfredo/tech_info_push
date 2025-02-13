@@ -183,6 +183,7 @@ class hp_crawl():
         for i in all_product_claim_data:
             new_dict = {}
             if i is None:
+                new_dict.update({})
                 continue
             for n in i :
                 new_dict.update({n['section']:n['disclaimerPoints']})
@@ -241,7 +242,7 @@ class hp_crawl():
                     item[key] = value[0]
                 
         for n,i in enumerate(self.web_url_list):
-            # n=0
+            # n=445
             # i = self.data_list[n]
             self.data_list[n]['Web Link'] = self.web_url_list[n]
             self.data_list[n]['Official Price'] = self.product_price[n]
