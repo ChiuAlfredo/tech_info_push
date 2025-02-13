@@ -21,7 +21,7 @@ class samsungCrawler():
 
 keyword_list =['laptop','desktop','docking']
 keyword = keyword_list[0]
-
+comppany = "Samsung"
 samsung = samsungCrawler(keyword, "Samsung")
 samsung.get_product_link()
 samsung.get_product_detail()

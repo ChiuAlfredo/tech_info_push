@@ -306,14 +306,14 @@ def detail_laptop(company, keyword):
     df_product_details = pd.DataFrame(product_detail_list)
     df_compare_list = pd.DataFrame(compare_list)
 
-    df_product_details['merge_key'] = df_product_details['Model Name'].apply(lambda x: x.split(',')[0].lower().replace("\"", "").replace("14", "").replace("16", "").replace(" ", "").replace('15.6',""))
+    df_product_details['merge_key'] = df_product_details['Model Name'].apply(lambda x: x.split(',')[0].lower().replace("\"", "").replace("14", "").replace("16", "").replace(" ", "").replace('.6',""))
     df_compare_list['merge_key'] = df_compare_list['product_name'].apply(lambda x:x.replace(" ", ""))
 
     merged_df = pd.merge(df_product_details, df_compare_list, on='merge_key', how='left')
     
     # merged_df.to_csv(f"./data/{company}/{keyword}_merged.csv", index=False,encoding='utf-8-sig')
     
-    merged_df['Official Price'] = merged_df['price']
+    merged_df['Official Price'] = merged_df['price_x']
     merged_df['Ports & Slots'] = merged_df['otherconnectivity']
     merged_df['Camera'] = merged_df['webcam']
     merged_df['Display'] = merged_df['screendisplay']
@@ -326,9 +326,16 @@ def detail_laptop(company, keyword):
     merged_df['Audio and Speakers'] = merged_df['speakers']
     
     def demension_part(row):
+        # row = merged_df.iloc[8]
         parts = row['dimensions'].split('\n')
         print(parts)
-
+        
+        if '14' not in parts[0] and len(parts) >1 :
+            temp = parts[0]
+            parts[0] = parts[1]
+            parts[1] = temp
+        else:
+            pass
         if '14' in row['display']and '14' in row['dimensions']:
             # Extract and store 14" dimensions
             return parts[0].split('14”:')[-1].strip()
@@ -339,7 +346,8 @@ def detail_laptop(company, keyword):
             # Handling single dimension entries (assuming they are 14" or 16" based on context or default)
             # Here, you might need a more sophisticated logic based on your requirements
             return parts[0]
-        
+    
+    # NP750XQA-KB2US
     merged_df['Dimensions'] = merged_df.apply(demension_part, axis=1)
     
     
