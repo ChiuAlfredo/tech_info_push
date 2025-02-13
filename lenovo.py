@@ -534,10 +534,12 @@ def desktop_detail():
         return soup.get_text(separator='\n').strip()
     
     for i in data:
+        i[4] = {key.replace(' ', ''): value for key, value in i[4].items()}
+        # i = data[0]
         try:
-            dimension.append({'Dimensions (H x W x D)':clean_html(i[4]['Dimensions (H x W x D)'])})
+            dimension.append({'Dimensions(HxWxD)':clean_html(i[4]['Dimensions(HxWxD)'])})
         except:
-            dimension.append({'Dimensions (H x W x D)':''})
+            dimension.append({'Dimensions(HxWxD)':''})
         try:
             port.append({'Ports/Slots':clean_html(i[4]['Ports/Slots'])})
         except:
@@ -556,8 +558,9 @@ def desktop_detail():
     
     
     df["Ports/Slots"] = df["Ports/Slots"].fillna("")
-    df["Ports"] = df["Ports"].fillna("")
-    df["Ports & Slots"] = df["Ports/Slots"] + "\n" + df["Ports"]
+    # df["Ports"] = df["Ports"].fillna("")
+    # df["Ports & Slots"] = df["Ports/Slots"] + "\n" + df["Ports"]
+    # df["Ports & Slots"] = df["Ports/Slots"] 
     
     df['Graphics Card'] = df['Graphic Card']
     
@@ -591,8 +594,8 @@ def desktop_detail():
                 
         else:
             return '', '', ''
-    df["Dimensions (H x W x D)"].fillna("", inplace=True)
-    df[["Height(mm)", "Width(mm)", "Depth(mm)"]] = df["Dimensions (H x W x D)"].apply(convert_dimensions).apply(pd.Series)
+    df["Dimensions(HxWxD)"].fillna("", inplace=True)
+    df[["Height(mm)", "Width(mm)", "Depth(mm)"]] = df["Dimensions(HxWxD)"].apply(convert_dimensions).apply(pd.Series)
     
     def extract_and_convert_to_kg(weight_str):
         if pd.notna(weight_str):
@@ -666,15 +669,17 @@ def laptop_detail():
         return clean_text
     
     for i in data:
+        i[4] = {key.replace(' ', ''): value for key, value in i[4].items()}
+        # i = data[0]
         try:
             # Find any key containing 'dimensions' (case-insensitive)
             dimension_key = next((key for key in i[4].keys() if 'dimensions' in key.lower()), None)
             if dimension_key:
-                dimension.append({'Dimensions (H x W x D)': clean_html(i[4][dimension_key])})
+                dimension.append({'Dimensions(HxWxD)': clean_html(i[4][dimension_key])})
             else:
-                dimension.append({'Dimensions (H x W x D)': ''})
+                dimension.append({'Dimensions(HxWxD)': ''})
         except:
-            dimension.append({'Dimensions (H x W x D)':''})
+            dimension.append({'Dimensions(HxWxD)':''})
         try:
             port.append({'Ports/Slots':clean_html(i[4]['Ports/Slots'])})
         except:
@@ -684,7 +689,7 @@ def laptop_detail():
         except:
             weight.append({'Weight':''})
         try:
-            audio.append({'Audio and Speakers':clean_html(i[4]['Audio and Speakers'])})
+            audio.append({'Audio and Speakers':clean_html(i[4]['Audio'])})
         except:
             audio.append({'Audio and Speakers':''})
         try:
@@ -692,12 +697,12 @@ def laptop_detail():
         except:
             Camera.append({'Camera':''})
         try:
-            battery.append({'Primary Battery':clean_html(i[4]['Primary Battery'])})
+            battery.append({'Battery':clean_html(i[4]['Battery'])})
         except:
-            battery.append({'Primary Battery':''})
+            battery.append({'Battery':''})
             
     for i,data_ in enumerate(data):
-        data_list.append({**product_name[i],**web_url[i],**price[i],**feature[i],**dimension[i],**port[i],**weight[i],**audio[i],**Camera[i]})
+        data_list.append({**product_name[i],**web_url[i],**price[i],**feature[i],**dimension[i],**port[i],**weight[i],**audio[i],**Camera[i],**battery[i]})
 
 
 
@@ -706,8 +711,9 @@ def laptop_detail():
     
     
     df["Ports/Slots"] = df["Ports/Slots"].fillna("")
-    df["Ports"] = df["Ports"].fillna("")
-    df["Ports & Slots"] = df["Ports/Slots"] + "\n" + df["Ports"]
+    # df["Ports"] = df["Ports"].fillna("")
+    # df["Ports & Slots"] = df["Ports/Slots"] + "\n" + df["Ports"]
+    # df["Ports & Slots"] = df["Ports/Slots"] 
     
     df['Graphics Card'] = df['Graphic Card']
     
@@ -750,9 +756,9 @@ def laptop_detail():
         # 无法匹配返回空值
         return None, None, None
 
-    df["Dimensions (H x W x D)"].fillna("", inplace=True)
+    df["Dimensions(HxWxD)"].fillna("", inplace=True)
     
-    df[["Height(mm)", "Width(mm)", "Depth(mm)"]] = df["Dimensions (H x W x D)"].apply(convert_dimensions).apply(pd.Series)
+    df[["Height(mm)", "Width(mm)", "Depth(mm)"]] = df["Dimensions(HxWxD)"].apply(convert_dimensions).apply(pd.Series)
     
     # df_1 = df[["Dimensions (H x W x D)","Height(mm)","Width(mm)","Depth(mm)",'Web Link']]
     
@@ -848,10 +854,11 @@ def docking_detail():
         return soup.get_text(separator='\n').strip()
     
     for i in data:
+        i[4] = {key.replace(' ', ''): value for key, value in i[4].items()}
         try:
-            dimension.append({'Dimensions (H x W x D)':clean_html(i[4]['Dimensions (H x W x D)'])})
+            dimension.append({'Dimensions(HxWxD)':clean_html(i[4]['Dimensions(HxWxD)'])})
         except:
-            dimension.append({'Dimensions (H x W x D)':''})
+            dimension.append({'Dimensions(HxWxD)':''})
         try:
             port.append({'Ports/Slots':clean_html(i[4]['Ports/Slots'])})
         except:
