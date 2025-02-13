@@ -323,7 +323,7 @@ def detail_laptop(company, keyword):
     merged_df['Hard Drive'] = merged_df['storage_x'].apply(lambda x: x.split('+')[1])
     merged_df['Memory'] = merged_df['storage_x'].apply(lambda x: x.split('+')[0])
     merged_df['Operating System'] = merged_df['operating system']
-    merged_df['Audio and Speakers'] = merged_df['speakers']
+    merged_df['Audio and Speakers'] = merged_df['speakers'].apply(lambda x: '\n' + x if ('14"' in str(x) or '16"' in str(x)) else x)
     
     def demension_part(row):
         # row = merged_df.iloc[8]
@@ -409,6 +409,19 @@ def detail_laptop(company, keyword):
     
     merged_df['Brand'] = company
     
+    def clean_html(html_string):
+        if not html_string:
+            return ''
+        # html_string = "<span style=""white-space:nowrap;"">Windows 11</span> Home</br> Lenovo recommends Windows 11 Pro for business."
+        # Parse HTML content
+        soup = BeautifulSoup(html_string, 'html.parser')
+        # Extract text and clean up
+        text = soup.get_text(separator='\n').strip()
+        # Remove any remaining HTML tags and excessive whitespace
+        clean_text = re.sub(r'<[^>]+>', '', text)
+        clean_text = re.sub(r'[^\S\n]+', ' ', clean_text)
+        return clean_text
+    
     columns_to_output = [
         "Type",
         "Brand",
@@ -436,9 +449,12 @@ def detail_laptop(company, keyword):
         "Web Link",
     ]
     
+    for column in columns_to_output:
+        merged_df[column] = merged_df[column].apply(lambda x: clean_html(str(x)))
+    
     
     merged_df[columns_to_output].to_csv(
-        f"./data/{company}/{keyword}.csv", encoding="utf-8-sig", index=False
+        f"./data/{company}/{keyword}.csv", encoding="utf-8-sig", index=False,line_terminator='\r\n'
     )
     
     
