@@ -144,8 +144,21 @@ def detail_crawl_laptop_desktop(keyword, company):
         json.dump(product_detail_list, f,ensure_ascii=False, indent=4)
         
 def price_crawl(keyword, company):
-
-    burp0_url = "https://www.apple.com:443/us/shop/mcm/product-price?parts=MACBOOKAIR_M3_13%2CMACBOOKAIR_M2_13%2CMBA_M3_15%2CMBP_M3B_14%2CMBP_M3PM_14%2CMBP_M3_16_SL%2CMBA_M2_15%2CMACBOOKAIR_M1%2CMQRC3%2CMQRQ3%2CMACMINI_M2%2CMACSTUDIO2023_MAIN%2CMACPRO2023_MAIN"
+    with open(f"./data/{company}/{keyword}_detail_list.json", "r") as f:
+        product_detail_list = json.load(f)
+        
+    price_product_list = []
+    for product in product_detail_list:
+        # product = product_detail_list[0]
+        if product['price']!='':
+            
+            pattern = r'\{([^}]+)\}'
+            match = re.findall(pattern,  product['price'])[0]
+            
+            price_product_list.append(match)
+    burp0_url = f"https://www.apple.com:443/us/shop/mcm/product-price?parts="
+    for price_product in price_product_list:
+        burp0_url += price_product+"%2C"
     burp0_cookies = {"as_sfa": "Mnx1c3x1c3x8ZW5fVVN8Y29uc3VtZXJ8aW50ZXJuZXR8MHwwfDE", "geo": "TW", "at_check": "true", "dssf": "1", "as_dc": "ucp3", "as_atb": "1.0|MjAyNC0wNy0zMSAxMTo0MDoxMg|c3765df0f80c3f97c50b447b82e52b3f162c851d", "s_cc": "true", "as_pcts": "FKHT9LmcdQKN-zvDOHz9KfNd:qZkYr+OvoQZuQjRmX+wJK_X2-wB83xuas2Fr1rkdi-LfpD-0qB6ownQYvIuIcwSH8i-n2H2Dqx1YA+WenpYnk1L3yxudpcYoKjHQamn+UrYUekGP7jXF5sFp5_pHWoaY1cDKUy0bi9hv1Zev01E9SDU+", "dssid2": "bede219f-3d29-46de-9606-f6a4e191426c", "as_rumid": "4d35bd50-0cfb-4899-9b7d-673d08cb53fb", "pt-dm": "v1~x~g8syfzvz~m~3~n~aos%3Asearch%3Aaccessories~r~aos%3Asearch"}
     burp0_headers = {"Sec-Ch-Ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\"", "Accept-Language": "zh-TW", "Sec-Ch-Ua-Mobile": "?0", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.127 Safari/537.36", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept": "*/*", "Sec-Fetch-Site": "same-origin", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Dest": "empty", "Referer": "https://www.apple.com/macbook-air/compare/?modelList=Mac-studio-2022,MacBook-Air-M3", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=1, i"}
     response = requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
@@ -216,7 +229,7 @@ def detail_laptop_desktop(keyword, company):
     
     df_laptop["Graphics Card"] = df_laptop["gpu"]
     
-    df_laptop["Hard Drive"] = df_laptop["storage"]
+    df_laptop["Hard Drive"] = df_laptop["storage"].str.split('storage3').str[0].str.replace('Up to', '', regex=False).str.strip()
     
     df_laptop["Memory"] = df_laptop[["memory"]].apply(
         lambda x: ", ".join(x.dropna().astype(str)), axis=1
@@ -259,7 +272,7 @@ def detail_laptop_desktop(keyword, company):
         if match:
             return float(match.group(1))
         elif match_cm:
-            return float(match_cm.group(1)) * 100
+            return float(match_cm.group(1)) * 10
         elif match_len:
             return float(match_len.group(1))
         elif match_in:
@@ -504,7 +517,7 @@ keyword_list = ["laptop", "desktop", "docking"]
 company = "Apple"
 
 for keyword in keyword_list:
-    keyword = keyword_list[0]
+    # keyword = keyword_list[0]
     
     
     if keyword == "laptop" :
