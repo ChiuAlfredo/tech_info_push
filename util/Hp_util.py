@@ -289,8 +289,8 @@ def data_to_excel_docking():
     
     df['Model Name'] = df['product_name']
     
+    df = df[~df['Model Name'].str.contains('bundle', case=False, na=False)]
     
-
     columns_to_output = [
         "Type",
         "Brand",
@@ -350,10 +350,114 @@ def data_to_excel_desktop():
     df["Ports & Slots"] = df.apply(
         consolidate_row_columns, axis=1, columns_list=ports_columns_list
     )
+    def get_processor_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Processor']):
+            process_string += row['Processor']
+        elif pd.notna(row['Processor, graphics & memory']):
+            process_string += row['Processor, graphics & memory'].split("+")[0]
+        # elif pd.notna(row['Processor, graphics, memory & hard disk']):
+        #     process_string += row['Processor, graphics, memory & hard disk'].split("+")[0]
+        elif pd.notna(row['Processor and graphics']):
+            process_string += row['Processor and graphics'].split("+")[0]
+        else:
+            pass
+        
+        return process_string
+    df['Processor'] = df.apply(get_processor_info, axis=1)
     
-    df['Graphics Card'] = df['Graphics'].apply(lambda x: x.split("&nbsp;")[-1].split("Integrated")[-1] if pd.notna(x) else None)
+    # drive_columns = [col for col in df.columns if 'processor' in col.lower()]
+    # print(drive_columns)
     
-    df['Hard Drive'] = df['Storage']
+    def get_graph_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Graphics']):
+            process_string += row['Graphics'].split("&nbsp;")[-1].split("Integrated")[-1]
+        elif pd.notna(row['Processor, graphics & memory']):
+            process_string += row['Processor, graphics & memory'].split("+")[1]
+        # elif pd.notna(row['Processor, graphics, memory & hard disk']):
+        #     process_string += row['Processor, graphics, memory & hard disk'].split("+")[1]
+        elif pd.notna(row['Processor and graphics']):
+            process_string += row['Processor and graphics'].split("+")[1]
+        else:
+            pass
+        
+        return process_string
+    
+    df['Graphics Card'] = df.apply(get_graph_info, axis=1)
+    
+    def get_memory_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Memory']):
+            process_string += row['Memory']
+        elif pd.notna(row['Processor, graphics & memory']):
+            process_string += row['Processor, graphics & memory'].split("+")[2]
+        # elif pd.notna(row['Processor, graphics, memory & hard disk']):
+        #     process_string += row['Processor, graphics, memory & hard disk'].split("+")[2]
+        # elif pd.notna(row['Processor and graphics']):
+        #     process_string += row['Processor and graphics'].split("+")[1]
+        else:
+            pass
+        
+        return process_string
+    
+    df['Memory'] = df.apply(get_memory_info, axis=1)
+    # drive_columns = [col for col in df.columns if 'memory' in col.lower()]
+    # print(drive_columns)
+    
+    
+    # df['Graphics Card'] = df['Graphics'].apply(lambda x: x.split("&nbsp;")[-1].split("Integrated")[-1] if pd.notna(x) else None)
+    def get_drive_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        # if pd.notna(row['Internal drive']):
+        #     process_string += row['Internal drive']
+        if pd.notna(row['Hard drive']):
+            process_string += row['Hard drive']
+        if pd.notna(row['Storage']):
+            process_string += row['Storage']
+        else:
+            pass
+        
+        return process_string
+
+    df['Hard Drive'] = df.apply(get_drive_info, axis=1)
+    # drive_columns = [col for col in df.columns if 'drive' in col.lower()]
+    # print(drive_columns)
+    
+    # df['Hard Drive'] = df['Storage']
+    
+    
+    # drive_columns = [col for col in df.columns if 'display' in col.lower()]
+    # print(drive_columns)
+    
     
     df['Operating System'] = df['Operating system'].apply(lambda x: x if pd.notna(x) else None)
     
@@ -361,8 +465,8 @@ def data_to_excel_desktop():
     
     df['Power Supply'] = df['Power supply'].apply(lambda x: x if pd.notna(x) else None)
     # Function to convert inches to centimeters
-    def inches_to_cm(inches):
-        return round(inches * 2.54, 2)
+    def inches_to_mm(inches):
+        return "{:.2f}".format(round(inches * 2.54, 2)*10)
 
     # Function to extract and convert dimensions
     def convert_dimensions(dimensions):
@@ -376,9 +480,9 @@ def data_to_excel_desktop():
                 depth_in = float(match.group(2))
                 height_in = float(match.group(3))
                 
-                width_cm = inches_to_cm(width_in)
-                depth_cm = inches_to_cm(depth_in)
-                height_cm = inches_to_cm(height_in)
+                width_cm = inches_to_mm(width_in)
+                depth_cm = inches_to_mm(depth_in)
+                height_cm = inches_to_mm(height_in)
                 
                 return height_cm, width_cm, depth_cm
             
@@ -485,19 +589,127 @@ def data_to_excel_laptop():
     df["Ports & Slots"] = df.apply(
         consolidate_row_columns, axis=1, columns_list=ports_columns_list
     )
+    def get_processor_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Processor']):
+            process_string += row['Processor']
+        elif pd.notna(row['Processor, graphics & memory']):
+            process_string += row['Processor, graphics & memory'].split("+")[0]
+        elif pd.notna(row['Processor, graphics, memory & hard disk']):
+            process_string += row['Processor, graphics, memory & hard disk'].split("+")[0]
+        elif pd.notna(row['Processor and graphics']):
+            process_string += row['Processor and graphics'].split("+")[0]
+        else:
+            pass
+        
+        return process_string
+    df['Processor'] = df.apply(get_processor_info, axis=1)
     
-    df['Graphics Card'] = df['Graphics'].apply(lambda x: x.split("&nbsp;")[-1].split("Integrated")[-1] if pd.notna(x) else None)
+    # drive_columns = [col for col in df.columns if 'processor' in col.lower()]
+    # print(drive_columns)
     
-    df['Hard Drive'] = df['Internal drive']
+    def get_graph_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Graphics']):
+            process_string += row['Graphics']
+        elif pd.notna(row['Processor, graphics & memory']):
+            process_string += row['Processor, graphics & memory'].split("+")[1]
+        elif pd.notna(row['Processor, graphics, memory & hard disk']):
+            process_string += row['Processor, graphics, memory & hard disk'].split("+")[1]
+        elif pd.notna(row['Processor and graphics']):
+            process_string += row['Processor and graphics'].split("+")[1]
+        else:
+            pass
+        
+        return process_string
+    
+    df['Graphics Card'] = df.apply(get_graph_info, axis=1)
+    # drive_columns = [col for col in df.columns if 'graphics' in col.lower()]
+    # print(drive_columns)
+    
+    def get_memory_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Memory']):
+            process_string += row['Memory']
+        elif pd.notna(row['Processor, graphics & memory']):
+            process_string += row['Processor, graphics & memory'].split("+")[2]
+        elif pd.notna(row['Processor, graphics, memory & hard disk']):
+            process_string += row['Processor, graphics, memory & hard disk'].split("+")[2]
+        # elif pd.notna(row['Processor and graphics']):
+        #     process_string += row['Processor and graphics'].split("+")[1]
+        else:
+            pass
+        
+        return process_string
+    
+    df['Memory'] = df.apply(get_memory_info, axis=1)
+    # drive_columns = [col for col in df.columns if 'memory' in col.lower()]
+    # print(drive_columns)
+    
+    
+    
+# Processor, graphics & memory
+# Processor
+# Processor, graphics, memory & hard disk
+
+
+# Graphics
+    def get_drive_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Internal drive']):
+            process_string += row['Internal drive']
+        elif pd.notna(row['Hard drive']):
+            process_string += row['Hard drive']
+        if pd.notna(row['Storage']):
+            process_string += row['Storage']
+        else:
+            pass
+        
+        return process_string
+
+    df['Hard Drive'] = df.apply(get_drive_info, axis=1)
+    # drive_columns = [col for col in df.columns if 'drive' in col.lower()]
+    # print(drive_columns)
     
     df['Operating System'] = df['Operating system'].apply(lambda x: x if pd.notna(x) else None)
     
     df['Audio and Speakers'] = df['Audio Features'].apply(lambda x: x if pd.notna(x) else None)
     
     df['Power Supply'] = df['Power supply'].apply(lambda x: x if pd.notna(x) else None)
+    # drive_columns = [col for col in df.columns if 'power' in col.lower()]
+    # print(drive_columns)
+    
     # Function to convert inches to centimeters
-    def inches_to_cm(inches):
-        return round(inches * 2.54, 2)
+    def inches_to_mm(inches):
+        return "{:.2f}".format(round(inches * 2.54, 2)*10)
 
     # Function to extract and convert dimensions
     def convert_dimensions(dimensions):
@@ -511,9 +723,9 @@ def data_to_excel_laptop():
                 depth_in = float(match.group(2))
                 height_in = float(match.group(3))
                 
-                width_cm = inches_to_cm(width_in)
-                depth_cm = inches_to_cm(depth_in)
-                height_cm = inches_to_cm(height_in)
+                width_cm = inches_to_mm(width_in)
+                depth_cm = inches_to_mm(depth_in)
+                height_cm = inches_to_mm(height_in)
                 
                 return height_cm, width_cm, depth_cm
             
@@ -544,7 +756,32 @@ def data_to_excel_laptop():
     
     df['Camera'] = df['Webcam']
     
-    df['Primary Battery'] = df['Battery']
+    
+    def get_battery_info(row):
+        # row = df.loc[0]
+        # Priority order of columns
+        # processor_columns = [
+        #     'Processor',
+        #     'Processor, graphics & memory',
+        #     'Processor, graphics, memory & hard disk'
+        # ]
+        process_string = ''
+        if pd.notna(row['Primary battery']):
+            process_string += row['Primary battery']
+        elif pd.notna(row['Battery']):
+            process_string += row['Battery']
+        if pd.notna(row['Battery life']):
+            process_string += row['Battery life']
+        else:
+            pass
+        
+        return process_string
+
+    df['Primary Battery'] = df.apply(get_battery_info, axis=1)
+    
+    
+    # drive_columns = [col for col in df.columns if 'battery' in col.lower()]
+    # print(drive_columns)
     
     df['NFC'] = None
     df['FPR_model'] = None
