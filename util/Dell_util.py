@@ -39,11 +39,12 @@ def search_crawl(keyword, company):
         )
 
         articles = soup.select(".dell-ps.ps>article")
+        # print(len(articles))
 
         for article in articles:
             # article = articles[0]
             # 將HTML實體轉換為普通字符
-
+            
             title = article.select_one(".ps-title").get_text(strip=True)
             web_link = "https:" + article.select_one(".ps-title>a")["href"]
             price = article.select_one(".ps-dell-price.ps-simplified").get_text(
@@ -53,16 +54,18 @@ def search_crawl(keyword, company):
                 {"Model Name": title, "Web Link": web_link, "Official Price": price}
             )
 
-            print(title)
+            # print(title)
 
         number_count += number_on_page
 
         if number_count >= total_page:
             break
         print(f"Page: {page}")
-        # print(products_list)
+        print(len(products_list))
 
         page += 1
+        
+        # print(len(products_list))
 
     with open(f"./data/{company}/{keyword}_search.json", "w") as f:
         json.dump(products_list, f)
@@ -77,11 +80,13 @@ def detail_crawl(keyword, company):
     product_detail_list = []
     error_link = []
     for product in tqdm(products_list):
-        # product = products_list[404]
+        # product = products_list[2]
         try:
             # burp0_url = 'https://www.dell.com/en-us/shop/dell-computer-laptops/mobile-precision-5690-ai-ready/spd/precision-16-5690-laptop/xctop5690usaivp'
             # burp0_url = "https://www.dell.com/en-us/shop/desktop-computers/optiplex-tower/spd/optiplex-7020t-desktop/s005do7020mtus_vp"
-            burp0_url = product["Web Link"]
+            # burp0_url = product["Web Link"]
+            # https://www.dell.com/csbapi/unifiedpd/techspecs/en/us/bsd/04/bts201_pb16250_usx
+            burp0_url = "https://www.dell.com/csbapi/unifiedpd/techspecs/en/us/bsd/04/"+product["Web Link"].split("/")[-1]
 
             # burp0_cookies = {"search-visitorId": "fa91cb13-eefa-4498-af12-3da6919d5160", "akGD": "%7B%22country%22%3A%22TW%22%2C%22region%22%3A%22%22%7D", "s_ecid": "MCMID%7C05594863603858791913966452533384812014", "AMCV_4DD80861515CAB990A490D45%40AdobeOrg": "179643557%7CMCIDTS%7C19916%7CMCMID%7C05594863603858791913966452533384812014%7CMCAID%7CNONE%7CMCOPTOUT-1720686051s%7CNONE%7CvVersion%7C5.5.0", "lwp": "c=us&l=en&s=bsd&cs=04", "__privaci_cookie_consent_uuid": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46", "__privaci_cookie_consent_generated": "f07ce1a7-c924-44fc-90dc-b2b5ebed872b:46", "_gcl_au": "1.1.1678367427.1720678865", "d_vi": "848a45cbb45a0300d0798f662600000023010000", "_cls_v": "9dc90fc3-cbe6-42d5-9542-c7a2df6a2cf6", "_ga": "GA1.1.1795885693.1720678865", "ajs_anonymous_id": "023e8c65-3bbf-4224-bdaa-323eed962092", "_cs_c": "0", "_fbp": "fb.1.1720678865737.353943247", "FPID": "FPID2.2.b1WEQc6AyZu2v%2FWqvf%2BaIOi88m1Jllk49mo8i5jMQ8c%3D.1720678865", "FPAU": "1.1.1678367427.1720678865", "_scid": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785", "_gd_visitor": "1a3db6f0-2c82-4a4b-8857-38041b965e6e", "_sctr": "1%7C1720627200000", "_evga_b184": "{%22uuid%22:%220bf99460a2cca1a8%22}", "_sfid_c405": "{%22anonymousId%22:%220bf99460a2cca1a8%22%2C%22consents%22:[]}", "_fbp": "fb.1.1720678865737.353943247", "_tt_enable_cookie": "1", "_ttp": "rwG7PC8y1a_ZaSYIm0cIeWWELW8", "_pin_unauth": "dWlkPU5HUXhPR05rWW1FdFlqZzRZeTAwTUdOaExXRmhNemt0TVRjMU1XVTRaVFZqTWpCbA", "__qca": "P0-557024765-1720685693346", "s_vnc365": "1752287676089%26vn%3D3", "mbox": "PC#81a2e7edaca34af1838859a74a05ec00.32_0#1783996481|session#3108bd02081b4c0aaa3bc521b0eadea5#1720753541", "adcloud": "{%22_les_v%22:%22y%2Cdell.com%2C1720753480%22}", "_rdt_uuid": "1720685694616.e8c35a74-6347-4f53-80a5-b5c301820c60", "_uetvid": "a72e9a603f5d11ef9e9f83c81ad3cedd", "_scid_r": "f94d06f3-93c1-4bb2-bbb9-8b5ed088a785", "BVBRANDID": "b50f55fd-fa93-44e7-ae4d-faac503eb833", "p13np": "dhs", "_abck": "115AC061C9005533F55227986749F8A0~0~YAAQxONH0iWOfquQAQAAMqjPsAwl55mGitTzibc6hcli5BvO7ploBgxMZkPOG1PERJeVs9n96FUuC4GZdWydCOcRxvdFfaaFObASuLtqp1K5Jb3mLXeotvYAslJ8FFKzKcqytBsIzz0appbH7lClj2NKosUQ5F2FPotVzN04YEG2DN+gR/JpT5N3pXRYSAlbK33gRL+mnSztcCk2+gscxcDl2vjmgUil8uskBMPI0+5d0haYi4u7UYWkt5yX5AFpKg/BcEXnHHJZS1WyI+mcw0aCKEeVOyvqRWV4lbgaHBv/WJT62tM/iPL3xq+KRfQsfppAd6Pp5cRoTgEjR9Aw/qgF9O1NNucGFSF5iO40GtQj8psGr3XS5q5+Lw0Qo2xjO7+nCRB4raKRO7VjyPuNCkhJhVnPcg==~-1~-1~1720953316", "_cs_id": "4dffab88-9eaa-ae95-ed72-c334bacc6de1.1720678869.4.1720953753.1720953753.1709063960.1754842869031.1", "_ga_1234567890": "GS1.1.1720953754.4.0.1720953754.0.0.1388017742", "_ga_16419196": "GS1.1.1720953754.4.0.1720953754.0.0.0", "_ga_16418520": "GS1.1.1720953754.4.0.1720953754.0.0.0"}
             # burp0_headers = {"Dpr": "1", "Sec-Ch-Dpr": "1", "Viewport-Width": "1600", "Sec-Ch-Viewport-Width": "1600", "Sec-Ch-Ua": "\"Chromium\";v=\"127\", \"Not)A;Brand\";v=\"99\"", "Sec-Ch-Ua-Mobile": "?0", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept-Language": "zh-TW", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "Sec-Fetch-Site": "none", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1", "Sec-Fetch-Dest": "document", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=0, i", "Connection": "keep-alive"}
@@ -89,9 +94,8 @@ def detail_crawl(keyword, company):
             response = requests.get(burp0_url)
             soup = BeautifulSoup(response.content, "html.parser")
             
-
-            if 'spd' in burp0_url:
-                product_soup = soup.select("li.mb-2")
+            if 'spd' in product["Web Link"]:
+                product_soup = soup.select("li.mb-4")
 
                 spect_dict = {}
                 for i in product_soup:
@@ -99,8 +103,13 @@ def detail_crawl(keyword, company):
                     spect_dict[i.select_one("div").get_text(strip=True).lower()] = i.select_one(
                         "p"
                     ).get_text(strip=True)
+            # 沒有apd
+            elif 'apd' in product["Web Link"]:
                 
-            elif 'apd' in burp0_url:
+                burp0_url = product["Web Link"]
+                
+                response = requests.get(burp0_url)
+                soup = BeautifulSoup(response.content, "html.parser")
                 product_soup = soup.select(".spec__main_wrapper")
                 spect_dict = {}
                 for i in product_soup:
@@ -438,7 +447,7 @@ def detail_laptop(keyword, company):
     df_laptop["Primary Battery"] = df_laptop[
         [
             "primary battery",
-            "battery life",
+            # "battery life",
         ]
     ].apply(lambda x: ", ".join(x.dropna().astype(str)), axis=1)
 
@@ -538,7 +547,7 @@ def detail_laptop(keyword, company):
     df_laptop['Dimensions & Weight'] = df_laptop[
         [
             "dimensions & weight",
-            "dimensions and weight",
+            # "dimensions and weight",
         ]
     ].apply(lambda x: ", ".join(x.dropna().astype(str)), axis=1)
 
@@ -553,7 +562,10 @@ def detail_laptop(keyword, company):
     else:
         df_laptop["WWAN"] = df_laptop["wwan"]
 
-    df_laptop["NFC"] = df_laptop["nfc"]
+    if "nfc" not in df_laptop.columns:
+        df_laptop["NFC"] = None
+    else:
+        df_laptop["NFC"] = df_laptop["nfc"]
 
     #TODO keyboard中也會出現
     def set_fpr(row):
@@ -562,8 +574,8 @@ def detail_laptop(keyword, company):
             return "Yes"
         elif "without finger" in str(row["palmrest"]).lower():
             return "No"
-        elif row["FPR"] == "Yes":
-            return "Yes"
+        # elif row["FPR"] == "Yes":
+        #     return "Yes"
         elif 'with finger' in str(row["keyboard"]).lower():
             return "Yes"
 
@@ -662,9 +674,21 @@ def detail_desktop(keyword, company):
                 for col in columns_list
                 if col in row and not pd.isna(row[col])
             }
+            
+    def consolidate_row_columns_port(row, columns_list):
+        result = {}
+        # row = df_desktop.iloc[0]
+        # columns_list = ports_columns_list
+        for col in columns_list:
+            # col = columns_list[0]
+            if col in row and not pd.isna(row[col]):
+                result[col] = row[col]
+                    
+        result_string = " \n ".join(f"{value}" for key, value in result.items())
+        return result_string
 
     df_desktop["Ports & Slots"] = df_desktop.apply(
-        consolidate_row_columns, axis=1, columns_list=ports_columns_list
+        consolidate_row_columns_port, axis=1, columns_list=ports_columns_list
     )
 
     # df_desktop['Camera'] = df_desktop['webcam']+', '+ df_desktop['webcam resolution (front)']
@@ -693,8 +717,8 @@ def detail_desktop(keyword, company):
 
     df_desktop["Operating System"] = df_desktop["operating system"]
 
-    if "speakers" in df_desktop.columns:
-        df_desktop["Audio and Speakers"] = df_desktop["speakers"]
+    if "audio and speakers" in df_desktop.columns:
+        df_desktop["Audio and Speakers"] = df_desktop["audio and speakers"]
     else:
         df_desktop["Audio and Speakers"] = None
 
@@ -777,7 +801,7 @@ def detail_desktop(keyword, company):
     df_desktop['Dimensions & Weight'] = df_desktop[
         [
             "dimensions & weight",
-            "dimensions and weight",
+            # "dimensions and weight",
         ]
     ].apply(lambda x: ", ".join(x.dropna().astype(str)), axis=1)
 
@@ -928,7 +952,7 @@ def detail_docking(keyword, company):
     df_docking["Power Supply"] = df_docking[
         [
             "power",
-            "power description",
+            "power delivery (pd)",
         ]
     ].apply(lambda x: ", ".join(x.dropna().astype(str)), axis=1)
 
