@@ -837,7 +837,7 @@ def laptop_detail():
         f"./data/lenovo/laptop.csv", encoding="utf-8-sig", index=False
     )
 def docking_detail():
-    with open('data/lenovo/Docking_product.json', 'r', encoding='utf-8') as f:
+    with open('./data/lenovo/Docking_product.json', 'r', encoding='utf-8') as f:
         data_1 = json.load(f)
    
     data = data_1 
@@ -847,6 +847,7 @@ def docking_detail():
     web_url = [{'Web Link':i[1]} for i in data]
     price = [{'Official Price':i[2]} for i in data]
     feature = [i[3] for i in data]
+    feature_more = [i[4] for i in data]
     dimension, port, weight = [],[],[]
     
     def clean_html(html_string):
@@ -854,21 +855,25 @@ def docking_detail():
         return soup.get_text(separator='\n').strip()
     
     for i in data:
+        # i = data[1]
         i[4] = {key.replace(' ', ''): value for key, value in i[4].items()}
         try:
-            dimension.append({'Dimensions(HxWxD)':clean_html(i[4]['Dimensions(HxWxD)'])})
+            dimension.append({'Dimensions(HxWxD)':clean_html(i[3]['Dimensions(HxWxD)'])})
         except:
             dimension.append({'Dimensions(HxWxD)':''})
         try:
-            port.append({'Ports/Slots':clean_html(i[4]['Ports/Slots'])})
+            port.append({'Ports/Slots':clean_html(i[3]['Ports/Slots'])})
         except:
             port.append({'Ports/Slots':''})
         try:
-            weight.append({'Weight':clean_html(i[4]['Weight'])})
+            weight.append({'Weight':clean_html(i[3]['Weight'])})
         except:
+            
             weight.append({'Weight':''})
+            
     for i,data_ in enumerate(data):
-        data_list.append({**product_name[i],**web_url[i],**price[i],**feature[i],**dimension[i],**port[i],**weight[i]})
+        
+        data_list.append({**product_name[i],**web_url[i],**price[i],**feature[i],**dimension[i],**port[i],**weight[i],**feature_more[i]})
 
 
 
@@ -882,29 +887,86 @@ def docking_detail():
     df['Video Ports'] = df['Video Ports'].fillna("")
     df['Ethernet'] = df['Ethernet'].fillna("")
     
-    df["Ports & Slots"] = df["Ports/Slots"] 
+    # df["Ports & Slots"] = df["Ports/Slots"] 
+    
+    port_columns_list = [
+        "Charging Port",
+        "Thunderbolt Port",
+        "USB Ports",
+        "Video Ports",
+        "Ethernet",
+        "Ports/Slots",
+        "Interfaces"
+    ]
+    df["Ports & Slots"] = df[port_columns_list].apply(
+        lambda x: ", ".join(filter(None, x.dropna().astype(str))), axis=1
+    )
+
+
+    # drive_columns = [col for col in df.columns if 'port' in col.lower()]
+    # print(drive_columns)
+    
     
    
 
     df['Output Power'] = df['Output Power'].fillna("")
     df['Input Power'] = df['Input Power'].fillna("")
+    
+    power_columns_list = [
+        "Output Power",
+        "Input Power",
+        "Power Provided",
 
-    df['Power Supply'] = df['Output Power'] + "\n" + df['Input Power']
+    ]
+
+    df['Power Supply'] =  df[power_columns_list].apply(
+        lambda x: ", ".join(filter(None, x.dropna().astype(str))), axis=1
+    )
+    # drive_columns = [col for col in df.columns if 'power' in col.lower()]
+    # print(drive_columns)
+    
     # Function to convert inches to centimeters
    
-    def extract_and_convert_to_kg(weight_str):
-        if pd.notna(weight_str):
-        
-            match = re.search(r"(\d+(\.\d+)?)\s*kg", weight_str)
-            if match:
-                weight_lb = float(match.group(1))
-                weight_kg = round(weight_lb, 2)
-                return weight_kg
-            return None
+    def convert_to_kg(weight_str):
+        # print(weight_str)
+        weight_str = str(weight_str).lower()
+        # 定义正则表达式
+        kg_pattern = re.compile(r"(\d+(\.\d+)?)\s*kg")
+        lbs_pattern = re.compile(r"(\d+(\.\d+)?)\s*lb")
+        inch_pattern = re.compile(r'(\d+(\.\d+)?)\s*"')  # 新增匹配英寸作为磅的模式
+        g_pattern = re.compile(r"(\d+(\.\d+)?)\s*g")
+        oz_pattern = re.compile(r"(\d+(\.\d+)?)\s*oz")
+
+        # 匹配kg
+        kg_match = kg_pattern.match(weight_str)
+        if kg_match:
+            return round(float(kg_match.group(1)), 2)
+
+        # 匹配lbs和kg
+        lbs_match = lbs_pattern.match(weight_str)
+        if lbs_match:
+            return round(float(lbs_match.group(1)) * 0.45359237, 2)
+
+        # 匹配英寸作为lbs
+        inch_match = inch_pattern.match(weight_str)
+        if inch_match:
+            return round(float(inch_match.group(1)) * 0.45359237, 2)  # 假设1英寸等于1磅
+
+        # 匹配g
+        g_match = g_pattern.match(weight_str)
+        if g_match:
+            return round(float(g_match.group(1)) * 0.001, 2)
+
+        # 匹配oz
+        oz_match = oz_pattern.match(weight_str)
+        if oz_match:
+            return round(float(oz_match.group(1)) * 0.02834952, 2)
+
+        # 如果没有匹配到任何单位，返回None
         return None
 
-    df["Weight"].fillna("", inplace=True)
-    df["Weight(kg)"] = df["Weight"].apply(extract_and_convert_to_kg)
+    # df["Weight"].fillna("", inplace=True)
+    df["Weight(kg)"] = df["Weight"].apply(convert_to_kg)
     
     df['Brand'] = "Lenovo"
     
