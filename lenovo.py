@@ -43,9 +43,11 @@ def get_page_json(page_number,keyword,**kwargs):
     # for index,i in enumerate(data_json):
     #     i['productName']
     for index,i in enumerate(data_json):
-        try :i['productName']
+        # i = data_json[1]
+        try :i['productName'] = i['summary']
         except:
-            i['productName'] = i['summary']
+            i['productName']
+            
     product_name_list = [i['productName']for i in data_json]
     product_code_list = [i['productCode']for i in data_json]
 
