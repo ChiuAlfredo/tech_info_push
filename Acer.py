@@ -1605,11 +1605,36 @@ def merge(df_official,df_store,keyword,company,columns_to_output):
     
     return df_merged[columns_to_output]
 
+def merge_docking(df_store,keyword,company,columns_to_output):
+    # 根据partnumber进行外连接合并
+    # df_merged = pd.merge(df_official, df_store, on='partnumber', how='outer', suffixes=('_official', '_store'))
+
+    # 获取所有列名
+    columns = list(df_store.columns)
+    columns.remove('partnumber')
+
+    # def is_emty_use_store(x,column):
+    #     if x[f"{column}_official"] is None or pd.isna(x[f"{column}_official"]):
+    #         return x[f"{column}_store"]
+    #     else:
+    #         return x[f"{column}_official"]
+        
+
+    # # 处理重复的列
+    # for column in columns:
+    #     # column = columns[1]
+    #     df_store[column] = df_store.apply(
+    #                 lambda row: is_emty_use_store(row,column), axis=1)
+    
+    df_store[columns_to_output].to_csv(f"./{company}/{keyword}.csv", encoding="utf-8-sig", index=False)
+    
+    return df_store[columns_to_output]
+
 keyword_list = ["laptop", "desktop", "docking"]
 company = "Acer"
 
 for keyword in keyword_list:
-    # keyword = keyword_list[0]
+    # keyword = keyword_list[2]
 
     products_store_list = search_crawl_store(keyword)
     product_detail_store_list, error_store_link = detail_crawl_store(keyword, company)
@@ -1685,6 +1710,6 @@ for keyword in keyword_list:
             "Power Supply",
             "Web Link",
         ]
-        df = merge(df_docking_official,df_docking_store,keyword,company,columns_to_output)
+        df = merge_docking(df_docking_store,keyword,company,columns_to_output)
         df = df[columns_to_output]
         df.to_csv(f"./{company}/{keyword}.csv", encoding="utf-8-sig", index=False)

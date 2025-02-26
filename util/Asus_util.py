@@ -80,6 +80,9 @@ def rog_crawl(soup, link):
     product_names_list = [
         " ".join(i.text.strip().replace("\n", "").split()) for i in product_name_soup
     ]
+    if '' in product_names_list:
+        product_names_list = ["".join(filter(None, [name.strip() for name in product_names_list]))]
+        
     spec_dict["Model Name"] = product_names_list
 
     # 剩下的全部一起爬
@@ -134,6 +137,9 @@ def rog_crawl_1(soup, link):
     product_names_list = [
         " ".join(i.text.strip().replace("\n", "").split()) for i in product_name_soup
     ]
+    if '' in product_names_list:
+        product_names_list = ["".join(filter(None, [name.strip() for name in product_names_list]))]
+        
     spec_dict["Model Name"] = product_names_list
 
     # 剩下的全部一起爬
@@ -177,6 +183,62 @@ def rog_crawl_1(soup, link):
 
     return dict_to_list(spec_dict, product_num)
 
+def rog_crawl_2(soup, link):
+    spec_dict = {}
+    # 載入網頁
+
+    product_name_soup = soup.select(".productSpec__row .nameWrapper")
+    product_names_list = [
+        " ".join(i.text.strip().replace("\n", "").split()) for i in product_name_soup
+    ]
+    if '' in product_names_list:
+        product_names_list = ["".join(filter(None, [name.strip() for name in product_names_list]))]
+    
+    spec_dict["Model Name"] = product_names_list
+
+    # 剩下的全部一起爬
+
+    operation_soup = soup.select(".productSpecItems .itemsFrame.dataFrame")
+        
+    for i in operation_soup:
+        # i = operation_soup[3]
+        key = (
+            i.select(".itemTitle")[0]
+            .text.strip()
+            .lower()
+        )
+        values_soup = i.select(".rowItemsFrame")
+        value = []
+        for v in values_soup:
+            text = v.select(".rowItemsFrame>div")
+            value.append(",\n ".join([i.text.strip() for i in text]))
+        # values_soup[0].select('.ProductSpec__rowItem__hGYWS>div')
+        # value = [i.text.strip() for i in values_soup]
+        if "" in value:
+            value = []
+            for v in values_soup:
+                text = v.select(".rowItemsFrame>div")
+                if text != []:
+                    value.append(",\n ".join([i.text.strip() for i in text]))
+            value = value * len(values_soup)
+            # value = [i.text.strip() for i in values_soup if i.text.strip() != ""] * len(
+            #     values_soup
+            # )
+        # 特例處理 3個產品,但是都是同樣規格
+
+        if key != "":
+            spec_dict[key] = value
+
+    # spec_dict = weight_transform(spec_dict)
+
+    # spec_dict = dim_transform(spec_dict)
+
+    product_num = check_value_lengths(spec_dict)
+    spec_dict["Web Link"] = [link] * product_num
+
+    return dict_to_list(spec_dict, product_num)
+
+
 
 def home_work_creators(soup, link):
     spec_dict = {}
@@ -185,6 +247,9 @@ def home_work_creators(soup, link):
     product_names_list = [
         " ".join(i.text.strip().replace("\n", "").split()) for i in product_name_soup
     ]
+    if '' in product_names_list:
+        product_names_list = ["".join(filter(None, [name.strip() for name in product_names_list]))]
+
     spec_dict["Model Name"] = product_names_list
 
     # 剩下的全部一起爬
@@ -224,6 +289,9 @@ def zenbook_14_crawl(soup, link):
     product_names_list = [
         " ".join(i.text.strip().replace("\n", "").split()) for i in product_name_soup
     ]
+    if '' in product_names_list:
+        product_names_list = ["".join(filter(None, [name.strip() for name in product_names_list]))]
+    
     spec_dict["Model Name"] = product_names_list
 
     # 剩下的全部一起爬
@@ -263,6 +331,8 @@ def TUF_crawl(soup, link):
     product_names_list = [
         " ".join(i.text.strip().replace("\n", "").split()) for i in product_name_soup
     ]
+    if '' in product_names_list:
+        product_names_list = ["".join(filter(None, [name.strip() for name in product_names_list]))]
 
     # 剩下的全部一起爬
     operation_soup = soup.select(".productSpecItems>div")
@@ -301,6 +371,8 @@ def pro_art_crawl(soup, link):
     product_names_list = [
         " ".join(i.text.strip().replace("\n", "").split()) for i in product_name_soup
     ]
+    if '' in product_names_list:
+        product_names_list = ["".join(filter(None, [name.strip() for name in product_names_list]))]
     spec_dict["Model Name"] = product_names_list
 
     # 剩下的全部一起爬
@@ -344,7 +416,7 @@ def crawl_detail(keyword):
     product_detail_list = []
     error_link = []
     for idx, link in enumerate(tqdm(product_link_list)):
-        # idx = 0
+        # link = "https://www.asus.com/Laptops/For-Home/Vivobook/ASUS-Vivobook-S-14-OLED-M5406/"
         user_agent_list = ['Mozilla/5.0 (Windows NT 10.0; Win64; x64)','AppleWebKit/537.36 (KHTML, like Gecko)','Chrome/58.0.3029.110 Safari/537.3','PostmanRuntime/7.37.3']
         user_agent = user_agent_list[idx % 4]
         if idx % 100 == 0 and idx != 0:
@@ -352,7 +424,7 @@ def crawl_detail(keyword):
             
         print(link)
         # link = product_link_list[1]
-        # link  = 'https://www.asus.com/Laptops/For-Creators/ProArt/ProArt-Studiobook-15-H500'
+        # link  = 'https://www.asus.com/Laptops/For-Creators/Vivobook/Vivobook-Pro-16X-3D-OLED-K6604/'
 
         # 可能會出現同個網址，一個網址要多抓多種型號
         result_list = []
@@ -385,6 +457,9 @@ def crawl_detail(keyword):
                     != []
                 ):
                     result_list = rog_crawl_1(soup, link)
+                    product_detail_list.extend(result_list)
+                elif soup.select(".productSpec__row .nameWrapper") !=[]:
+                    result_list = rog_crawl_2(soup, link)
                     product_detail_list.extend(result_list)
 
                 else:
@@ -478,6 +553,7 @@ def crawl_detail(keyword):
                 logging.info(f"it's not laptop:  {link}")
                 error_link.append(link)
         except Exception as e:
+            print('no')
             logging.info(f"{e}:  {link}")
             error_link.append(link)
 
@@ -519,6 +595,9 @@ def weight_transform(spec_dict):
 
 
 def dim_transform(df):
+    # drive_columns = [col for col in df_laptop.columns if 'dimensions' in col.lower()]
+    # print(drive_columns)
+    # df = df_laptop
     def clean_number(s):
         if isinstance(s, (int, float)):
             return s
@@ -535,6 +614,8 @@ def dim_transform(df):
             "dimensions(w x d x h)",
             "dimensions",
             "dimensions (esti.)",
+            "dimensions\n                      (w x d x h)",
+            "weight and dimensions"
         ]:
             if column in row.index and pd.notna(row[column]):
                 dims = extract_dimensions(row[column])
@@ -613,7 +694,7 @@ def weight_transform(df):
 
 def laptop_data(keyword):
     # laptop
-    with open("./Asus/laptop_detail_list.json", "r") as f:
+    with open("./data/Asus/laptop_detail_list.json", "r") as f:
         product_detail_list = json.load(f)
 
     combined_dicts = [
@@ -694,13 +775,15 @@ def laptop_data(keyword):
         "Power Supply",
         "Web Link",
     ]
+    
+    df_laptop = df_laptop[df_laptop['Web Link'].str.contains('laptop', case=False, na=False)]
 
     df_laptop[laptop_columns].to_excel("./data/Asus/laptop.xlsx", header=False)
 
 
 def desktop_data(keyword):
     # laptop
-    with open("./Asus/desktop_detail_list.json", "r") as f:
+    with open("./data/Asus/desktop_detail_list.json", "r") as f:
         product_detail_list = json.load(f)
 
     combined_dicts = [

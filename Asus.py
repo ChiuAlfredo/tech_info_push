@@ -34,7 +34,8 @@ class asus_crawl():
 keyword_list = ["laptop", "desktop", "docking"]
 
 for keyword in keyword_list:
-    # keyword = 'laptop'
+    # keyword = 'docking'
+    company = "Asus"
     asus = asus_crawl(keyword, "Asus")
     asus.get_product_link()
     asus.get_product_detail()
